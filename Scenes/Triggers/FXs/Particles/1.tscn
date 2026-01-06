@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4ivrl8vljwj0"]
+
+[ext_resource type="Material" uid="uid://dtjgcwyn574xi" path="res://tres/Materials/Bolts.tres" id="2_3snl3"]
+[ext_resource type="Texture2D" uid="uid://baa84eo3yh88" path="res://Sprites/ParticlesEffect/Bolt.png" id="2_383d5"]
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vk3ru"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="Shake_Spark" type="GPUParticles2D"]
+z_index = 25
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("CanvasItemMaterial_vk3ru")
+amount = 12
+process_material = ExtResource("2_3snl3")
+texture = ExtResource("2_383d5")
+lifetime = 2.0
+speed_scale = 2.0
+explosiveness = 0.7
+fixed_fps = 60
+visibility_rect = Rect2(-512, -320, 1024, 640)
+local_coords = true
+script = ExtResource("3")

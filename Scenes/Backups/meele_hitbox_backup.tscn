@@ -1,0 +1,292 @@
+[gd_scene load_steps=21 format=3 uid="uid://dtkscsdvmoldv"]
+
+[ext_resource type="Script" uid="uid://dmnfx8yvtugu" path="res://Scripts/Objects/Actors/Flockos/Powers/Meele_Hitbox.gd" id="1_u8jix"]
+
+[sub_resource type="RectangleShape2D" id="158"]
+size = Vector2(199, 74)
+
+[sub_resource type="RectangleShape2D" id="159"]
+size = Vector2(216, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g75or"]
+size = Vector2(168, 209)
+
+[sub_resource type="RectangleShape2D" id="376"]
+size = Vector2(180, 126)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu2b7"]
+radius = 36.0004
+height = 127.999
+
+[sub_resource type="RectangleShape2D" id="28"]
+size = Vector2(161, 113)
+
+[sub_resource type="RectangleShape2D" id="29"]
+size = Vector2(197, 90)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3trx6"]
+radius = 106.0
+
+[sub_resource type="RectangleShape2D" id="349"]
+size = Vector2(149, 156)
+
+[sub_resource type="RectangleShape2D" id="35"]
+size = Vector2(191, 136)
+
+[sub_resource type="RectangleShape2D" id="33"]
+size = Vector2(25, 60)
+
+[sub_resource type="RectangleShape2D" id="27"]
+size = Vector2(196, 22)
+
+[sub_resource type="CircleShape2D" id="30"]
+radius = 102.0
+
+[sub_resource type="RectangleShape2D" id="36"]
+size = Vector2(26, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an2lf"]
+size = Vector2(464, 128)
+
+[sub_resource type="RectangleShape2D" id="32"]
+size = Vector2(102.375, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eycvr"]
+size = Vector2(1024, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc31x"]
+size = Vector2(49, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhphj"]
+radius = 18.0
+
+[node name="Meele_Hitbox" type="Node2D"]
+script = ExtResource("1_u8jix")
+
+[node name="First_Box" type="Area2D" parent="."]
+visible = false
+position = Vector2(44, -31)
+collision_layer = 256
+collision_mask = 34
+
+[node name="First" type="CollisionShape2D" parent="First_Box"]
+visible = false
+position = Vector2(-26.5, -36)
+shape = SubResource("158")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="Second_Box" type="Area2D" parent="."]
+visible = false
+position = Vector2(44, -32)
+collision_layer = 256
+collision_mask = 32
+
+[node name="Second" type="CollisionShape2D" parent="Second_Box"]
+position = Vector2(-23, -40.5)
+shape = SubResource("159")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="Last_Box" type="Area2D" parent="."]
+visible = false
+position = Vector2(26, -48)
+collision_layer = 256
+collision_mask = 32
+
+[node name="Last" type="CollisionShape2D" parent="Last_Box"]
+position = Vector2(-5.49974, -17.9993)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_g75or")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="Run_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="RunMask" type="CollisionShape2D" parent="Run_Box"]
+position = Vector2(26, -63)
+shape = SubResource("376")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="Air_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Air" type="CollisionShape2D" parent="Air_Box"]
+unique_name_in_owner = true
+position = Vector2(16, -72)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_wu2b7")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DownFirst_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="DownFirst" type="CollisionShape2D" parent="DownFirst_Box"]
+position = Vector2(20.5, -56.5)
+shape = SubResource("28")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DownSecond_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="DownSecond" type="CollisionShape2D" parent="DownSecond_Box"]
+position = Vector2(4.5, -45)
+shape = SubResource("29")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DownLast_Box" type="Area2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+collision_layer = 256
+collision_mask = 32
+
+[node name="DownLast" type="CollisionShape2D" parent="DownLast_Box"]
+position = Vector2(-1, -35)
+shape = SubResource("CircleShape2D_3trx6")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+metadata/_edit_lock_ = true
+
+[node name="ClimbSlash_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Climb_Slash_Mask" type="CollisionShape2D" parent="ClimbSlash_Box"]
+position = Vector2(49.5, -70)
+shape = SubResource("349")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="WallSlash_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Wall_Slash_Mask" type="CollisionShape2D" parent="WallSlash_Box"]
+position = Vector2(-32.5, -84)
+shape = SubResource("35")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="AvoiderDown_Box" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="AvoiderDown_Slash_Mask" type="CollisionShape2D" parent="AvoiderDown_Box"]
+unique_name_in_owner = true
+position = Vector2(-1.5, 26)
+shape = SubResource("33")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="Dash_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Dash_Slash_Mask" type="CollisionShape2D" parent="Dash_Box"]
+position = Vector2(0, -65)
+shape = SubResource("27")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DamagePerSecond" type="Timer" parent="Dash_Box"]
+
+[node name="CrazyFly_Box" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="CrazyFly" type="CollisionShape2D" parent="CrazyFly_Box"]
+position = Vector2(-2, -69)
+shape = SubResource("30")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DamagePerSecond" type="Timer" parent="CrazyFly_Box"]
+
+[node name="BladeFan_Box" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Fan" type="CollisionShape2D" parent="BladeFan_Box"]
+unique_name_in_owner = true
+shape = SubResource("36")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DamagePerSecond" type="Timer" parent="BladeFan_Box"]
+
+[node name="BlowEnemie_Box" type="Area2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="Blow" type="CollisionShape2D" parent="BlowEnemie_Box"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_an2lf")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="LightingKipe_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+priority = 1
+
+[node name="Kite_Slash_Mask" type="CollisionShape2D" parent="LightingKipe_Box"]
+position = Vector2(76.8125, -79.5)
+shape = SubResource("32")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="DamagePerSecond" type="Timer" parent="LightingKipe_Box"]
+
+[node name="WaterShake_Box" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 32
+
+[node name="WaterShake_Mask" type="CollisionShape2D" parent="WaterShake_Box"]
+unique_name_in_owner = true
+visible = false
+shape = SubResource("RectangleShape2D_eycvr")
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)
+
+[node name="ClashCreator" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Ar1" type="Area2D" parent="ClashCreator" groups=["ClashAreas"]]
+unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 0
+
+[node name="ClashMask1" type="CollisionShape2D" parent="ClashCreator/Ar1"]
+unique_name_in_owner = true
+position = Vector2(-40.25, -45)
+shape = SubResource("RectangleShape2D_yc31x")
+disabled = true
+
+[node name="Ar2" type="Area2D" parent="ClashCreator" groups=["ClashAreas"]]
+unique_name_in_owner = true
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 256
+collision_mask = 0
+
+[node name="ClashMask2" type="CollisionShape2D" parent="ClashCreator/Ar2"]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_qhphj")
+disabled = true
+debug_color = Color(1, 0.403544, 0.924949, 0.14902)

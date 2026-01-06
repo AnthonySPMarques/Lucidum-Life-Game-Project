@@ -1,0 +1,486 @@
+[gd_scene load_steps=36 format=3 uid="uid://dnhphdycs1dbe"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/EnemyObjectScript.gd" id="1_dfcnv"]
+[ext_resource type="Texture2D" uid="uid://vw0b7yt3p6yd" path="res://Sprites/Objects/Enemies_A.png" id="2_swn1q"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/Enemy_MachineStateApplyer.gd" id="3_q0je8"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/RustFly_on_hang.gd" id="4_q7u2g"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/RustFly_Fly.gd" id="5_kmtui"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/RustFly_firing.gd" id="6_miqo7"]
+[ext_resource type="AudioStream" uid="uid://4acs1p6d8npx" path="res://Sfxs/Short_GunShot.ogg" id="7_vcyx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snb42"]
+size = Vector2(16, 104)
+
+[sub_resource type="Animation" id="Animation_5m6rf"]
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(5212, 0, 54, 135), Rect2(5266, 0, 54, 134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -23.5), Vector2(0, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_irbts"]
+length = 0.24
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4756, 0, 50, 123), Rect2(4806, 0, 50, 123), Rect2(4856, 0, 50, 123), Rect2(4906, 0, 50, 123)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -29.5), Vector2(0, -29.5), Vector2(0, -29.5), Vector2(0, -29.5)]
+}
+
+[sub_resource type="Animation" id="Animation_l1ktr"]
+length = 0.04
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(5442, 0, 106, 122), Rect2(5548, 0, 100, 121)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -29), Vector2(0, -28.5)]
+}
+
+[sub_resource type="Animation" id="Animation_8gmuy"]
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(4956, 0, 98, 129), Rect2(5054, 0, 98, 135), Rect2(5152, 0, 60, 134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -26.5), Vector2(0, -23.5), Vector2(0, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_thcp3"]
+length = 0.11
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(5320, 0, 54, 129), Rect2(5374, 0, 68, 122)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -26.5), Vector2(0, -29)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxjrn"]
+_data = {
+"RustFly_Flying_Loop": SubResource("Animation_5m6rf"),
+"RustFly_Hanging": SubResource("Animation_irbts"),
+"RustFly_Shooting": SubResource("Animation_l1ktr"),
+"RustFly_ToFlying": SubResource("Animation_8gmuy"),
+"RustFly_To_Shot": SubResource("Animation_thcp3")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2vcy"]
+animation = &"RustFly_Flying_Loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ecsjk"]
+animation = &"RustFly_Hanging"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54oel"]
+animation = &"RustFly_Shooting"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sbp80"]
+animation = &"RustFly_ToFlying"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l0u5t"]
+animation = &"RustFly_To_Shot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcwiy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7748e"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mx2s4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ay51e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qoww4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dftf3"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0tlo4"]
+states/End/position = Vector2(969, 73)
+states/RustFly_Flying_Loop/node = SubResource("AnimationNodeAnimation_g2vcy")
+states/RustFly_Flying_Loop/position = Vector2(590, 272.5)
+states/RustFly_Hanging/node = SubResource("AnimationNodeAnimation_ecsjk")
+states/RustFly_Hanging/position = Vector2(355, 58.5)
+states/RustFly_Shooting/node = SubResource("AnimationNodeAnimation_54oel")
+states/RustFly_Shooting/position = Vector2(710, -23.5)
+states/RustFly_ToFlying/node = SubResource("AnimationNodeAnimation_sbp80")
+states/RustFly_ToFlying/position = Vector2(398, 239.5)
+states/RustFly_To_Shot/node = SubResource("AnimationNodeAnimation_l0u5t")
+states/RustFly_To_Shot/position = Vector2(776, 220.5)
+transitions = ["Start", "RustFly_Hanging", SubResource("AnimationNodeStateMachineTransition_pcwiy"), "RustFly_ToFlying", "RustFly_Flying_Loop", SubResource("AnimationNodeStateMachineTransition_7748e"), "RustFly_Hanging", "RustFly_ToFlying", SubResource("AnimationNodeStateMachineTransition_mx2s4"), "RustFly_Flying_Loop", "RustFly_To_Shot", SubResource("AnimationNodeStateMachineTransition_ay51e"), "RustFly_To_Shot", "RustFly_Shooting", SubResource("AnimationNodeStateMachineTransition_qoww4"), "RustFly_Shooting", "RustFly_Hanging", SubResource("AnimationNodeStateMachineTransition_dftf3")]
+graph_offset = Vector2(162, -36)
+
+[sub_resource type="Animation" id="4"]
+resource_name = "aRESET"
+length = 0.001
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Flash"
+length = 0.16
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(15, 15, 15, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pjnc"]
+_data = {
+"ARESET": SubResource("4"),
+"Flash": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rquci"]
+size = Vector2(56, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ym8"]
+size = Vector2(257.108, 512)
+
+[sub_resource type="Animation" id="Animation_y6meh"]
+resource_name = "Pulse"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_43s5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqbud"]
+_data = {
+"Pulse": SubResource("Animation_y6meh"),
+"RESET": SubResource("Animation_43s5p")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ob0qb"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_vcyx7")
+
+[node name="RustFlyBody" type="CharacterBody2D" node_paths=PackedStringArray("Animation_Tree", "EnemyArea2DBody", "EnemieCenterPath", "EnemieVisibilityMask", "Damage_Counter_Position") groups=["Enemies", "Hurters"]]
+light_mask = 257
+z_index = 10
+collision_layer = 48
+collision_mask = 0
+velocity = Vector2(0, 194.297)
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+floor_snap_length = 16.0
+script = ExtResource("1_dfcnv")
+Animation_Tree = NodePath("Sprite/AnimationTree")
+enable_flip_sprite = false
+EnemyArea2DBody = NodePath("Area2Ds/Enemy_HitBox")
+EnemieCenterPath = NodePath("Pivot")
+EnemieVisibilityMask = NodePath("VisibleOnScreenEnabler2D")
+Damage_Counter_Position = NodePath("LabelPos")
+hp = 10.0
+score_reward = 10
+
+[node name="Pivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -61)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_snb42")
+debug_color = Color(0, 0.323451, 0.7, 0.42)
+
+[node name="LabelPos" type="Marker2D" parent="."]
+position = Vector2(0, -146)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2.86102e-06, -64)
+scale = Vector2(2, 5)
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="Invencibility_Time" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("2_swn1q")
+offset = Vector2(0, -29.5)
+region_enabled = true
+region_rect = Rect2(4856, 0, 50, 123)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_oxjrn")
+}
+autoplay = "PogoDoll_Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite"]
+tree_root = SubResource("AnimationNodeStateMachine_0tlo4")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="PosL" type="Marker2D" parent="Sprite"]
+position = Vector2(-52, 8)
+
+[node name="PosR" type="Marker2D" parent="Sprite"]
+position = Vector2(52, 8)
+
+[node name="StatePlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_1pjnc")
+}
+autoplay = "ARESET"
+
+[node name="Area2Ds" type="Node2D" parent="."]
+position = Vector2(0, -26)
+
+[node name="Enemy_HitBox" type="Area2D" parent="Area2Ds"]
+unique_name_in_owner = true
+position = Vector2(0, -2)
+collision_layer = 32
+collision_mask = 256
+
+[node name="Mask" type="CollisionShape2D" parent="Area2Ds/Enemy_HitBox"]
+editor_description = "To detect meele attacks to brake"
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_rquci")
+debug_color = Color(0.753443, 0.427194, 0, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="PlayerDetector" type="Area2D" parent="Area2Ds"]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2Ds/PlayerDetector"]
+position = Vector2(-3.8147e-06, -358)
+scale = Vector2(0.99569, 1)
+shape = SubResource("RectangleShape2D_v3ym8")
+debug_color = Color(1, 0.793457, 0.265625, 0.42)
+
+[node name="EnemyMachine_State" type="Node" parent="." node_paths=PackedStringArray("Start_State")]
+script = ExtResource("3_q0je8")
+Start_State = NodePath("RustFly_OnHang")
+
+[node name="RustFly_OnHang" type="Node" parent="EnemyMachine_State"]
+unique_name_in_owner = true
+script = ExtResource("4_q7u2g")
+
+[node name="RustFly_Fly" type="Node" parent="EnemyMachine_State"]
+unique_name_in_owner = true
+script = ExtResource("5_kmtui")
+
+[node name="TimeToShot" type="Timer" parent="EnemyMachine_State/RustFly_Fly"]
+
+[node name="RustFly_Firing" type="Node" parent="EnemyMachine_State"]
+unique_name_in_owner = true
+script = ExtResource("6_miqo7")
+Bullet_Speed = 20.0
+
+[node name="HealthLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_left = -22.0
+offset_top = -162.0
+offset_right = 22.0
+offset_bottom = -136.0
+pivot_offset = Vector2(22, 12)
+text = "1000"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelAP" type="AnimationPlayer" parent="HealthLabel"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_gqbud")
+}
+autoplay = "RESET"
+
+[node name="GatlingGunSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_ob0qb")
+volume_db = -1.0
+bus = &"SFXs"

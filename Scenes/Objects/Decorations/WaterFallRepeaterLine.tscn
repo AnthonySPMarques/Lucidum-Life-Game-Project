@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhfdaqx0nnios"]
+
+[ext_resource type="Texture2D" uid="uid://dxm1662j1u4ud" path="res://Sprites/Non Atlas support/WaterTileRepeater.png" id="1_jvqsu"]
+[ext_resource type="Shader" uid="uid://q458chkaaqoj" path="res://Shaders/TextureRepeater.gdshader" id="1_li7dd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nmdu6"]
+shader = ExtResource("1_li7dd")
+shader_parameter/scroll_speed = 3.0000001425
+shader_parameter/angle_degrees = 90.000004275
+shader_parameter/repeat_x = 4.000000142499999
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 1.0
+
+[node name="WaterFallRepeater" type="Polygon2D"]
+z_index = 40
+material = SubResource("ShaderMaterial_nmdu6")
+texture = ExtResource("1_jvqsu")

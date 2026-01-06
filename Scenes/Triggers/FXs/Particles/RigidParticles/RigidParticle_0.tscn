@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0ll5yxx2263w"]
+
+[ext_resource type="Texture2D" uid="uid://bu7nr8fm6k3hh" path="res://Sprites/ParticlesEffect/ParticleEffect_1.png" id="1_q58xe"]
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/RigidParticle_Logic.gd" id="1_qchd1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q58xe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q58xe"]
+atlas = ExtResource("1_q58xe")
+region = Rect2(0, 0, 10, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qchd1"]
+atlas = ExtResource("1_q58xe")
+region = Rect2(10, 0, 10, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_52n7p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q58xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qchd1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q58xe"]
+size = Vector2(9, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qchd1"]
+size = Vector2(9, 19)
+
+[node name="WaterDrop" type="RigidBody2D"]
+position = Vector2(448, 552)
+collision_layer = 0
+collision_mask = 4096
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_q58xe")
+script = ExtResource("1_qchd1")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_52n7p")
+autoplay = "default"
+frame_progress = 0.86208
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_q58xe")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_qchd1")

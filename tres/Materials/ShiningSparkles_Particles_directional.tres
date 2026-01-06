@@ -1,0 +1,61 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://b1i2u7dcj1quw"]
+
+[sub_resource type="Gradient" id="Gradient_ql8pa"]
+colors = PackedColorArray(21, 12, 8, 1, 21, 12, 8, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1jfmt"]
+gradient = SubResource("Gradient_ql8pa")
+
+[sub_resource type="Curve" id="Curve_pa56y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0807132, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8e6hn"]
+curve = SubResource("Curve_pa56y")
+
+[sub_resource type="Curve" id="Curve_8e6hn"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.288366, 1.2), 0.0, 0.0, 0, 0, Vector2(0.800743, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 0.6), -8.98084, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ktds"]
+curve = SubResource("Curve_8e6hn")
+
+[resource]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+angle_min = 90.0
+angle_max = 120.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = -0.0999999
+radial_velocity_min = 900.0
+radial_velocity_max = 1000.0
+radial_velocity_curve = SubResource("CurveTexture_8e6hn")
+gravity = Vector3(0, 4000, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 200.0
+radial_accel_min = 500.0
+radial_accel_max = 1000.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_min = 0.6
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_3ktds")
+color_ramp = SubResource("GradientTexture1D_1jfmt")
+turbulence_noise_speed = Vector3(20, 20, 0)
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.03
+turbulence_initial_displacement_min = 12.3
+turbulence_initial_displacement_max = 15.2
+collision_mode = 2
+collision_use_scale = true
+sub_emitter_mode = 1
+sub_emitter_frequency = 12.0
+sub_emitter_keep_velocity = true

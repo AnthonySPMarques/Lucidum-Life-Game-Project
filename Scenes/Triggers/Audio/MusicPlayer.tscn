@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8o84vxelemvy"]
+
+[ext_resource type="Script" path="res://Scripts/Triggers/Audio/MusicPlayer.gd" id="1_i273s"]
+[ext_resource type="AudioStream" uid="uid://uvlfxfx0epmr" path="res://Musics/Sleep_Too - LOOPALE.mp3" id="2_82wdo"]
+[ext_resource type="AudioStream" uid="uid://blqjubwsn6m2h" path="res://Musics/Sleep_Too INTRO - Try.mp3" id="3_044ck"]
+
+[node name="Music_Player" type="Node"]
+script = ExtResource("1_i273s")
+
+[node name="Sleep Too!" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_82wdo")
+volume_db = -10.0
+mix_target = 2
+max_polyphony = 5
+bus = &"BGM"
+
+[node name="IntroSong" type="AudioStreamPlayer" parent="Sleep Too!"]
+stream = ExtResource("3_044ck")
+volume_db = -10.0
+mix_target = 2
+max_polyphony = 5
+bus = &"BGM"

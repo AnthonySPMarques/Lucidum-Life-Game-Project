@@ -1,0 +1,222 @@
+[gd_scene load_steps=10 format=3 uid="uid://crjnbcgabuov6"]
+
+[ext_resource type="Texture2D" uid="uid://dekynp14ysv7p" path="res://Sprites/Objects/Decorations/EletricBoard.png" id="1_5nm3r"]
+[ext_resource type="FontFile" uid="uid://bmvjoieaeu4ln" path="res://Fonts/Bitcount_Grid_Double/static/BitcountGridDouble_Cursive-ExtraLight.ttf" id="2_2n6a0"]
+[ext_resource type="PackedScene" uid="uid://yawpg8ek5slt" path="res://Scenes/Triggers/FXs/PointLight.tscn" id="3_7xt80"]
+
+[sub_resource type="Animation" id="Animation_418k7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Points:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_dnbv3"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 234, 90), Rect2(234, 0, 234, 90), Rect2(468, 0, 234, 90), Rect2(702, 0, 234, 90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Points:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Points2:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Points3:energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Points4:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urkxp"]
+_data = {
+&"RESET": SubResource("Animation_418k7"),
+&"default": SubResource("Animation_dnbv3")
+}
+
+[sub_resource type="Animation" id="Animation_qbisl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u7iry"]
+resource_name = "Wink"
+length = 0.41
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 2),
+"update": 1,
+"values": [Color(8, 8, 8, 1), Color(1, 1, 1, 0.236)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n702p"]
+_data = {
+&"RESET": SubResource("Animation_qbisl"),
+&"Wink": SubResource("Animation_u7iry")
+}
+
+[node name="EletricBoard" type="Node2D"]
+z_index = 30
+
+[node name="Board_Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5nm3r")
+region_enabled = true
+region_rect = Rect2(468, 0, 234, 90)
+
+[node name="Board_AnimationPlayer" type="AnimationPlayer" parent="Board_Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_urkxp")
+}
+autoplay = "default"
+
+[node name="TextContent" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -104.0
+offset_top = -32.0
+offset_right = 104.0
+offset_bottom = 28.0
+metadata/_edit_lock_ = true
+
+[node name="Text" type="RichTextLabel" parent="TextContent"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("2_2n6a0")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center][u]LULLABY BLUE 2
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextAnimation" type="AnimationPlayer" parent="TextContent/Text"]
+libraries = {
+&"": SubResource("AnimationLibrary_n702p")
+}
+autoplay = "Wink"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-1.52588e-05, -1.90735e-06)
+scale = Vector2(12, 4.8)
+
+[node name="Points" parent="." instance=ExtResource("3_7xt80")]
+position = Vector2(-110, -38)
+color = Color(2, 1, 1, 1)
+energy = 0.0
+texture_scale = 0.2
+
+[node name="Points2" parent="." instance=ExtResource("3_7xt80")]
+position = Vector2(110, -38)
+color = Color(2, 1, 1, 1)
+energy = 0.25188988
+texture_scale = 0.2
+
+[node name="Points3" parent="." instance=ExtResource("3_7xt80")]
+position = Vector2(110, 38)
+color = Color(2, 1, 1, 1)
+energy = 0.25188988
+texture_scale = 0.2
+
+[node name="Points4" parent="." instance=ExtResource("3_7xt80")]
+position = Vector2(-110, 38)
+color = Color(2, 1, 1, 1)
+energy = 0.25188988
+texture_scale = 0.2

@@ -1,0 +1,213 @@
+[gd_scene load_steps=21 format=4 uid="uid://6o2lssj2b2dp"]
+
+[ext_resource type="Script" path="res://Scripts/Triggers/Scenes/LevelLogic.gd" id="1_v4plp"]
+[ext_resource type="Script" path="res://Scripts/Objects/Global_Logics/Static_Hurters.gd" id="3_ctcf7"]
+[ext_resource type="PackedScene" uid="uid://bh1huml857rbt" path="res://Scenes/Objects/Actors/Players/Flockos.tscn" id="5_ggei5"]
+[ext_resource type="Texture2D" uid="uid://dnfrtemk4c82a" path="res://Sprites/Objects/TileSets/Tilemaps.png" id="9_v6mra"]
+[ext_resource type="TileSet" uid="uid://bkah41r58t0vm" path="res://tres/Tilesets/Tiles.tres" id="10_kmq51"]
+[ext_resource type="TileSet" uid="uid://d17r5nlv3ytfq" path="res://tres/Tilesets/Spikes.tres" id="11_yow4e"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Editor/CameraZoneMaker.gd" id="13_t7b75"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="14_klgmi"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="15_27vgk"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="16_73ho1"]
+[ext_resource type="PackedScene" uid="uid://kr4akukirm5p" path="res://Scenes/Triggers/FXs/WorldEnvironment.tscn" id="17_8diio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64tc1"]
+size = Vector2(127, 3200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpm2c"]
+size = Vector2(128, 3472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnqs6"]
+size = Vector2(10112, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwsgn"]
+size = Vector2(8288, 10397.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4rn7"]
+resource_name = "OneWaySolid"
+texture = ExtResource("9_v6mra")
+texture_region_size = Vector2i(64, 64)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+4:6/0/physics_layer_0/polygon_0/one_way = true
+5:6/0 = 0
+6:6/0 = 0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+6:6/0/physics_layer_0/polygon_0/one_way = true
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+7:6/0/physics_layer_0/polygon_0/one_way = true
+8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+8:6/0/physics_layer_0/polygon_0/one_way = true
+9:6/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+8:5/0 = 0
+7:5/0 = 0
+9:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n4ftn"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_d4rn7")
+
+[sub_resource type="Resource" id="Resource_jnve1"]
+script = ExtResource("16_73ho1")
+duration = 0.3
+transition = 1
+ease = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqb8f"]
+size = Vector2(1024, 576)
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_li2tk"]
+
+[node name="Level_Kit" type="Node2D"]
+script = ExtResource("1_v4plp")
+metadata/_edit_horizontal_guides_ = [256.0]
+
+[node name="BordersOffCamera" type="Node2D" parent="."]
+position = Vector2(512, 320)
+
+[node name="Corners" type="StaticBody2D" parent="BordersOffCamera"]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="Left" type="CollisionShape2D" parent="BordersOffCamera/Corners"]
+position = Vector2(-640, -448)
+shape = SubResource("RectangleShape2D_64tc1")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="Right" type="CollisionShape2D" parent="BordersOffCamera/Corners"]
+position = Vector2(640, -448)
+shape = SubResource("RectangleShape2D_lpm2c")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="Up" type="CollisionShape2D" parent="BordersOffCamera/Corners"]
+position = Vector2(2624, -576)
+shape = SubResource("RectangleShape2D_mnqs6")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="DeathFall" type="StaticBody2D" parent="BordersOffCamera" groups=["pitfall"]]
+collision_layer = 18
+collision_mask = 0
+script = ExtResource("3_ctcf7")
+damage_type = 1
+damage_force = 999
+
+[node name="Down0" type="CollisionShape2D" parent="BordersOffCamera/DeathFall"]
+position = Vector2(2368, 5568)
+shape = SubResource("RectangleShape2D_nwsgn")
+debug_color = Color(0.300866, 0, 0, 0.733333)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="Objects"]
+
+[node name="Actors" type="Node2D" parent="Objects"]
+editor_description = "player, npc, etc"
+
+[node name="Flockos" parent="Objects/Actors" instance=ExtResource("5_ggei5")]
+position = Vector2(512, 448)
+Show_Debug_Cheats = false
+
+[node name="Camera2D" parent="Objects/Actors/Flockos" index="2"]
+position = Vector2(0, -160)
+process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 576
+
+[node name="Areas" type="Node2D" parent="Objects"]
+editor_description = "doors, waters, etc"
+
+[node name="Pickables" type="Node2D" parent="Objects"]
+editor_description = "health pickup, energy pickup etc"
+
+[node name="NightFlies" type="Node2D" parent="Objects/Pickables"]
+
+[node name="TileMaps" type="Node2D" parent="Objects"]
+z_index = 1
+z_as_relative = false
+metadata/_edit_lock_ = true
+
+[node name="OneWayBlocks" type="TileMapLayer" parent="Objects/TileMaps" groups=["OneWayTiles"]]
+z_index = -1
+use_parent_material = true
+tile_set = SubResource("TileSet_n4ftn")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="TileBlocks" type="TileMapLayer" parent="Objects/TileMaps"]
+use_parent_material = true
+tile_set = ExtResource("10_kmq51")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="Spikes" type="TileMapLayer" parent="Objects/TileMaps" groups=["Hurters"]]
+z_index = 100
+z_as_relative = false
+tile_map_data = PackedByteArray("AAAFAUEAAAACAAkAAHAFAUAAAAACAAkAAHAFAT8AAAACAAkAAHAFAT4AAAACAAkAAHAFAT0AAAACAAkAAHAFATwAAAACAAkAAHAFATsAAAACAAkAAHAFAToAAAACAAkAAHAFATkAAAACAAkAAHAFATgAAAACAAkAAHAFATcAAAACAAkAAHAFATYAAAACAAkAAHAFATUAAAACAAkAAHAFATQAAAACAAkAAHAFATMAAAACAAkAAHAFATIAAAACAAkAAHAFATEAAAACAAkAAHAFATAAAAACAAkAAHAFAS8AAAACAAkAAHAFAS4AAAACAAkAAHAFAS0AAAACAAkAAHAFASwAAAACAAkAAHAFASsAAAACAAkAAHAFASoAAAACAAkAAHAFASkAAAACAAkAAHAFASgAAAACAAkAAHAFAScAAAACAAkAAHAFASYAAAACAAkAAHAFASUAAAACAAkAAHAFASQAAAACAAkAAHAFASMAAAACAAkAAHAFASIAAAACAAkAAHAFASEAAAACAAkAAHAFASAAAAACAAkAAHAFAR8AAAACAAkAAHAFAR4AAAACAAkAAHAFAR0AAAACAAkAAHAFARwAAAACAAkAAHAtATUAAAACAAkAAGAtATYAAAACAAkAAGAtATcAAAACAAkAAGAtATgAAAACAAkAAGAtATkAAAACAAkAAGAtAToAAAACAAkAAGAtATsAAAACAAkAAGAtATwAAAACAAkAAGAtAT0AAAACAAkAAGAtAT4AAAACAAkAAGAtAT8AAAACAAkAAGAtAUAAAAACAAkAAGAtAUEAAAACAAkAAGAtAUIAAAACAAkAAGAtAUMAAAACAAkAAGAtAUQAAAACAAkAAGAtAUUAAAACAAkAAGAtAUYAAAACAAkAAGAtAUcAAAACAAkAAGAtAUgAAAACAAkAAGAtAUkAAAACAAkAAGAtAUoAAAACAAkAAGAtAUsAAAACAAkAAGAtAUwAAAACAAkAAGAtAU0AAAACAAkAAGAtAU4AAAACAAkAAGAtAU8AAAACAAkAAGAtAVAAAAACAAkAAGAtAVEAAAACAAkAAGAtAVIAAAACAAkAAGAtAVMAAAACAAkAAGAtAVQAAAACAAkAAGAtAVUAAAACAAkAAGAtAVYAAAACAAkAAGA=")
+tile_set = ExtResource("11_yow4e")
+
+[node name="Ladders" type="Node2D" parent="Objects"]
+
+[node name="Triggers" type="Node" parent="."]
+
+[node name="CameraZone_0" type="Node" parent="Triggers"]
+script = ExtResource("13_t7b75")
+
+[node name="NoiseEmitters" type="Node" parent="Triggers/CameraZone_0"]
+
+[node name="StrongQuake" type="Node2D" parent="Triggers/CameraZone_0/NoiseEmitters"]
+script = ExtResource("14_klgmi")
+metadata/_custom_type_script = ExtResource("14_klgmi")
+
+[node name="Phantoms" type="Node" parent="Triggers/CameraZone_0"]
+
+[node name="PhantomArea_A" type="Node2D" parent="Triggers/CameraZone_0/Phantoms" node_paths=PackedStringArray("follow_target")]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(512, 288)
+script = ExtResource("15_27vgk")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../../../../Objects/Actors/Flockos")
+tween_resource = SubResource("Resource_jnve1")
+follow_damping_value = Vector2(0.1, 0.001)
+follow_axis_lock = 2
+draw_limits = true
+limit_target = NodePath("../../Areas/AreaZone_A/AreaZone_A_Mask")
+
+[node name="Areas" type="Node" parent="Triggers/CameraZone_0"]
+
+[node name="AreaZone_A" type="Area2D" parent="Triggers/CameraZone_0/Areas"]
+z_index = 100
+position = Vector2(0, -22)
+
+[node name="AreaZone_A_Mask" type="CollisionShape2D" parent="Triggers/CameraZone_0/Areas/AreaZone_A"]
+position = Vector2(512, 310)
+shape = SubResource("RectangleShape2D_dqb8f")
+debug_color = Color(0.54, 1, 0.747, 0.0196078)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="BackgroundFiller" type="ParallaxBackground" parent="Triggers"]
+
+[node name="ColorRect" type="ColorRect" parent="Triggers/BackgroundFiller"]
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 1088.0
+offset_bottom = 640.0
+color = Color(0.0941176, 0.00392157, 0.223529, 1)
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" parent="Triggers" instance=ExtResource("17_8diio")]
+camera_attributes = SubResource("CameraAttributesPhysical_li2tk")
+
+[editable path="Objects/Actors/Flockos"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dohv2cuhbg8pa"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/ElecPogo.gd" id="1_7eauj"]
+[ext_resource type="Texture2D" uid="uid://cr8wkkfb1nwdb" path="res://Sprites/Objects/Veichles.png" id="1_gp523"]
+[ext_resource type="Script" path="res://Scripts/Objects/Pluggers/Gravity_Plug.gd" id="3_m10of"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvblp"]
+size = Vector2(56, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40n7h"]
+size = Vector2(64, 92)
+
+[node name="ElecPogo" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7eauj")
+explosion_scale = Vector2(1.2, 1.2)
+pow_velocity = 1800.0
+
+[node name="Gravity-Plug" type="Node" parent="." node_paths=PackedStringArray("Node_To_PlugIn")]
+script = ExtResource("3_m10of")
+Impulse_Gravity = 2.2
+Node_To_PlugIn = NodePath("..")
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -46)
+shape = SubResource("RectangleShape2D_yvblp")
+debug_color = Color(0.91, 0.682216, 0.1001, 0.0705882)
+
+[node name="ElecPogoArea" type="Area2D" parent="." groups=["Vehiles"]]
+unique_name_in_owner = true
+editor_description = "Make this as a component then when added as a child from an actor, automatically makes it use the pogo, example: if this node is Player's child then player will be using pogo when it becomes its child."
+collision_layer = 16384
+collision_mask = 34
+
+[node name="Sprite2D" type="Sprite2D" parent="ElecPogoArea"]
+position = Vector2(0, -45)
+texture = ExtResource("1_gp523")
+hframes = 3
+
+[node name="Mask" type="CollisionShape2D" parent="ElecPogoArea"]
+position = Vector2(0, -46)
+shape = SubResource("RectangleShape2D_40n7h")
+debug_color = Color(0.91, 0.682216, 0.1001, 0.0705882)

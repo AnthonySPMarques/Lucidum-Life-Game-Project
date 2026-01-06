@@ -1,0 +1,284 @@
+[gd_scene load_steps=17 format=3 uid="uid://ds6l6c01vuym4"]
+
+[ext_resource type="Script" uid="uid://cou2rfvc2d5iq" path="res://Scripts/Triggers/FXs/RigidEffectCreator.gd" id="1_rr5cs"]
+[ext_resource type="AudioStream" uid="uid://c34pgqo7wravb" path="res://Sfxs/Explosion_A.ogg" id="2_5xiw8"]
+[ext_resource type="AudioStream" uid="uid://d3qikkx4ojjhh" path="res://Sfxs/Explosion_B.ogg" id="3_h1wkl"]
+[ext_resource type="AudioStream" uid="uid://ctjeg78cj8ova" path="res://Sfxs/Explosion_C.ogg" id="4_tc4h1"]
+[ext_resource type="Texture2D" uid="uid://dx45kxta57ie4" path="res://Sprites/Characters/Character_pierces/GeneralRigidEffects.png" id="5_ddrb0"]
+[ext_resource type="Script" uid="uid://bniad3uq6iv8y" path="res://Scripts/Triggers/Pluggers/Attack_Plugger.gd" id="6_4565a"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oibjf"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("2_5xiw8")
+stream_0/weight = 1.1
+stream_1/stream = ExtResource("3_h1wkl")
+stream_1/weight = 1.1
+stream_2/stream = ExtResource("4_tc4h1")
+stream_2/weight = 1.1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t44bt"]
+radius = 78.4347
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0cds"]
+radius = 17.1172
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rw661"]
+radius = 9.21097
+height = 31.0483
+
+[sub_resource type="Animation" id="Animation_onoim"]
+length = 0.28
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite/EffectSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 31, 23), Rect2(31, 0, 31, 23), Rect2(62, 0, 31, 23), Rect2(93, 0, 31, 23), Rect2(124, 0, 31, 23)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite/EffectSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, 4.5), Vector2(-0.5, 4.5), Vector2(-0.5, 4.5), Vector2(-0.5, 4.5), Vector2(-0.5, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_4mg2c"]
+length = 0.28
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite/EffectSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(155, 0, 32, 30), Rect2(187, 0, 32, 30), Rect2(219, 0, 32, 30), Rect2(251, 0, 32, 30), Rect2(283, 0, 32, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite/EffectSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -1), Vector2(0, -1), Vector2(0, -1), Vector2(0, -1), Vector2(0, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ca7t"]
+length = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite/EffectSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(315, 0, 32, 32), Rect2(347, 0, 60, 46), Rect2(0, 46, 64, 53), Rect2(64, 46, 105, 103), Rect2(169, 46, 174, 143), Rect2(343, 46, 170, 141), Rect2(513, 46, 163, 144), Rect2(676, 46, 123, 120), Rect2(799, 46, 111, 120), Rect2(910, 46, 112, 122), Rect2(1022, 46, 116, 125), Rect2(1138, 46, 104, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite/EffectSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, -2), Vector2(0, 0.5), Vector2(2.5, -2.5), Vector2(2, -11.5), Vector2(4, -9.5), Vector2(10.5, -13), Vector2(-5.5, -1), Vector2(-1.5, -2), Vector2(-1, -3), Vector2(-2, -5.5), Vector2(-8, -6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"self_playsound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_daynp"]
+length = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite/EffectSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(1242, 46, 32, 32), Rect2(1274, 46, 60, 46), Rect2(0, 190, 64, 53), Rect2(64, 190, 105, 103), Rect2(169, 190, 174, 143), Rect2(343, 190, 170, 141), Rect2(513, 190, 163, 144), Rect2(676, 190, 123, 120), Rect2(799, 190, 111, 120), Rect2(910, 190, 112, 122), Rect2(1022, 190, 116, 125), Rect2(1138, 46, 104, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite/EffectSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(5, -2), Vector2(0, 0.5), Vector2(2.5, -2.5), Vector2(2, -11.5), Vector2(4, -9.5), Vector2(10.5, -13), Vector2(-5.5, -1), Vector2(-1.5, -2), Vector2(-1, -3), Vector2(-2, -5.5), Vector2(-8, -6)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"self_playsound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uhwwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite/EffectSprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite/EffectSprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkic7"]
+_data = {
+&"000": SubResource("Animation_onoim"),
+&"001": SubResource("Animation_4mg2c"),
+&"002": SubResource("Animation_6ca7t"),
+&"003": SubResource("Animation_daynp"),
+&"Null": SubResource("Animation_uhwwu")
+}
+
+[node name="EffectCreator" type="Node2D"]
+z_index = 50
+script = ExtResource("1_rr5cs")
+
+[node name="ASFX_Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_oibjf")
+volume_db = -5.0
+pitch_scale = 1.4
+max_distance = 4000.0
+attenuation = 0.75
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
+physics_interpolation_mode = 2
+z_index = 30
+collision_layer = 0
+collision_mask = 1030
+mass = 2.0
+
+[node name="ExplosionArea" type="Area2D" parent="RigidBody2D"]
+editor_description = "to detect solids to self kill"
+collision_layer = 0
+collision_mask = 2
+
+[node name="ExplosionMask" type="CollisionShape2D" parent="RigidBody2D/ExplosionArea"]
+z_index = 20
+position = Vector2(-5.96046e-08, 4.76837e-07)
+shape = SubResource("CircleShape2D_t44bt")
+disabled = true
+debug_color = Color(0.911458, 0.291951, 0.0854492, 0.42)
+
+[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+editor_description = "to detect solids to self kill"
+collision_layer = 0
+collision_mask = 9238
+
+[node name="areamask" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+unique_name_in_owner = true
+z_index = 20
+position = Vector2(-5.96046e-08, 4.76837e-07)
+shape = SubResource("CircleShape2D_y0cds")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+position = Vector2(-1, 5)
+rotation = 1.83259
+shape = SubResource("CapsuleShape2D_rw661")
+disabled = true
+
+[node name="Sprite" type="Node2D" parent="RigidBody2D"]
+unique_name_in_owner = true
+
+[node name="EffectSprite" type="Sprite2D" parent="RigidBody2D/Sprite"]
+unique_name_in_owner = true
+z_index = 15
+texture = ExtResource("5_ddrb0")
+offset = Vector2(-0.5, 4.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 31, 23)
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="RigidBody2D/Sprite"]
+unique_name_in_owner = true
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_qkic7")
+}
+autoplay = "Null"
+
+[node name="ExplosionDamage" type="Node" parent="." node_paths=PackedStringArray("Node_To_PlugIn")]
+script = ExtResource("6_4565a")
+Damage = 4.0
+Invencibility_Given_To_Target = 0.001
+Node_To_PlugIn = NodePath("../RigidBody2D/ExplosionArea")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-32, -32, 64, 64)
+
+[connection signal="body_entered" from="RigidBody2D/ExplosionArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="RigidBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

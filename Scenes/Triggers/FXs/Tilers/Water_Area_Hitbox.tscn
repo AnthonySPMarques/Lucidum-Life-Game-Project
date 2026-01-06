@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bnceyvaj3w04f"]
+
+[node name="WaterAreaHitbox" type="Area2D" groups=["Swimmable"]]
+collision_layer = 4096
+
+[node name="Mask" type="CollisionPolygon2D" parent="."]
+position = Vector2(96, 96)
+polygon = PackedVector2Array(-96, -96, 0, -96, 0, 0, -96, 0)

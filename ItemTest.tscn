@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=4 uid="uid://c3qd4efb6yal2"]
+
+[ext_resource type="Texture2D" uid="uid://dnfrtemk4c82a" path="res://Sprites/Objects/TileSets/Tilemaps.png" id="1_ba84e"]
+[ext_resource type="PackedScene" uid="uid://c2cbaj6378akv" path="res://Scenes/Objects/Miscs/Collectables/Small_HealthCapsule.tscn" id="2_3oe6p"]
+[ext_resource type="PackedScene" uid="uid://bihx2gr1dvf85" path="res://Scenes/Objects/Miscs/Collectables/Small_AwakenCell.tscn" id="3_k06pd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4rn7"]
+resource_name = "OneWaySolid"
+texture = ExtResource("1_ba84e")
+texture_region_size = Vector2i(64, 64)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+6:1/0/physics_layer_0/polygon_0/one_way = true
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+7:1/0/physics_layer_0/polygon_0/one_way = true
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+8:1/0/physics_layer_0/polygon_0/one_way = true
+8:0/0 = 0
+7:0/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, -24, 32, -24, 32, -32, -32, -32)
+4:1/0/physics_layer_0/polygon_0/one_way = true
+9:0/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n4ftn"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_d4rn7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wvlt8"]
+resource_name = "Tiles"
+texture = ExtResource("1_ba84e")
+texture_region_size = Vector2i(64, 64)
+2:2/0 = 0
+2:2/0/z_index = 1
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 24, -32, 24, 32, -32, 32)
+2:2/0/terrains_peering_bit/bottom_side = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_side = 0
+2:3/0 = 0
+2:3/0/z_index = 1
+2:3/0/terrain_set = 0
+2:3/0/terrain = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 24, -32, 16, 24, -32, 32)
+2:3/0/terrains_peering_bit/left_side = 0
+2:3/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/z_index = 1
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -32, 32, -32, 32, 32, -24, 32)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/bottom_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:3/0 = 0
+0:3/0/z_index = 1
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -32, 32, -32, 32, 32, -16, 24)
+0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/terrains_peering_bit/top_side = 0
+1:3/0 = 0
+1:3/0/z_index = 1
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:3/0/terrains_peering_bit/right_side = 0
+1:3/0/terrains_peering_bit/left_side = 0
+1:3/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+1:2/0/z_index = 1
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/bottom_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 32)
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 32)
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 24, -32, 24, 32, -32, 32)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/z_index = 1
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -24, 32, -24, -32)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+
+[sub_resource type="TileSet" id="TileSet_tn6f8"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "TileBlock"
+terrain_set_0/terrain_0/color = Color(0.0511048, 0.146501, 0.26466, 1)
+sources/0 = SubResource("TileSetAtlasSource_wvlt8")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMaps" type="Node2D" parent="."]
+z_index = 1
+z_as_relative = false
+metadata/_edit_lock_ = true
+
+[node name="OneWayBlocks" type="TileMapLayer" parent="TileMaps" groups=["OneWayTiles"]]
+use_parent_material = true
+tile_set = SubResource("TileSet_n4ftn")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="TileBlocks" type="TileMapLayer" parent="TileMaps"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAABAAAAAAAHAAcAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAgAAAABAAMAAAANAAgAAAABAAMAAAAMAAgAAAABAAMAAAALAAgAAAABAAMAAAAKAAgAAAABAAMAAAAJAAgAAAABAAMAAAAIAAgAAAABAAMAAAAHAAgAAAABAAMAAAAGAAgAAAABAAMAAAAFAAgAAAABAAMAAAAEAAgAAAABAAMAAAADAAgAAAABAAMAAAACAAgAAAABAAMAAAABAAgAAAABAAMAAAAAAAgAAAABAAMAAAD//wgAAAAAAAMAAAD//wcAAAAAAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAAPAAgAAAABAAMAAAAQAAgAAAACAAMAAAAQAAcAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_tn6f8")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="Items" type="Node2D" parent="."]
+z_index = 20
+
+[node name="HeatlhCapsule_Small" parent="Items" instance=ExtResource("2_3oe6p")]
+position = Vector2(213, 77)
+apply_random_impulse = true
+
+[node name="AwakenCell_Small" parent="Items" instance=ExtResource("3_k06pd")]
+position = Vector2(522, 67)

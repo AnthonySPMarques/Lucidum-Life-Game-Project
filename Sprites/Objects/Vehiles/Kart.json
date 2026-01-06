@@ -1,0 +1,65 @@
+{ "frames": {
+   "Vehiles 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 196, "h": 53 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 30, "y": 109, "w": 196, "h": 53 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 100
+   },
+   "Vehiles 1.ase": {
+    "frame": { "x": 196, "y": 0, "w": 196, "h": 53 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 30, "y": 109, "w": 196, "h": 53 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 60
+   },
+   "Vehiles 2.ase": {
+    "frame": { "x": 0, "y": 53, "w": 196, "h": 53 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 30, "y": 109, "w": 196, "h": 53 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 60
+   },
+   "Vehiles 3.ase": {
+    "frame": { "x": 196, "y": 0, "w": 196, "h": 53 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 30, "y": 109, "w": 196, "h": 53 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 60
+   },
+   "Vehiles 4.ase": {
+    "frame": { "x": 196, "y": 53, "w": 196, "h": 53 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 30, "y": 109, "w": 196, "h": 53 },
+    "sourceSize": { "w": 256, "h": 256 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-beta10-dev",
+  "image": "kart.png",
+  "format": "RGBA8888",
+  "size": { "w": 392, "h": 106 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "KartOff", "from": 0, "to": 0, "direction": "forward", "color": "#5b57dfff" },
+   { "name": "Kart", "from": 1, "to": 4, "direction": "forward", "color": "#d14adfff" }
+  ],
+  "layers": [
+   { "name": "Kart" },
+   { "name": "Kart", "group": "Kart", "opacity": 255, "blendMode": "normal" },
+   { "name": "Shine", "group": "Kart", "opacity": 255, "blendMode": "normal" },
+   { "name": "Wheels", "group": "Kart", "opacity": 255, "blendMode": "normal" },
+   { "name": "Pogo" },
+   { "name": "Pogo", "group": "Pogo", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

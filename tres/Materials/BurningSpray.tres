@@ -1,0 +1,59 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://cnwlcq57fp5fl"]
+
+[sub_resource type="Gradient" id="Gradient_af1x6"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.189944, 0.486034, 1)
+colors = PackedColorArray(1, 1, 1, 1, 50, 3, 1.5, 1, 7.45614, 0.447369, 0.223684, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gxpye"]
+gradient = SubResource("Gradient_af1x6")
+width = 512
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_pa56y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0807132, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8e6hn"]
+curve = SubResource("Curve_pa56y")
+
+[sub_resource type="Curve" id="Curve_skf1o"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.15517), 0.0, 0.0, 0, 0, Vector2(1, 0.87931), -2.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u6232"]
+curve = SubResource("Curve_skf1o")
+
+[resource]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 10, 1)
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = 90.0
+angle_max = 270.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 400.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+radial_velocity_min = 200.0
+radial_velocity_max = 400.0
+radial_velocity_curve = SubResource("CurveTexture_8e6hn")
+gravity = Vector3(0, -100, 0)
+linear_accel_min = 20.0
+linear_accel_max = 100.0
+attractor_interaction_enabled = false
+scale_min = 0.6
+scale_max = 1.2
+scale_over_velocity_curve = SubResource("CurveTexture_u6232")
+color_ramp = SubResource("GradientTexture1D_gxpye")
+turbulence_noise_speed = Vector3(20, 20, 0)
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.03
+turbulence_initial_displacement_min = 12.3
+turbulence_initial_displacement_max = 15.2

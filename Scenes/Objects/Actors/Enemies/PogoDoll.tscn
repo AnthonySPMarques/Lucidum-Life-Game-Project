@@ -1,0 +1,301 @@
+[gd_scene load_steps=19 format=3 uid="uid://uaubewy1dbo8"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/EnemyObjectScript.gd" id="1_qr1ut"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/PogoFollow.gd" id="4_5xgu1"]
+[ext_resource type="AudioStream" uid="uid://3friga4m1fvj" path="res://Sfxs/PogoPoing.ogg" id="6_iq0ne"]
+[ext_resource type="AudioStream" uid="uid://cebvmndk2oy5v" path="res://Sfxs/PogoPoing_2.ogg" id="7_308oi"]
+[ext_resource type="Texture2D" uid="uid://vw0b7yt3p6yd" path="res://Sprites/Objects/Enemies_A.png" id="7_hayes"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/Enemy_MachineStateApplyer.gd" id="8_jwryt"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/Enemy_paralysis_hit.gd" id="10_ktk7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snb42"]
+size = Vector2(16, 127.5)
+
+[sub_resource type="Animation" id="Animation_3131q"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(2168, 0, 61, 143), Rect2(2229, 0, 61, 143), Rect2(2290, 0, 61, 142), Rect2(2351, 0, 61, 143)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.5, -43.5), Vector2(-1.5, -43.5), Vector2(-1.5, -43), Vector2(-1.5, -43.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0e8d"]
+_data = {
+"PogoDoll_Idle": SubResource("Animation_3131q")
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "aRESET"
+length = 0.001
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Flash"
+length = 0.16
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(15, 15, 15, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pjnc"]
+_data = {
+"ARESET": SubResource("4"),
+"Flash": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjrv0"]
+size = Vector2(51, 129)
+
+[sub_resource type="Animation" id="Animation_y6meh"]
+resource_name = "Pulse"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_43s5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqbud"]
+_data = {
+"Pulse": SubResource("Animation_y6meh"),
+"RESET": SubResource("Animation_43s5p")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nybge"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("6_iq0ne")
+stream_1/stream = ExtResource("7_308oi")
+
+[node name="PogoDoll" type="CharacterBody2D" node_paths=PackedStringArray("EnemyArea2DBody", "EnemieCenterPath", "EnemieVisibilityMask") groups=["Enemies", "Hurters"]]
+light_mask = 257
+z_index = 10
+collision_layer = 48
+collision_mask = 9222
+velocity = Vector2(0, 194.297)
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+floor_snap_length = 16.0
+script = ExtResource("1_qr1ut")
+EnemyArea2DBody = NodePath("Area2Ds/Enemy_HitBox")
+EnemieCenterPath = NodePath("Pivot")
+EnemieVisibilityMask = NodePath("VisibleOnScreenEnabler2D")
+hp = 10.0
+score_reward = 10
+
+[node name="Pivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -61)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64.25)
+shape = SubResource("RectangleShape2D_snb42")
+debug_color = Color(0, 0.323451, 0.7, 0.42)
+
+[node name="LabelPos" type="Marker2D" parent="."]
+position = Vector2(0, -146)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="." groups=["Enemies", "Hurters"]]
+unique_name_in_owner = true
+position = Vector2(1.43051e-06, -64)
+scale = Vector2(1.28, 2.56)
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="Invencibility_Time" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -26)
+texture = ExtResource("7_hayes")
+offset = Vector2(-1.5, -43.5)
+region_enabled = true
+region_rect = Rect2(2168, 0, 61, 143)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_x0e8d")
+}
+autoplay = "PogoDoll_Idle"
+
+[node name="StatePlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_1pjnc")
+}
+autoplay = "ARESET"
+
+[node name="Area2Ds" type="Node2D" parent="."]
+position = Vector2(0, -26)
+
+[node name="Enemy_HitBox" type="Area2D" parent="Area2Ds"]
+unique_name_in_owner = true
+editor_description = "this is getted after two parents"
+position = Vector2(0, -2)
+collision_layer = 32
+collision_mask = 256
+
+[node name="Mask" type="CollisionShape2D" parent="Area2Ds/Enemy_HitBox"]
+editor_description = "To detect meele attacks to brake"
+position = Vector2(-1.5, -36.5)
+shape = SubResource("RectangleShape2D_qjrv0")
+debug_color = Color(0.753443, 0.427194, 0, 0.42)
+
+[node name="EnemyMachine_State" type="Node" parent="." node_paths=PackedStringArray("Start_State")]
+script = ExtResource("8_jwryt")
+Start_State = NodePath("PogoFollow")
+
+[node name="PogoFollow" type="Node" parent="EnemyMachine_State" node_paths=PackedStringArray("Pogo_hit_state")]
+script = ExtResource("4_5xgu1")
+Pogo_hit_state = NodePath("../PogoHitted")
+Max_Bounce_Force = 1250.0
+velocity_speed = 400.0
+acceleration = 10.0
+Gravity_Multiplier = 2.5
+
+[node name="PogoHitted" type="Node" parent="EnemyMachine_State" node_paths=PackedStringArray("StateToBack")]
+script = ExtResource("10_ktk7y")
+frozen_time = 0.1
+StateToBack = NodePath("../PogoFollow")
+
+[node name="HealthLabel" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = -22.0
+offset_top = -162.0
+offset_right = 22.0
+offset_bottom = -137.0
+pivot_offset = Vector2(22, 12)
+text = "1000"
+
+[node name="LabelAP" type="AnimationPlayer" parent="HealthLabel"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_gqbud")
+}
+autoplay = "RESET"
+
+[node name="SFX_Poing" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_nybge")
+volume_db = -5.0
+bus = &"SFXs"
+
+[connection signal="enemy_health_is_over" from="." to="EnemyMachine_State/PogoFollow" method="_on_enemy_health_is_over"]
+[connection signal="enemy_is_hit" from="." to="EnemyMachine_State/PogoFollow" method="_on_pogo_doll_enemy_is_hit"]

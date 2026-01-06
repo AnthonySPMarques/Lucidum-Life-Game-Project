@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3vypxld53rg"
+path="res://.godot/imported/SWIPE Whoosh Impact Chop Thud 01.ogg-08258f74d6758a331f197bf837bc5ffc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sfxs/SWIPE Whoosh Impact Chop Thud 01.ogg"
+dest_files=["res://.godot/imported/SWIPE Whoosh Impact Chop Thud 01.ogg-08258f74d6758a331f197bf837bc5ffc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

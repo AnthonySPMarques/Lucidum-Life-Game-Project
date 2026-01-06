@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://uvlfxfx0epmr"
+path="res://.godot/imported/Sleep_Too - LOOPALE.mp3-b88792b7907e5e60b04f5c10ae45842d.mp3str"
+
+[deps]
+
+source_file="res://Musics/Sleep_Too - LOOPALE.mp3"
+dest_files=["res://.godot/imported/Sleep_Too - LOOPALE.mp3-b88792b7907e5e60b04f5c10ae45842d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdmvoi77rqtyv"]
+
+[ext_resource type="Texture2D" uid="uid://bvhn7a56syuvx" path="res://Sprites/EditorTriggers/LevelEditorLimitSquare.png" id="1_eubca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfumm"]
+atlas = ExtResource("1_eubca")
+region = Rect2(0, 0, 48, 48)
+
+[node name="LevelEditorSquareLimit" type="NinePatchRect"]
+custom_minimum_size = Vector2(28, 28)
+offset_right = 144.0
+offset_bottom = 112.0
+texture = SubResource("AtlasTexture_jfumm")
+region_rect = Rect2(4, 4, 40, 40)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

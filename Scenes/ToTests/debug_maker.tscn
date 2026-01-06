@@ -1,0 +1,302 @@
+[gd_scene load_steps=13 format=3 uid="uid://csla75ncgxcvh"]
+
+[ext_resource type="Texture2D" uid="uid://br2urv0no3ktp" path="res://Sprites/EditorTriggers/Debugger_Sheet.png" id="1"]
+[ext_resource type="Script" uid="uid://bs3yj151pdrgc" path="res://Scripts/UIs/PlayerUI/DebugNode.gd" id="1_iv2td"]
+[ext_resource type="Script" uid="uid://bshsspno0bjue" path="res://Scripts/UIs/PlayerUI/Debug_Buttons.gd" id="2_184ow"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("1")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("1")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fta0l"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 16, 16)
+
+[node name="Debug_Maker" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+script = ExtResource("1_iv2td")
+Buttons = Array[NodePath]([NodePath("Hacks/Buttons/Button_1"), NodePath("Hacks/Buttons/Button_2"), NodePath("Hacks/Buttons/Button_3"), NodePath("Hacks/Buttons/Button_4"), NodePath("Hacks/Buttons/Button_9")])
+metadata/_edit_lock_ = true
+
+[node name="Hacks" type="CheckBox" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -273.0
+offset_bottom = 31.0
+grow_horizontal = 0
+focus_mode = 1
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Toggle HackList"
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Buttons" type="GridContainer" parent="Hacks"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -371.0
+offset_top = 54.0
+offset_right = -195.0
+offset_bottom = 122.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+columns = 5
+metadata/_edit_lock_ = true
+
+[node name="Button_1" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_1"]
+layout_mode = 0
+texture_normal = SubResource("1")
+
+[node name="Button_2" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_2"]
+layout_mode = 0
+texture_normal = SubResource("2")
+
+[node name="Button_3" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_3"]
+z_index = 1
+layout_mode = 0
+action_mode = 0
+texture_normal = SubResource("3")
+
+[node name="Spinbox" type="SpinBox" parent="Hacks/Buttons/Button_3/B"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.1875
+anchor_top = 1.0625
+anchor_right = 1.88906
+anchor_bottom = 1.8375
+offset_right = 49.8375
+offset_bottom = 18.6
+scale = Vector2(0.4, 0.4)
+max_value = 999.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_4" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_4"]
+layout_mode = 0
+texture_normal = SubResource("5")
+
+[node name="TimeEdit" type="SpinBox" parent="Hacks/Buttons/Button_4/B"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.1875
+anchor_top = 1.0625
+anchor_right = 1.88906
+anchor_bottom = 1.8375
+offset_right = 49.8375
+offset_bottom = 18.6
+scale = Vector2(0.4, 0.4)
+max_value = 50.0
+step = 0.01
+value = 1.0
+suffix = "FPS"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_5" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_5"]
+layout_mode = 0
+texture_normal = SubResource("6")
+
+[node name="Fill" type="Panel" parent="Hacks/Buttons/Button_5/B"]
+visible = false
+layout_mode = 0
+anchor_left = -0.203124
+anchor_top = 0.359375
+anchor_right = 2.23438
+anchor_bottom = 1.26563
+
+[node name="Previous" type="Button" parent="Hacks/Buttons/Button_5/B/Fill"]
+layout_mode = 0
+anchor_top = 0.142857
+anchor_bottom = 0.859
+text = "<"
+
+[node name="Next" type="Button" parent="Hacks/Buttons/Button_5/B/Fill"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.142852
+anchor_right = 1.0
+anchor_bottom = 0.857
+text = ">"
+
+[node name="SkinText" type="Label" parent="Hacks/Buttons/Button_5/B/Fill"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.499
+anchor_right = 0.499
+anchor_bottom = 1.0
+text = "Main"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Button_6" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_6"]
+layout_mode = 0
+texture_normal = SubResource("8")
+
+[node name="PopupMenu" type="OptionButton" parent="Hacks/Buttons/Button_6/B"]
+visible = false
+layout_mode = 0
+
+[node name="Button_7" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_7"]
+layout_mode = 0
+texture_normal = SubResource("10")
+
+[node name="Button_8" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+metadata/_edit_lock_ = true
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_8"]
+layout_mode = 0
+texture_normal = SubResource("11")
+
+[node name="Button_9" type="Control" parent="Hacks/Buttons"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+script = ExtResource("2_184ow")
+
+[node name="B" type="TextureButton" parent="Hacks/Buttons/Button_9"]
+layout_mode = 0
+texture_normal = SubResource("AtlasTexture_fta0l")
+
+[node name="Panel" type="Panel" parent="Hacks/Buttons/Button_9/B"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 0
+offset_left = -35.0
+offset_top = 19.0
+offset_right = 134.0
+offset_bottom = 83.0
+scale = Vector2(0.5, 0.5)
+
+[node name="ID" type="SpinBox" parent="Hacks/Buttons/Button_9/B/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 29.0
+alignment = 1
+prefix = "Song ID"
+
+[node name="Volume_SFXs" type="HSlider" parent="Hacks/Buttons/Button_9/B/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 166.0
+offset_bottom = 33.0
+scale = Vector2(1, 0.4)
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SoundEffect_Label" type="Label" parent="Hacks/Buttons/Button_9/B/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.493
+anchor_right = 0.493
+offset_left = -47.5101
+offset_top = -2.49999
+offset_right = 47.4899
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sound effect
+"
+
+[connection signal="button_up" from="Hacks/Buttons/Button_1/B" to="." method="fill_awaken"]
+[connection signal="button_up" from="Hacks/Buttons/Button_2/B" to="." method="fill_health"]
+[connection signal="button_up" from="Hacks/Buttons/Button_3/B" to="." method="hit_player"]
+[connection signal="button_up" from="Hacks/Buttons/Button_4/B" to="." method="slow_engine"]
+[connection signal="pressed" from="Hacks/Buttons/Button_5/B/Fill/Previous" to="." method="_on_Previous_pressed"]
+[connection signal="pressed" from="Hacks/Buttons/Button_5/B/Fill/Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Hacks/Buttons/Button_7/B" to="." method="_save"]
+[connection signal="pressed" from="Hacks/Buttons/Button_8/B" to="." method="_load"]
+[connection signal="button_up" from="Hacks/Buttons/Button_9/B" to="." method="_volume_button_pressed"]

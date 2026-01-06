@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dntu6havrxja1"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/Sprite/Ghoster_Sprite_Trail.gd" id="1_lal8u"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "i"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.682353, 0.956863, 0.913725, 1), Color(0.278431, 0.607843, 0.843137, 1), Color(0.0431373, 0.733333, 0.45098, 1), Color(0.635294, 0.909804, 0.266667, 1), Color(1, 0.941176, 0.352941, 1), Color(1, 0.352941, 0.203922, 1), Color(0.909804, 0.0941176, 0.0941176, 1), Color(0.909804, 0.129412, 0.701961, 1), Color(1, 0.541176, 0.737255, 1), Color(0.692911, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed8in"]
+_data = {
+"i": SubResource("1")
+}
+
+[node name="GhosterSpriteTrail" type="Sprite2D"]
+modulate = Color(1.1, 1.1, 1.1, 0.392)
+self_modulate = Color(0.998084, 0.544039, 0.738895, 1)
+z_index = 8
+material = SubResource("3")
+script = ExtResource("1_lal8u")
+ghost_trail_lifetime = 1.15
+
+[node name="Play" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ed8in")
+}
+autoplay = "i"
+speed_scale = 4.0

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch2oj662lo37a"]
+
+[ext_resource type="Script" uid="uid://833vns4ipxgx" path="res://Scripts/Triggers/Nodes/2DWorld_Manager.gd" id="1_1y57c"]
+[ext_resource type="PackedScene" uid="uid://bh1huml857rbt" path="res://Scenes/Objects/Actors/Players/Flockos.tscn" id="2_6uw8y"]
+[ext_resource type="PackedScene" uid="uid://dxkoxaolhufnb" path="res://Scenes/Levels/Arc_LulabbyBlue/Lullaby Blue - 1.tscn" id="3_ptk6h"]
+
+[node name="LevelPlayer" type="Node2D"]
+script = ExtResource("1_1y57c")
+
+[node name="Flockos" parent="." instance=ExtResource("2_6uw8y")]
+position = Vector2(640, 448)
+
+[node name="Lullaby Blue - 1" parent="." instance=ExtResource("3_ptk6h")]

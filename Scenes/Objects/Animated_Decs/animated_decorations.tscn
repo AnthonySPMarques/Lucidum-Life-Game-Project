@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmvnyc106rm1p"]
+
+[ext_resource type="TileSet" uid="uid://dbqk1605aw2su" path="res://tres/Tilesets/AnimatedDecorations.tres" id="1_o241j"]
+
+[node name="Animated_Decorations" type="TileMapLayer"]
+z_index = 1
+tile_set = ExtResource("1_o241j")

@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://cokojrd3mfx2n"]
+
+[ext_resource type="Texture2D" uid="uid://rcuy2lvwawl1" path="res://Sprites/ParticlesEffect/ParticleEffects2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bg1wk1f7pjuvb" path="res://Sprites/ParticleEffects1.png" id="1_3bae3"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_3bae3")
+frame_1/texture = ExtResource("1")
+frame_1/duration = 1.0

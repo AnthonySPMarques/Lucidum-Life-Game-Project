@@ -1,0 +1,503 @@
+[gd_scene load_steps=35 format=3 uid="uid://wps4jq5dlasr"]
+
+[ext_resource type="Script" uid="uid://br38ml3ecelmv" path="res://Scripts/Objects/Actors/NPCs/Enemies/EnemyObjectScript.gd" id="1_uv0r4"]
+[ext_resource type="AudioStream" uid="uid://khukf138njd7" path="res://Sfxs/Eletrical_Charge_Aim.ogg" id="6_vnlte"]
+[ext_resource type="Texture2D" uid="uid://vw0b7yt3p6yd" path="res://Sprites/Objects/Enemies_A.png" id="7_2g5tj"]
+[ext_resource type="AudioStream" uid="uid://cfubcjpx6sphn" path="res://Sfxs/Eletrical_Arrow_Shot.ogg" id="7_opekr"]
+[ext_resource type="Script" uid="uid://nh07dwv1adjx" path="res://Scripts/Objects/Actors/NPCs/Enemies/Enemy_MachineStateApplyer.gd" id="8_wck81"]
+[ext_resource type="Script" uid="uid://da8bxvr33texf" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/SheesparkIdle.gd" id="9_5tohi"]
+[ext_resource type="Script" uid="uid://c35gv7oe1q5n1" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/AimLaser.gd" id="10_qda61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8k67"]
+size = Vector2(64, 32)
+
+[sub_resource type="Animation" id="Animation_apxe5"]
+resource_name = "AimLaser"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Aimmer:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.1, 2.3, 2.87333, 3.00666),
+"transitions": PackedFloat32Array(1, 0, 1, 0, 1, 1),
+"update": 0,
+"values": [Color(0.278431, 0.607843, 0.843137, 0.196078), Color(0.737255, 0.870588, 0.976471, 0.686275), Color(1, 1, 1, 0.8), Color(0.647059, 0.819608, 0.94902, 0), Color(0.647059, 0.819608, 0.94902, 0), Color(0.278431, 0.607843, 0.843137, 0.196078)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AimLaser")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shot_arrow"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AimmingSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_vnlte")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_80foj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Aimmer:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Color(0.647059, 0.819608, 0.94902, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yokek"]
+_data = {
+&"AimLaser": SubResource("Animation_apxe5"),
+&"RESET": SubResource("Animation_80foj")
+}
+
+[sub_resource type="Animation" id="Animation_w3e4d"]
+resource_name = "Sheespark_AimLaser_2"
+length = 0.31
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.22, 0.25, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(3042, 0, 125, 79), Rect2(3167, 0, 125, 79), Rect2(3292, 0, 124, 79), Rect2(3416, 0, 127, 78), Rect2(3543, 0, 130, 78), Rect2(3673, 0, 124, 85), Rect2(3797, 0, 113, 98)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.22, 0.25, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3.5, -10.5), Vector2(-3.5, -10.5), Vector2(-4, -10.5), Vector2(-6.5, -10), Vector2(-5, -10), Vector2(-1, -13.5), Vector2(4.5, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_dgd75"]
+resource_name = "Sheespark_AimLunarLaser_Loop"
+length = 0.08
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(3910, 0, 112, 99), Rect2(4022, 0, 111, 99)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, -20.5), Vector2(4.5, -20.5)]
+}
+
+[sub_resource type="Animation" id="Animation_2g5tj"]
+length = 0.48
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(2412, 0, 127, 76), Rect2(2539, 0, 127, 76), Rect2(2666, 0, 126, 76), Rect2(2792, 0, 125, 78), Rect2(2917, 0, 125, 79), Rect2(2792, 0, 125, 78), Rect2(2666, 0, 126, 76), Rect2(2539, 0, 127, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, -9), Vector2(0.5, -9), Vector2(0, -9), Vector2(-1.5, -10), Vector2(-3.5, -10.5), Vector2(-1.5, -10), Vector2(0, -9), Vector2(0.5, -9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x0e8d"]
+_data = {
+&"Sheespark_AimLaser": SubResource("Animation_w3e4d"),
+&"Sheespark_AimLunarLaser_Loop": SubResource("Animation_dgd75"),
+&"Sheespark_Idle": SubResource("Animation_2g5tj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cjctm"]
+animation = &"Sheespark_AimLaser"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jl6rp"]
+animation = &"Sheespark_AimLunarLaser_Loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i5rnb"]
+animation = &"Sheespark_Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u38h0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1bw2i"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mxmmk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dahn8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpag3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t5soj"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6jr0c"]
+states/End/position = Vector2(763, 31.5)
+states/Sheespark_AimLaser/node = SubResource("AnimationNodeAnimation_cjctm")
+states/Sheespark_AimLaser/position = Vector2(568, 113.5)
+states/Sheespark_AimLunarLaser_Loop/node = SubResource("AnimationNodeAnimation_jl6rp")
+states/Sheespark_AimLunarLaser_Loop/position = Vector2(464, -22.5)
+states/Sheespark_Idle/node = SubResource("AnimationNodeAnimation_i5rnb")
+states/Sheespark_Idle/position = Vector2(374, 113.5)
+states/Start/position = Vector2(374, 197)
+transitions = ["Start", "Sheespark_Idle", SubResource("AnimationNodeStateMachineTransition_u38h0"), "Sheespark_Idle", "Sheespark_AimLaser", SubResource("AnimationNodeStateMachineTransition_1bw2i"), "Sheespark_AimLaser", "Sheespark_AimLunarLaser_Loop", SubResource("AnimationNodeStateMachineTransition_mxmmk"), "Sheespark_AimLunarLaser_Loop", "End", SubResource("AnimationNodeStateMachineTransition_dahn8"), "Sheespark_AimLunarLaser_Loop", "Sheespark_Idle", SubResource("AnimationNodeStateMachineTransition_wpag3"), "Sheespark_AimLaser", "Sheespark_Idle", SubResource("AnimationNodeStateMachineTransition_t5soj")]
+graph_offset = Vector2(34, -28)
+
+[sub_resource type="Animation" id="4"]
+resource_name = "aRESET"
+length = 0.001
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Flash"
+length = 0.16
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(15, 15, 15, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pjnc"]
+_data = {
+&"ARESET": SubResource("4"),
+&"Flash": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbyw"]
+size = Vector2(130, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ym8"]
+size = Vector2(384, 256)
+
+[sub_resource type="Curve" id="Curve_h8bny"]
+_data = [Vector2(0, 0.0862069), 0.0, 0.0, 0, 0, Vector2(1, 0.798851), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_y6meh"]
+resource_name = "Pulse"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_43s5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqbud"]
+_data = {
+&"Pulse": SubResource("Animation_y6meh"),
+&"RESET": SubResource("Animation_43s5p")
+}
+
+[node name="Sheespark" type="CharacterBody2D" node_paths=PackedStringArray("Animation_Tree", "EnemyArea2DBody", "EnemieCenterPath", "EnemieVisibilityMask", "Damage_Counter_Position") groups=["Enemies", "Hurters"]]
+light_mask = 257
+z_index = 10
+collision_layer = 48
+collision_mask = 9222
+velocity = Vector2(0, 194.297)
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+floor_snap_length = 16.0
+script = ExtResource("1_uv0r4")
+Animation_Tree = NodePath("Sprite/AnimationPlayer/AnimationTree")
+EnemyArea2DBody = NodePath("Area2Ds/Enemy_HitBox")
+EnemieCenterPath = NodePath(".")
+EnemieVisibilityMask = NodePath("VisibleOnScreenEnabler2D")
+Damage_Counter_Position = NodePath("LabelPos")
+hp = 20.0
+score_reward = 20
+
+[node name="Pivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-28, -93)
+
+[node name="ArrowPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-28, -93)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_d8k67")
+debug_color = Color(0.91, 0, 0.151667, 0.415686)
+
+[node name="LabelPos" type="Marker2D" parent="."]
+position = Vector2(0, -146)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(7.62939e-06, -24)
+scale = Vector2(4, 4)
+rect = Rect2(-50, -50, 100, 100)
+
+[node name="Invencibility_Time" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -27)
+texture = ExtResource("7_2g5tj")
+offset = Vector2(0.5, -9)
+region_enabled = true
+region_rect = Rect2(2412, 0, 127, 76)
+
+[node name="BehaviorPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_yokek")
+}
+autoplay = "RESET"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_x0e8d")
+}
+autoplay = "Sheespark_Idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite/AnimationPlayer"]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/../..")
+tree_root = SubResource("AnimationNodeStateMachine_6jr0c")
+anim_player = NodePath("..")
+
+[node name="StatePlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_1pjnc")
+}
+autoplay = "ARESET"
+
+[node name="Area2Ds" type="Node2D" parent="."]
+position = Vector2(0, -26)
+
+[node name="Enemy_HitBox" type="Area2D" parent="Area2Ds"]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 256
+
+[node name="Mask" type="CollisionShape2D" parent="Area2Ds/Enemy_HitBox"]
+editor_description = "To detect meele attacks to brake"
+position = Vector2(1, -11)
+shape = SubResource("RectangleShape2D_6kbyw")
+debug_color = Color(0.753443, 0.427194, 0, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="AreaDetector" type="Area2D" parent="Area2Ds"]
+collision_layer = 0
+
+[node name="Mask" type="CollisionShape2D" parent="Area2Ds/AreaDetector"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_v3ym8")
+debug_color = Color(0.658824, 0.541176, 0, 0.0784314)
+metadata/_edit_lock_ = true
+
+[node name="Aimmer" type="Line2D" parent="."]
+unique_name_in_owner = true
+width = 18.0
+width_curve = SubResource("Curve_h8bny")
+default_color = Color(0.647059, 0.819608, 0.94902, 0)
+joint_mode = 1
+end_cap_mode = 1
+
+[node name="EnemyMachine_State" type="Node" parent="." node_paths=PackedStringArray("Start_State")]
+script = ExtResource("8_wck81")
+Start_State = NodePath("SheesparkIdle")
+
+[node name="SheesparkIdle" type="Node" parent="EnemyMachine_State"]
+script = ExtResource("9_5tohi")
+
+[node name="AimLaser" type="Node" parent="EnemyMachine_State"]
+unique_name_in_owner = true
+script = ExtResource("10_qda61")
+rad_arc_range = 0.785398
+
+[node name="HealthLabel" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = -22.0
+offset_top = -162.0
+offset_right = 22.0
+offset_bottom = -137.0
+pivot_offset = Vector2(22, 12)
+text = "1000"
+
+[node name="LabelAP" type="AnimationPlayer" parent="HealthLabel"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gqbud")
+}
+autoplay = "RESET"
+
+[node name="AimmingSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+volume_db = 2.0
+attenuation = 0.31864
+bus = &"SFXs"
+
+[node name="ShotSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_opekr")
+pitch_scale = 1.2
+max_distance = 2500.0
+attenuation = 0.233258
+bus = &"SFXs"
+
+[connection signal="area_entered" from="Area2Ds/AreaDetector" to="EnemyMachine_State/SheesparkIdle" method="found_target"]
+[connection signal="area_exited" from="Area2Ds/AreaDetector" to="EnemyMachine_State/AimLaser" method="target_lost"]

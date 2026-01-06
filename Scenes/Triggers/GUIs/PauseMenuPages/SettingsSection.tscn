@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://conrxag2gv1kt"]
+
+[ext_resource type="Script" uid="uid://pwyjpkn4ntpy" path="res://Scripts/UIs/PauseMenu/PauseMenuPages/SettingsSection.gd" id="1_0rw2w"]
+[ext_resource type="Theme" uid="uid://dxb1gaibyi2xb" path="res://tres/UI_Styles/PurpleNightmares.tres" id="1_rbff2"]
+
+[node name="SettingsSectionControl" type="Control"]
+z_index = 200
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0rw2w")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_right = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="MAS" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Master Volume"
+
+[node name="VolumeSlider_Master" type="HSlider" parent="VBoxContainer/MAS"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 30.0
+offset_right = 896.0
+offset_bottom = 46.0
+theme = ExtResource("1_rbff2")
+max_value = 5.0
+step = 0.05
+
+[node name="MUSIC" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Music Volume"
+
+[node name="VolumeSlider_Music" type="HSlider" parent="VBoxContainer/MUSIC"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 30.0
+offset_right = 896.0
+offset_bottom = 46.0
+theme = ExtResource("1_rbff2")
+max_value = 4.0
+step = 0.05
+
+[node name="SFX" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Sound Volume"
+
+[node name="VolumeSlider_Sound" type="HSlider" parent="VBoxContainer/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 30.0
+offset_right = 896.0
+offset_bottom = 46.0
+theme = ExtResource("1_rbff2")
+max_value = 5.0
+step = 0.05
+
+[node name="Button" type="Container" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Button"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+text = "< Back"

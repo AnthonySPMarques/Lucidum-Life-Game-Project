@@ -1,0 +1,43 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://c48irrp71304s"]
+
+[sub_resource type="Gradient" id="5"]
+offsets = PackedFloat32Array(0, 0.655602, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.956863, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="6"]
+gradient = SubResource("5")
+width = 4096
+
+[sub_resource type="Curve" id="Curve_co7dt"]
+_data = [Vector2(0, 0), 0.0, 2021.82, 0, 0, Vector2(1, 800), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_omy07"]
+curve = SubResource("Curve_co7dt")
+
+[resource]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(48, 32, 1)
+direction = Vector3(0, 0, 0)
+spread = 0.0
+orbit_velocity_min = -0.0199999
+orbit_velocity_max = 0.0100001
+radial_velocity_min = 1.99998
+radial_velocity_max = 16.0
+velocity_limit_curve = SubResource("CurveTexture_omy07")
+gravity = Vector3(0, -40, 0)
+scale_max = 2.0
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+color_ramp = SubResource("6")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+anim_speed_min = 0.5
+anim_speed_max = 2.0
+anim_offset_max = 0.2
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0

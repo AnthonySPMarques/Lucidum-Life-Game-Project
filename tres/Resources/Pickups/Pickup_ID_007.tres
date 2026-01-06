@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Pickup_Logic_Resource" load_steps=2 format=3 uid="uid://dtp0bhwgpwpx"]
+
+[ext_resource type="Script" uid="uid://dowydygbf1dc8" path="res://Scripts/Objects/Global_Logics/PickupModifierLogic.gd" id="1_ava7e"]
+
+[resource]
+script = ExtResource("1_ava7e")
+PickUp_Display = "SmallLucidelCoin"
+Property_To_Modify = {
+"lucidells": 2
+}
+metadata/_custom_type_script = "uid://dowydygbf1dc8"

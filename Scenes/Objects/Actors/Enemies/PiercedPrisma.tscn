@@ -1,0 +1,363 @@
+[gd_scene load_steps=19 format=3 uid="uid://5ekxbpvomobw"]
+
+[ext_resource type="Script" uid="uid://br38ml3ecelmv" path="res://Scripts/Objects/Actors/NPCs/Enemies/EnemyObjectScript.gd" id="1_rp8l5"]
+[ext_resource type="Texture2D" uid="uid://vw0b7yt3p6yd" path="res://Sprites/Objects/Enemies_A.png" id="8_pjg77"]
+[ext_resource type="Script" uid="uid://nh07dwv1adjx" path="res://Scripts/Objects/Actors/NPCs/Enemies/Enemy_MachineStateApplyer.gd" id="9_dqgi4"]
+[ext_resource type="Script" uid="uid://bimk5sky7bku" path="res://Scripts/Objects/Actors/NPCs/Enemies/States/GeminiPrisma_PlinkSlide.gd" id="10_bokr7"]
+
+[sub_resource type="Animation" id="Animation_pd4av"]
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4656, 0, 25, 96), Rect2(4681, 0, 25, 96), Rect2(4706, 0, 25, 96), Rect2(4731, 0, 25, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, -20), Vector2(-0.5, -20), Vector2(-0.5, -20), Vector2(-0.5, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_onsre"]
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4556, 0, 25, 96), Rect2(4581, 0, 25, 96), Rect2(4606, 0, 25, 96), Rect2(4631, 0, 25, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, -20), Vector2(0.5, -20), Vector2(0.5, -20), Vector2(0.5, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_epuh7"]
+_data = {
+&"BluePrisma": SubResource("Animation_pd4av"),
+&"RedPrisma": SubResource("Animation_onsre")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f41ya"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_6cvf5"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.6602), 0.0, 1.45195, 0, 0, Vector2(1, 0), 1.55278, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dh3dd"]
+offsets = PackedFloat32Array(0, 0.574007, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snb42"]
+size = Vector2(16, 80)
+
+[sub_resource type="Animation" id="4"]
+resource_name = "aRESET"
+length = 0.001
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Flash"
+length = 0.16
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(15, 15, 15, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pjnc"]
+_data = {
+&"ARESET": SubResource("4"),
+&"Flash": SubResource("2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rquci"]
+size = Vector2(29, 103)
+
+[sub_resource type="Animation" id="Animation_y6meh"]
+resource_name = "Pulse"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_43s5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqbud"]
+_data = {
+&"Pulse": SubResource("Animation_y6meh"),
+&"RESET": SubResource("Animation_43s5p")
+}
+
+[node name="PiercedPrisma" type="CharacterBody2D" node_paths=PackedStringArray("EnemyArea2DBody", "EnemieCenterPath", "EnemieVisibilityMask", "Damage_Counter_Position") groups=["Enemies", "Hurters"]]
+light_mask = 257
+z_index = 10
+collision_layer = 48
+collision_mask = 9222
+velocity = Vector2(0, 194.297)
+floor_stop_on_slope = false
+floor_max_angle = 1.13446
+floor_snap_length = 16.0
+script = ExtResource("1_rp8l5")
+enable_flip_sprite = false
+EnemyArea2DBody = NodePath("Area2Ds/Enemy_HitBox")
+EnemieCenterPath = NodePath("Pivot")
+EnemieVisibilityMask = NodePath("VisibleOnScreenNotifier2D")
+Damage_Counter_Position = NodePath("LabelPos")
+hp = 5.0
+score_reward = 10
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-9.53676e-08, -48)
+scale = Vector2(1.6, 4.8)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -25)
+texture = ExtResource("8_pjg77")
+offset = Vector2(-0.5, -20)
+region_enabled = true
+region_rect = Rect2(4731, 0, 25, 96)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_epuh7")
+}
+autoplay = "PogoDoll_Idle"
+
+[node name="CrystalSplings_Particles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1.2, 1.2, 1.2, 1)
+z_index = 10
+material = SubResource("CanvasItemMaterial_f41ya")
+emitting = false
+amount = 3
+lifetime = 0.8
+lifetime_randomness = 0.1
+fixed_fps = 60
+direction = Vector2(1, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 200.0
+angular_velocity_min = 50.0
+angular_velocity_max = 200.0
+angular_velocity_curve = SubResource("Curve_6cvf5")
+orbit_velocity_min = 0.01
+orbit_velocity_max = 0.02
+radial_accel_min = 60.0
+radial_accel_max = 60.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+color_ramp = SubResource("Gradient_dh3dd")
+anim_speed_min = 4.0
+anim_speed_max = 4.0
+
+[node name="Pivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -61)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_snb42")
+debug_color = Color(0, 0.323451, 0.7, 0.42)
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Left_A" type="RayCast2D" parent="Raycasts"]
+position = Vector2(-12, -92)
+target_position = Vector2(-4, 0)
+collision_mask = 1026
+
+[node name="Left_B" type="RayCast2D" parent="Raycasts"]
+position = Vector2(-12, -16)
+target_position = Vector2(-4, 0)
+collision_mask = 1026
+
+[node name="Right_A" type="RayCast2D" parent="Raycasts"]
+position = Vector2(12, -92)
+target_position = Vector2(4, 0)
+collision_mask = 1026
+
+[node name="Right_B" type="RayCast2D" parent="Raycasts"]
+position = Vector2(12, -16)
+target_position = Vector2(4, 0)
+collision_mask = 1026
+
+[node name="LabelPos" type="Marker2D" parent="."]
+position = Vector2(0, -146)
+
+[node name="Invencibility_Time" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="StatePlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_1pjnc")
+}
+autoplay = "ARESET"
+
+[node name="Area2Ds" type="Node2D" parent="."]
+position = Vector2(0, -26)
+
+[node name="Enemy_HitBox" type="Area2D" parent="Area2Ds"]
+unique_name_in_owner = true
+position = Vector2(0, -2)
+collision_layer = 32
+collision_mask = 256
+
+[node name="Mask" type="CollisionShape2D" parent="Area2Ds/Enemy_HitBox"]
+editor_description = "To detect meele attacks to brake"
+position = Vector2(-0.5, -18.5)
+shape = SubResource("RectangleShape2D_rquci")
+debug_color = Color(0.753443, 0.427194, 0, 0.42)
+
+[node name="EnemyMachine_State" type="Node" parent="." node_paths=PackedStringArray("Start_State")]
+script = ExtResource("9_dqgi4")
+Start_State = NodePath("GeminiPrisma_PlinkSlide")
+
+[node name="GeminiPrisma_PlinkSlide" type="Node" parent="EnemyMachine_State"]
+script = ExtResource("10_bokr7")
+
+[node name="HealthLabel" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_left = -22.0
+offset_top = -162.0
+offset_right = 22.0
+offset_bottom = -137.0
+pivot_offset = Vector2(22, 12)
+text = "1000"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelAP" type="AnimationPlayer" parent="HealthLabel"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gqbud")
+}
+autoplay = "RESET"

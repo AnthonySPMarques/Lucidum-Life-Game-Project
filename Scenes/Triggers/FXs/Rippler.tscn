@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2ecmnxx3r6nw"]
+
+[ext_resource type="Shader" uid="uid://bn0eawlw2jyrl" path="res://Scenes/Levels/Arc_LulabbyBlue/bounc.gdshader" id="1_60sta"]
+[ext_resource type="Script" uid="uid://fvtlmnw6wjwc" path="res://Scripts/Triggers/FXs/Rippler.gd" id="2_ugo4e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tdqh"]
+shader = ExtResource("1_60sta")
+shader_parameter/offset_center = Vector2(0, 1)
+shader_parameter/wave_count = 20.0
+shader_parameter/speed = 60.000000894072
+shader_parameter/height = 0.0
+
+[sub_resource type="Animation" id="Animation_6tdqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_h8mqx"]
+resource_name = "ripple"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.59),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.050000002375, 0.010000000475, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6tdqh"]
+_data = {
+&"RESET": SubResource("Animation_6tdqh"),
+&"ripple": SubResource("Animation_h8mqx")
+}
+
+[node name="Rippler" type="Node2D"]
+script = ExtResource("2_ugo4e")
+
+[node name="Rect" type="ColorRect" parent="."]
+z_index = 160
+material = SubResource("ShaderMaterial_6tdqh")
+offset_left = -384.0
+offset_right = 384.0
+offset_bottom = 512.0
+
+[node name="ShPlayer" type="AnimationPlayer" parent="Rect"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_6tdqh")
+}

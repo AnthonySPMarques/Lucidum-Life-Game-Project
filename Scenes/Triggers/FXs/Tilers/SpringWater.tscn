@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://db5x6onmx65fa"]
+
+[ext_resource type="Script" uid="uid://hvxj6otc3l3k" path="res://Scripts/Triggers/FXs/SpringWater.gd" id="1_idihl"]
+[ext_resource type="Texture2D" uid="uid://bfifslyub4gi2" path="res://Sprites/EditorTriggers/Triggers.png" id="2_cg7ak"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("2_cg7ak")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(20, 4)
+
+[node name="SpringWater" type="Node2D"]
+script = ExtResource("1_idihl")
+
+[node name="WaterJoint" type="Sprite2D" parent="."]
+texture = SubResource("1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Mask" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

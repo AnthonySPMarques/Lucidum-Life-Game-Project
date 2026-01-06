@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://1k1dhh5l88pl"]
+
+[ext_resource type="Script" uid="uid://1dlk05pbuuk6" path="res://Scripts/Triggers/Nodes/LevelPasser.gd" id="1_rsp8q"]
+[ext_resource type="Script" uid="uid://ye34ph4g7o26" path="res://Scripts/lixo/LevelPasser_indicator.gd" id="2_7d671"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ym8"]
+size = Vector2(128, 256)
+
+[node name="Entrace" type="Area2D"]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("1_rsp8q")
+
+[node name="mask" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v3ym8")
+debug_color = Color(4.47616e-06, 0.616191, 0.150521, 0.42)
+
+[node name="EntraceIndicator" type="Label" parent="."]
+z_index = 200
+offset_left = -64.0
+offset_top = -136.0
+offset_right = 192.0
+offset_bottom = -100.5
+theme_override_font_sizes/font_size = 20
+text = "[Entrace mode: 0]-[Exit id: 0]"
+vertical_alignment = 1
+script = ExtResource("2_7d671")

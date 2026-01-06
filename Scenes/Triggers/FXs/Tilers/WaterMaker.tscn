@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://braq3htgd82po"]
+
+[ext_resource type="Script" uid="uid://bb1aod5txitek" path="res://Scripts/Triggers/FXs/WaterMaker.gd" id="1"]
+
+[node name="WaterMaker" type="Node2D"]
+editor_description = "Largura int equivalente a [largura_int] - 1"
+z_index = 10
+script = ExtResource("1")
+altura_px = 2
+largura_px = 12
+Water_Colors = Color(0.184314, 0.305882, 0.776471, 0.654902)
+speed_factor = 0.006
+distance = 2
+
+[node name="WaterAreaHitbox" type="Area2D" parent="." groups=["Swimmable"]]
+collision_layer = 4096
+
+[node name="Mask" type="CollisionPolygon2D" parent="WaterAreaHitbox"]
+position = Vector2(96, 96)
+polygon = PackedVector2Array(-96, -96, 0, -96, 0, 0, -96, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(49, 49)
+scale = Vector2(5.9, 5.9)

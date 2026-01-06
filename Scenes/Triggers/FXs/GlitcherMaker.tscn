@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3s2q26gscxvv"]
+
+[ext_resource type="Shader" path="res://Shaders/Glitcher.gdshader" id="1_h5yfd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8j7ls"]
+shader = ExtResource("1_h5yfd")
+shader_parameter/can_glitch = true
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.05
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 64.0
+shader_parameter/shake_color_rate = 0.05
+
+[node name="Glitcher" type="Polygon2D"]
+material = SubResource("ShaderMaterial_8j7ls")

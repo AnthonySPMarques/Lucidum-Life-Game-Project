@@ -1,0 +1,55 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://dpbafdt8r87qm"]
+
+[sub_resource type="Curve" id="Curve_3ktds"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.803218, 0.82376), -0.351319, -0.351319, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_voqb4"]
+curve = SubResource("Curve_3ktds")
+
+[sub_resource type="Curve" id="Curve_pa56y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.0807132, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8e6hn"]
+curve = SubResource("Curve_pa56y")
+
+[resource]
+lifetime_randomness = 0.1
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 16.0
+angle_min = 90.0
+angle_max = 120.0
+initial_velocity_min = -800.0
+initial_velocity_max = 800.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = -0.0999999
+radial_velocity_min = 900.0
+radial_velocity_max = 1000.0
+radial_velocity_curve = SubResource("CurveTexture_8e6hn")
+gravity = Vector3(0, 2000, 0)
+linear_accel_min = -200.0
+linear_accel_max = 200.0
+radial_accel_min = 500.0
+radial_accel_max = 1000.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_min = 0.6
+scale_max = 1.4
+alpha_curve = SubResource("CurveTexture_voqb4")
+turbulence_noise_speed = Vector3(20, 20, 0)
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.03
+turbulence_initial_displacement_min = 12.3
+turbulence_initial_displacement_max = 15.2
+collision_mode = 2
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+sub_emitter_keep_velocity = true

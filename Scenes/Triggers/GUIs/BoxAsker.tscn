@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8pnvam3i1lik"]
+
+[ext_resource type="Script" uid="uid://bqsdpracuay2v" path="res://Scripts/UIs/BoxAsker.gd" id="1_scic5"]
+[ext_resource type="Texture2D" uid="uid://b4xuylskk580g" path="res://Sprites/LucidumHarmony.png" id="2_6f0kl"]
+
+[node name="BoxAsker" type="CanvasLayer"]
+script = ExtResource("1_scic5")
+
+[node name="ControlArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="LucidumHarmony" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(276, 105)
+scale = Vector2(40.0625, 70.5)
+texture = ExtResource("2_6f0kl")

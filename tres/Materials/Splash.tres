@@ -1,0 +1,29 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://dhq12a78ut0o4"]
+
+[sub_resource type="Curve" id="Curve_gp12p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.267213, 0.891213), -0.540977, -0.540977, 0, 0, Vector2(0.444262, 0.00732207), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b8y47"]
+curve = SubResource("Curve_gp12p")
+
+[resource]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_offset = Vector3(0, -16, 0)
+emission_shape = 3
+emission_box_extents = Vector3(128, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 1400.0
+initial_velocity_max = 2000.0
+gravity = Vector3(0, 4000, 0)
+scale_min = 0.1
+scale_max = 1.2
+alpha_curve = SubResource("CurveTexture_b8y47")
+collision_mode = 2
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 32

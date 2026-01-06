@@ -1,0 +1,222 @@
+[gd_scene load_steps=9 format=3 uid="uid://duhyi67om2o0j"]
+
+[ext_resource type="Script" uid="uid://4j6wd2hlk34j" path="res://Scripts/Objects/Miscs/GenericPlatform.gd" id="1_daaqp"]
+[ext_resource type="Texture2D" uid="uid://nghihyucvcbj" path="res://Sprites/Objects/Miscs/Platforms.png" id="1_k636i"]
+[ext_resource type="Texture2D" uid="uid://6nmtsioguihu" path="res://Sprites/Objects/Miscs/PlatformsZOVER.png" id="3_hv76p"]
+
+[sub_resource type="Animation" id="Animation_daaqp"]
+resource_name = "Large_Paddle_Platform"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(284, 0, 197, 68), Rect2(481, 0, 197, 68), Rect2(678, 0, 197, 68), Rect2(875, 0, 197, 68)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.005132976, 0.02295097, 0.10494898, 0.13935797, 0.23942354, 0.25536898, 0.28919196, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16), Vector2(192, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GenericPlatformArea2D/CollisionShape2D2:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(192, 24), Vector2(192, 24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D_ZABOVE:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(284, 0, 197, 36), Rect2(481, 0, 197, 36), Rect2(678, 0, 197, 36), Rect2(875, 0, 197, 36)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D_ZABOVE:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(0, -16), Vector2(0, -16), Vector2(0, -16)]
+}
+
+[sub_resource type="Animation" id="Animation_hv76p"]
+length = 0.16
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 71, 68), Rect2(71, 0, 71, 68), Rect2(142, 0, 71, 68), Rect2(213, 0, 71, 68)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(66, 16), Vector2(66, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GenericPlatformArea2D/CollisionShape2D2:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(66, 24), Vector2(66, 24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D_ZABOVE:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 71, 36), Rect2(71, 0, 71, 36), Rect2(142, 0, 71, 36), Rect2(213, 0, 71, 36)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D_ZABOVE:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(0, -16), Vector2(0, -16), Vector2(0, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k636i"]
+_data = {
+&"Large_Paddle_Platform": SubResource("Animation_daaqp"),
+&"Small_Travel_Platform": SubResource("Animation_hv76p")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv76p"]
+size = Vector2(66, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daaqp"]
+size = Vector2(66, 24)
+
+[node name="GenericPlatform" type="AnimatableBody2D" groups=["MovingPlatform", "OneWayTiles", "Orbital_To_Rotate"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_daaqp")
+Platform_Type = "Large_Paddle_Platform"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -2)
+texture = ExtResource("1_k636i")
+region_enabled = true
+region_rect = Rect2(0, 0, 71, 68)
+
+[node name="Sprite2D_ZABOVE" type="Sprite2D" parent="."]
+z_index = 60
+position = Vector2(1, -2)
+texture = ExtResource("3_hv76p")
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 71, 36)
+
+[node name="PlatformAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k636i")
+}
+autoplay = "Large_Paddle_Platform"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 8)
+shape = SubResource("RectangleShape2D_hv76p")
+one_way_collision = true
+debug_color = Color(0.625, 0.107422, 0.285339, 0.42)
+
+[node name="RemoteTransformPlayer" type="RemoteTransform2D" parent="."]
+position = Vector2(0, 144)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(0, 16)
+remote_path = NodePath("..")
+
+[node name="GenericPlatformArea2D" type="Area2D" parent="."]
+position = Vector2(0, 16)
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GenericPlatformArea2D"]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_daaqp")
+debug_color = Color(0.625, 0.107422, 0.285339, 0.42)
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="GenericPlatformArea2D" to="." method="_on_generic_platform_area_2d_body_entered"]
+[connection signal="body_exited" from="GenericPlatformArea2D" to="." method="_on_generic_platform_area_2d_body_exited"]

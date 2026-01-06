@@ -1,0 +1,34 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://dn2g0wj2jtjm1"]
+
+[sub_resource type="Curve" id="Curve_kedkf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.87995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.434178), -5.71833, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_44ijq"]
+curve = SubResource("Curve_kedkf")
+
+[sub_resource type="Gradient" id="Gradient_2x7n1"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.596491, 0.75188, 0.794486, 0.844612, 0.912281)
+colors = PackedColorArray(21, 12, 8, 1, 2.85464, 2.02005, 1.64912, 1, 11.161, 7.59, 0.233, 1, 4.98791, 2.69781, 0.0886371, 1, 1.74704, 0.129412, 0.0128464, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q0bnb"]
+gradient = SubResource("Gradient_2x7n1")
+use_hdr = true
+
+[resource]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+gravity = Vector3(0, 400, 0)
+damping_min = 0.1
+damping_max = 0.2
+scale_min = 0.4
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 1.1
+color_ramp = SubResource("GradientTexture1D_q0bnb")
+alpha_curve = SubResource("CurveTexture_44ijq")
+collision_mode = 1
+collision_friction = 0.3
+collision_bounce = 0.6

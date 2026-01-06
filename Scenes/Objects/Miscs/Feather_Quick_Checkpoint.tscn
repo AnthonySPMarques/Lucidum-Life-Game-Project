@@ -1,0 +1,187 @@
+[gd_scene load_steps=11 format=3 uid="uid://ci8ld3sco1o7w"]
+
+[ext_resource type="Script" uid="uid://jn3oxh6qxc6k" path="res://Scripts/Objects/Miscs/Dreamcatcher_checkpoint.gd" id="1_84yyj"]
+[ext_resource type="Texture2D" uid="uid://fvqajpjvsicl" path="res://Sprites/Objects/Miscs/DreamCatcher_Checkpoint.png" id="2_mii4i"]
+[ext_resource type="PackedScene" uid="uid://yawpg8ek5slt" path="res://Scenes/Triggers/FXs/PointLight.tscn" id="3_cq44v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqiwx"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_7eqbx"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(66, 0, 66, 66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x1ico"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 66, 66)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/EffectPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ifx4c"]
+_data = {
+&"Marked": SubResource("Animation_7eqbx"),
+&"Unmarked": SubResource("Animation_x1ico")
+}
+
+[sub_resource type="Animation" id="Animation_0r4j5"]
+resource_name = "Effect"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(3, 3, 3, 1), Color(3, 3, 3, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1.2),
+"transitions": PackedFloat32Array(1, 2, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, -4), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gc0so"]
+length = 0.001
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfsyh"]
+_data = {
+&"Effect": SubResource("Animation_0r4j5"),
+&"RESET": SubResource("Animation_gc0so")
+}
+
+[node name="FeatherQuickCheckpoint" type="Area2D" groups=["Checkpoint"]]
+collision_layer = 32768
+script = ExtResource("1_84yyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_iqiwx")
+debug_color = Color(0.624, 0.99, 0.864, 0.04)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 8.0
+offset_bottom = -38.0
+
+[node name="RespawnPos" type="Marker2D" parent="."]
+position = Vector2(0, 64)
+gizmo_extents = 40.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mii4i")
+region_enabled = true
+region_rect = Rect2(66, 0, 66, 66)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ifx4c")
+}
+autoplay = "Unmarked"
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_sfsyh")
+}
+autoplay = "Effect"
+
+[node name="PointLight2D" parent="." instance=ExtResource("3_cq44v")]
+energy = 0.8

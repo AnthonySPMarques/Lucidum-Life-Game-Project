@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://0eoj1jgf58jy"]
+
+[ext_resource type="Texture2D" uid="uid://dafn7npi65yj4" path="res://Sprites/Backgrounds/LullabyBlue_BackgroundOnly.png" id="1_a0anu"]
+[ext_resource type="Texture2D" uid="uid://cfdi4gku1p6hv" path="res://Sprites/Backgrounds/LullabyBlue_Background_StarsAndCloud.png" id="2_gu307"]
+[ext_resource type="Texture2D" uid="uid://dlb3g80w42cmb" path="res://Sprites/Backgrounds/LullabyBlue_BackWallRiver.png" id="5_g1hp5"]
+
+[node name="Lullaby_Blue_Background" type="ParallaxBackground"]
+scroll_base_scale = Vector2(0.01, 2)
+scroll_limit_end = Vector2(1400, 3072)
+scroll_ignore_camera_zoom = true
+
+[node name="PivotBG" type="Marker2D" parent="."]
+position = Vector2(0, -704)
+
+[node name="LayerA" type="Parallax2D" parent="PivotBG"]
+scroll_scale = Vector2(1, 1.1)
+
+[node name="Fill" type="Sprite2D" parent="PivotBG/LayerA"]
+position = Vector2(-128, -640)
+texture = ExtResource("1_a0anu")
+centered = false
+
+[node name="LayerB" type="Parallax2D" parent="PivotBG"]
+modulate = Color(0.927083, 0.927083, 0.927083, 1)
+scroll_scale = Vector2(1.01, 1.05)
+scroll_offset = Vector2(0, 1536)
+
+[node name="CloudsAndStars" type="Sprite2D" parent="PivotBG/LayerB"]
+position = Vector2(0, -2176)
+texture = ExtResource("2_gu307")
+centered = false
+
+[node name="LayerC" type="Parallax2D" parent="PivotBG"]
+scroll_scale = Vector2(1.005, 1)
+scroll_offset = Vector2(0, 1344)
+
+[node name="RiverWall" type="Sprite2D" parent="PivotBG/LayerC"]
+position = Vector2(704, -448)
+texture = ExtResource("5_g1hp5")

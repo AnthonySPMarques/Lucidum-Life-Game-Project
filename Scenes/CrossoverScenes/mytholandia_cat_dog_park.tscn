@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://c88cgpt8hdp43"]
+
+[ext_resource type="PackedScene" uid="uid://bh1huml857rbt" path="res://Scenes/Objects/Actors/Players/Flockos.tscn" id="2_tm8d8"]
+[ext_resource type="Script" uid="uid://cod2gtjijakii" path="res://Scripts/Triggers/Editor/CameraZoneMaker.gd" id="3_flvoy"]
+[ext_resource type="Script" uid="uid://wxnct662f3ot" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_5tosp"]
+[ext_resource type="Script" uid="uid://bd3tfw1qdrl0t" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_jq2g2"]
+
+[sub_resource type="Resource" id="Resource_7bjrq"]
+metadata/__load_path__ = "res://Sprites/Backgrounds/GuestBGS/Mytholandia_catdogcity.png"
+
+[sub_resource type="Resource" id="Resource_2g3ed"]
+script = ExtResource("5_jq2g2")
+duration = 1.0
+transition = 1
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flvoy"]
+size = Vector2(1184, 657)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tosp"]
+size = Vector2(163, 876)
+
+[sub_resource type="Resource" id="Resource_flvoy"]
+metadata/__load_path__ = "res://Songs/InTheWind.WAV"
+
+[node name="Mytholandia_cat_dog_park" type="Node2D"]
+
+[node name="MytholandiaCatdogcity" type="Sprite2D" parent="."]
+modulate = Color(0.61, 0.61, 0.61, 1)
+z_index = -10
+position = Vector2(593, 250.8)
+scale = Vector2(1.2, 1.2)
+texture = SubResource("Resource_7bjrq")
+
+[node name="Flockos" parent="." instance=ExtResource("2_tm8d8")]
+position = Vector2(607, 389)
+Start_Scene_By = 1
+
+[node name="CameraZone_0" type="Node" parent="."]
+script = ExtResource("3_flvoy")
+
+[node name="Phantoms" type="Node" parent="CameraZone_0"]
+
+[node name="PhantomArea_A" type="Node2D" parent="CameraZone_0/Phantoms" node_paths=PackedStringArray("follow_target")]
+position = Vector2(607, 256)
+script = ExtResource("4_5tosp")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../../../Flockos")
+snap_to_pixel = true
+tween_resource = SubResource("Resource_2g3ed")
+inactive_update_mode = 1
+follow_offset = Vector2(0, -64)
+follow_damping = true
+draw_limits = true
+limit_left = 0
+limit_top = -640
+limit_right = 0
+limit_bottom = 0
+limit_target = NodePath("../../Areas/AreaZone_A/AreaZone_A_Mask")
+
+[node name="Areas" type="Node" parent="CameraZone_0"]
+
+[node name="AreaZone_A" type="Area2D" parent="CameraZone_0/Areas"]
+z_index = 100
+
+[node name="AreaZone_A_Mask" type="CollisionShape2D" parent="CameraZone_0/Areas/AreaZone_A"]
+position = Vector2(591, 247.5)
+shape = SubResource("RectangleShape2D_flvoy")
+debug_color = Color(0.54, 1, 0.747, 0.0196078)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-28, 161.8)
+scale = Vector2(0.6, 0.6)
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-200, 293, 744, 330, 868.333, 375.333, 1210, 377, 1361, 321, 2391, 307, 2041, 725, -5, 707)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-197, -115)
+shape = SubResource("RectangleShape2D_5tosp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2305, -82)
+shape = SubResource("RectangleShape2D_5tosp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("Resource_flvoy")
+volume_db = -5.0
+autoplay = true

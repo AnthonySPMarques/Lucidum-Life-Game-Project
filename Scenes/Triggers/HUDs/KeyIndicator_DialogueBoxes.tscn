@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd2wg07nohn4e"]
+
+[ext_resource type="Texture2D" uid="uid://dgl0nthlhadoe" path="res://Sprites/UIs/general/ScreenMenu_Tranks.png" id="1_ynslp"]
+[ext_resource type="FontFile" uid="uid://dbvyiuhlljfku" path="res://Fonts/Joti_One/JotiOne-Regular.ttf" id="2_s8824"]
+[ext_resource type="Script" uid="uid://bkjcp28xm1a5d" path="res://Scripts/UIs/Input_text_getter.gd" id="3_83w2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvpie"]
+atlas = ExtResource("1_ynslp")
+region = Rect2(0, 0, 16, 16)
+
+[node name="Icon2" type="TextureRect"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 80.0
+offset_bottom = 66.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_dvpie")
+
+[node name="Key" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_fonts/font = ExtResource("2_s8824")
+text = "KEY
+"
+horizontal_alignment = 1
+script = ExtResource("3_83w2l")
+Input_name = "Jump"

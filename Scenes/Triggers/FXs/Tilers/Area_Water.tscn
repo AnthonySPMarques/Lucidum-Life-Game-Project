@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmjm3w3ph50fh"]
+
+[ext_resource type="Script" uid="uid://cq4jhhbqmgj2w" path="res://Scripts/Triggers/FXs/Area_Water.gd" id="1"]
+[ext_resource type="Shader" uid="uid://ddibh17x5fjht" path="res://Shaders/Area_Water.gdshader" id="3"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("3")
+
+[node name="AreaWater" type="Node2D"]
+z_index = 100
+script = ExtResource("1")
+D_dampening_force = 0.08
+distance_beetween_spring_points = 64
+number_of_springs = 12
+
+[node name="WaterFiller" type="Polygon2D" parent="."]
+material = SubResource("1")

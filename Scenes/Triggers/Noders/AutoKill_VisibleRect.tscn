@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bygsoajiwa2qp"]
+
+[ext_resource type="Script" uid="uid://chew62ym1f5pl" path="res://Scripts/Triggers/Nodes/visible_rect_autokill.gd" id="1_ueh8k"]
+
+[node name="VisibleRect" type="VisibleOnScreenNotifier2D"]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(6.4, 6.4)
+script = ExtResource("1_ueh8k")

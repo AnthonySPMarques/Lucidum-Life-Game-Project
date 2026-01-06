@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bionlvjmqfi5c"
+path="res://.godot/imported/BOUNCE Twang Spring 02.ogg-7e809f7026aa0fab4b2693a82c0ad4bf.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sfxs/BOUNCE Twang Spring 02.ogg"
+dest_files=["res://.godot/imported/BOUNCE Twang Spring 02.ogg-7e809f7026aa0fab4b2693a82c0ad4bf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

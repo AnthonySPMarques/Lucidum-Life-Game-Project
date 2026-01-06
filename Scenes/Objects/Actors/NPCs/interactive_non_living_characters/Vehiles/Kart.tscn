@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://be5jv43iiv5b7"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/kart.gd" id="1_4eaxr"]
+[ext_resource type="Texture2D" uid="uid://c2wwqexhqn6wo" path="res://Sprites/Objects/Vehiles/kart.png" id="2_etx5r"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Pluggers/Gravity_Plug.gd" id="2_nhryl"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Pluggers/Movement_Plug.gd" id="3_klpx2"]
+[ext_resource type="AudioStream" uid="uid://dt1cf02lcycot" path="res://Sfxs/RollingKart.ogg" id="5_roiep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtvl1"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_7eoy5"]
+length = 0.28
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(196, 0, 196, 53), Rect2(0, 53, 196, 53), Rect2(196, 0, 196, 53), Rect2(196, 53, 196, 53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 7.5), Vector2(0, 7.5), Vector2(0, 7.5), Vector2(0, 7.5)]
+}
+
+[sub_resource type="Animation" id="Animation_phs8g"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 196, 53)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 7.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1buq1"]
+_data = {
+"Kart": SubResource("Animation_7eoy5"),
+"KartOff": SubResource("Animation_phs8g")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ym8"]
+size = Vector2(176, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p68vn"]
+size = Vector2(176, 4)
+
+[node name="Kart" type="CharacterBody2D" groups=["Vehiles"]]
+z_index = 100
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 9222
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_snap_length = 32.0
+script = ExtResource("1_4eaxr")
+ImpulseX_Multiplier = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1.90735e-06, -6)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_xtvl1")
+debug_color = Color(0.52745, 0.363227, 0.28685, 0.42)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -34)
+texture = ExtResource("2_etx5r")
+offset = Vector2(0, 7.5)
+region_enabled = true
+region_rect = Rect2(196, 0, 196, 53)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1buq1")
+}
+autoplay = "KartOff"
+
+[node name="KartArea2D" type="Area2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 16384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KartArea2D"]
+z_index = 1
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_v3ym8")
+debug_color = Color(0.6807, 0.7, 0, 0.42)
+
+[node name="SolidForPlayer" type="CharacterBody2D" parent="."]
+collision_layer = 1026
+collision_mask = 0
+
+[node name="CollisionShape2D_PlayerSolid" type="CollisionShape2D" parent="SolidForPlayer"]
+unique_name_in_owner = true
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_p68vn")
+one_way_collision = true
+
+[node name="GravityPlug" type="Node" parent="." node_paths=PackedStringArray("Node_To_PlugIn")]
+script = ExtResource("2_nhryl")
+Node_To_PlugIn = NodePath("..")
+
+[node name="MovementPlug" type="Node" parent="." node_paths=PackedStringArray("Node_To_PlugIn")]
+script = ExtResource("3_klpx2")
+Speed = 1600.0
+Acceleration = 15.0
+Can_Move = false
+Node_To_PlugIn = NodePath("..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_roiep")
+pitch_scale = 1.1
+
+[connection signal="body_entered" from="KartArea2D" to="." method="_on_KartArea2D_entered"]
+[connection signal="body_exited" from="KartArea2D" to="." method="_on_KartArea2D_exited"]

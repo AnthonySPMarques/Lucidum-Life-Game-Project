@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgq4fjbea8u0k"]
+
+[ext_resource type="Texture2D" uid="uid://cdb3yx5d3348d" path="res://Sprites/Characters/Character_pierces/LazerClash.png" id="1"]
+
+[sub_resource type="CanvasItemMaterial" id="2"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="1"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+flatness = 0.4
+gravity = Vector3(0, 0, 0)
+
+[node name="ClashBite" type="Particles2D"]
+pause_mode = 2
+physics_interpolation_mode = 2
+process_priority = 1
+material = SubResource("2")
+scale = Vector2(2, 2)
+emitting = false
+amount = 1
+lifetime = 0.4
+one_shot = true
+speed_scale = 4.0
+explosiveness = 0.3
+process_material = SubResource("1")
+texture = ExtResource("1")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Pickup_Logic_Resource" load_steps=2 format=3 uid="uid://b28t4n647b7ws"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Global_Logics/PickupModifierLogic.gd" id="1_stt13"]
+
+[resource]
+script = ExtResource("1_stt13")
+item_Type = 2
+Value_Modifier = 1
+PickUp_Display = "Nightfly"

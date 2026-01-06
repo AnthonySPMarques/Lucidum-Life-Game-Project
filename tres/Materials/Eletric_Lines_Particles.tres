@@ -1,0 +1,28 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://tbe8d330vrg"]
+
+[sub_resource type="Curve" id="Curve_b6603"]
+_data = [Vector2(0, 3.30753), 0.0, -3.61962, 0, 0, Vector2(1, 0), 0.417648, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nb3pr"]
+curve = SubResource("Curve_b6603")
+
+[sub_resource type="Curve" id="Curve_uu8x0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0836066, -1), 0.0, 0.0, 0, 0, Vector2(0.17541, 2), 0.0, 0.0, 0, 0, Vector2(0.306557, -1), 0.0, 0.0, 0, 0, Vector2(0.503279, 2), 0.0, 0.0, 0, 0, Vector2(0.667213, -1), 0.0, 0.0, 0, 0, Vector2(0.791803, 2), 0.0, 0.0, 0, 0, Vector2(0.955738, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_tj2y4"]
+curve = SubResource("Curve_uu8x0")
+
+[resource]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 360.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+hue_variation_curve = SubResource("CurveTexture_tj2y4")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("CurveTexture_nb3pr")

@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://3ixn4nc0ouhs"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/SavePoint.gd" id="1_peuov"]
+[ext_resource type="Texture2D" uid="uid://m3k37xwn26ri" path="res://Sprites/Objects/Miscs/MagicFolder.png" id="2_c1dqa"]
+
+[sub_resource type="Animation" id="Animation_u4vt6"]
+length = 0.04
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07vr1"]
+_data = {
+"MagicFolderSaver": SubResource("Animation_u4vt6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ym8"]
+size = Vector2(33, 31)
+
+[node name="SavePoint" type="Node2D"]
+script = ExtResource("1_peuov")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("2_c1dqa")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 30)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_07vr1")
+}
+autoplay = "MagicFolderSaver"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_v3ym8")
+
+[connection signal="body_entered" from="Area2D" to="." method="player_recevied"]
+[connection signal="body_exited" from="Area2D" to="." method="player_out"]

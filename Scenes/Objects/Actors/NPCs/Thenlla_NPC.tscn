@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnhrjvb0si88v"]
+
+[ext_resource type="Texture2D" uid="uid://v0dbx5f78o43" path="res://Sprites/Characters/Thenlla/Thenlla.png" id="1_066xt"]
+
+[sub_resource type="Animation" id="Animation_cc8gu"]
+length = 1.56
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thenlla:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.5, 0.58, 0.64, 0.71, 0.78, 0.88, 0.92, 0.96, 1, 1.06, 1.14, 1.2, 1.24, 1.28, 1.32, 1.36, 1.46),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 96, 96), Rect2(96, 0, 96, 96), Rect2(192, 0, 96, 96), Rect2(288, 0, 96, 96), Rect2(384, 0, 96, 96), Rect2(480, 0, 96, 96), Rect2(576, 0, 96, 96), Rect2(576, 0, 96, 96), Rect2(480, 0, 96, 96), Rect2(672, 0, 96, 96), Rect2(768, 0, 96, 96), Rect2(192, 0, 96, 96), Rect2(864, 0, 96, 96), Rect2(960, 0, 96, 96), Rect2(1056, 0, 96, 96), Rect2(1152, 0, 96, 96), Rect2(1248, 0, 96, 96), Rect2(1344, 0, 96, 96), Rect2(1440, 0, 96, 96), Rect2(1536, 0, 96, 96), Rect2(1632, 0, 96, 96), Rect2(1728, 0, 96, 96), Rect2(1824, 0, 96, 96), Rect2(1920, 0, 96, 96), Rect2(2016, 0, 96, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thenlla:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.5, 0.58, 0.64, 0.71, 0.78, 0.88, 0.92, 0.96, 1, 1.06, 1.14, 1.2, 1.24, 1.28, 1.32, 1.36, 1.46),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k0ux"]
+_data = {
+&"Idle": SubResource("Animation_cc8gu")
+}
+
+[node name="Thenlla" type="CharacterBody2D"]
+z_index = 45
+
+[node name="Thenlla" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+texture = ExtResource("1_066xt")
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 96)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5k0ux")
+}
+autoplay = "Idle"

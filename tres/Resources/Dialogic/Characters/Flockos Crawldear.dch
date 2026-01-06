@@ -1,0 +1,120 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0.423529, 0.905882, 0.815686, 1),
+"custom_info": {
+"prefix": "",
+"sound_mood_default": "HappyTalk",
+"sound_moods": {
+"HappyTalk": {
+"mode": 0,
+"name": "HappyTalk",
+"pitch_base": 0.8,
+"pitch_variance": -0.1,
+"skip_characters": 4.0,
+"sound_path": "res://Sfxs/sfx_pack/GameBurp - 2000 Game Sound FX Collection (OGG)/VOCAL CUTE - CHARACTERS - (113)/VOCAL CUTE Call Affection 10.ogg",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
+"style": "Commom_NovelStyle",
+"suffix": ""
+},
+"default_portrait": "ComicalEmotions/Happy",
+"description": "The protagonist of the game, a tall white cat with blue spots. Gameplay style meele attack",
+"display_name": "Flockos Crawldear",
+"mirror": false,
+"nicknames": ["Nightmare Cat"],
+"offset": Vector2(0, 0),
+"portraits": {
+"ComicalEmotions/Angry": {
+"export_overrides": {
+"image": ""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"ComicalEmotions/Bruh": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"ComicalEmotions/Happy": {
+"export_overrides": {
+"Has_Intro_Animation": "false",
+"image": "\"res://Sprites/Characters/Flockos/VectorArts/FlockFace.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://Scenes/Triggers/GUIs/AnimatedProtraits/FlockosPortrait.tscn",
+"sound_mood": "HappyTalk"
+},
+"ComicalEmotions/Sad": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"ComicalEmotions/Teasing": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"SeriousEmotions/Angry": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"SeriousEmotions/Determined": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"SeriousEmotions/Happy": {
+"export_overrides": {
+"image": "\"res://Sprites/Characters/Flockos/VectorArts/FlockosArt.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 128),
+"scale": 1.0,
+"scene": "",
+"sound_mood": "HappyTalk"
+},
+"SeriousEmotions/Sad": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://koh6s1mjuy5e"]
+
+[ext_resource type="Texture2D" uid="uid://b0t1erj1ku6oo" path="res://Sprites/Objects/TileSets/texture3d.png" id="2_3i1hm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olbul"]
+albedo_texture = ExtResource("2_3i1hm")
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4eli"]
+material = SubResource("StandardMaterial3D_olbul")
+
+[node name="3D_LullabyBlue_Scenies" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0217121, 1.61361, 0)
+rotation_edit_mode = 2
+mesh = SubResource("BoxMesh_g4eli")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80763, 3.96072)
+keep_aspect = 0
+current = true

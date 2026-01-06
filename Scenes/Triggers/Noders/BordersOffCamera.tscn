@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://7vorraypcivy"]
+
+[ext_resource type="Script" uid="uid://bit24b88kwjou" path="res://Scripts/Objects/Global_Logics/Static_Hurters.gd" id="1_1ve0o"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(64, 896)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(64, 1344)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(8960, 64)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(8512, 64)
+
+[node name="BordersOffCamera" type="Node2D"]
+position = Vector2(512, 320)
+
+[node name="Corners" type="StaticBody2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="Left" type="CollisionShape2D" parent="Corners"]
+position = Vector2(-544, 0)
+shape = SubResource("1")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="Right" type="CollisionShape2D" parent="Corners"]
+position = Vector2(544, 0)
+shape = SubResource("2")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="Up" type="CollisionShape2D" parent="Corners"]
+position = Vector2(0, -480)
+shape = SubResource("3")
+debug_color = Color(0.215893, 0.1656, 0.92, 0.662745)
+
+[node name="DeathFall" type="StaticBody2D" parent="." groups=["pitfall"]]
+collision_layer = 18
+collision_mask = 0
+script = ExtResource("1_1ve0o")
+damage_type = 1
+damage_force = 999
+
+[node name="Down" type="CollisionShape2D" parent="DeathFall"]
+position = Vector2(-32, 480)
+shape = SubResource("4")
+debug_color = Color(0.300866, 0, 0, 0.733333)

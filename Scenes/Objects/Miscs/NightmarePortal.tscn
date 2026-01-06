@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://djivo1j56c4xp"]
+
+[ext_resource type="Texture2D" uid="uid://drl3f8bffpdk4" path="res://Sprites/Objects/Miscs/PortalCircle.png" id="1_xxu2h"]
+
+[sub_resource type="Gradient" id="Gradient_ihhyr"]
+offsets = PackedFloat32Array(0.084415585, 0.7694805, 1)
+colors = PackedColorArray(0.16618519, 0.01410591, 0.3385417, 1, 1.503374, 0.7766801, 1.8247963, 1, 340.22443, 340.22443, 340.22443, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_whgja"]
+gradient = SubResource("Gradient_ihhyr")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_mnmj4"]
+_data = [Vector2(0, 1), 0.0, 10.493708, 0, 0, Vector2(0.13554218, 0.014794707), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(0.9909639, 0), 28.438513, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xioep"]
+curve = SubResource("Curve_mnmj4")
+
+[sub_resource type="Curve" id="Curve_12gax"]
+_data = [Vector2(0.009036146, 0.014794707), 0.0, 20.850243, 0, 0, Vector2(0.5060241, 0.64281404), 13.552651, 13.552651, 0, 0, Vector2(0.90361446, 0.76056767), 18.344124, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7vvvo"]
+curve = SubResource("Curve_12gax")
+
+[sub_resource type="Curve" id="Curve_xxu2h"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 93.87755), 0.0, 0.0, 0, 0, Vector2(0.12244898, -44.89796), 0.0, 0.0, 0, 0, Vector2(0.24489796, 93.87755), 0.0, 0.0, 0, 0, Vector2(0.36734694, -36.734695), 0.0, 0.0, 0, 0, Vector2(0.46938774, 69.38776), 0.0, 0.0, 0, 0, Vector2(0.6530612, -36.734695), 0.0, 0.0, 0, 0, Vector2(0.79591835, 77.55102), 0.0, 0.0, 0, 0, Vector2(0.9879518, 0.60388184), 0.0, 0.0, 0, 0]
+point_count = 8
+metadata/_snap_enabled = true
+metadata/_snap_count = 49
+
+[sub_resource type="CurveTexture" id="CurveTexture_mnmj4"]
+curve = SubResource("Curve_xxu2h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mnmj4"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(3.69, 0.6, 1)
+emission_shape = 2
+emission_sphere_radius = 9.7
+gravity = Vector3(0, -500, 0)
+tangential_accel_min = -20.000002
+tangential_accel_max = 19.999998
+tangential_accel_curve = SubResource("CurveTexture_mnmj4")
+scale_min = 2.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_7vvvo")
+color_ramp = SubResource("GradientTexture1D_whgja")
+emission_curve = SubResource("CurveTexture_xioep")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxu2h"]
+size = Vector2(10, 6)
+
+[node name="NightmarePortal" type="Node2D"]
+z_index = 10
+
+[node name="Trails" type="GPUParticles2D" parent="."]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
+z_index = 100
+amount = 24
+lifetime = 0.5
+interp_to_end = 0.005
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_mnmj4")
+
+[node name="PortalCircle" type="Sprite2D" parent="."]
+texture = ExtResource("1_xxu2h")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-64, -64, 128, 128)
+
+[node name="PortalHitbox" type="Area2D" parent="." groups=["Nightmare_Portal"]]
+collision_layer = 32768
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalHitbox"]
+shape = SubResource("RectangleShape2D_xxu2h")
+debug_color = Color(0.17549019, 0.70196074, 0, 0.41960785)

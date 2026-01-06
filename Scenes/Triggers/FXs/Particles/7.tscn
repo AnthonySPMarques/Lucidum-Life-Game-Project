@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://68bbyr1bxso5"]
+
+[ext_resource type="Script" uid="uid://dya5u1xfr1hti" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="1_1ocyl"]
+[ext_resource type="Texture2D" uid="uid://bu7nr8fm6k3hh" path="res://Sprites/ParticlesEffect/ParticleEffect_1.png" id="1_hmb53"]
+[ext_resource type="Material" uid="uid://dhq12a78ut0o4" path="res://tres/Materials/Splash.tres" id="2_8jhys"]
+[ext_resource type="Texture2D" uid="uid://b4nmjatpok6pf" path="res://Sprites/ParticlesEffect/ParticleEffect_2.png" id="3_48b30"]
+[ext_resource type="Material" uid="uid://bdqrok5rgorwo" path="res://tres/Materials/StaticParticle.tres" id="4_63snj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_63snj"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48b30"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="Splash_Water" type="GPUParticles2D"]
+unique_name_in_owner = true
+light_mask = 0
+z_index = 100
+z_as_relative = false
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("CanvasItemMaterial_63snj")
+amount = 32
+sub_emitter = NodePath("Splash_Contact_Water")
+texture = ExtResource("1_hmb53")
+lifetime = 2.0
+explosiveness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-4096, -320, 8192, 640)
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 30
+trail_section_subdivisions = 12
+process_material = ExtResource("2_8jhys")
+script = ExtResource("1_1ocyl")
+
+[node name="Splash_Contact_Water" type="GPUParticles2D" parent="."]
+z_index = 100
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("CanvasItemMaterial_48b30")
+amount = 1
+texture = ExtResource("3_48b30")
+lifetime = 0.2
+fixed_fps = 60
+visibility_rect = Rect2(-512, -320, 1024, 640)
+local_coords = true
+process_material = ExtResource("4_63snj")
+script = ExtResource("1_1ocyl")
+metadata/_custom_type_script = "uid://dya5u1xfr1hti"

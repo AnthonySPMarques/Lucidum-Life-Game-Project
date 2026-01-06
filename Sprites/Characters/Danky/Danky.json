@@ -1,0 +1,128 @@
+{ "frames": {
+   "Danky 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 1.ase": {
+    "frame": { "x": 104, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 2.ase": {
+    "frame": { "x": 208, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 3.ase": {
+    "frame": { "x": 312, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 4.ase": {
+    "frame": { "x": 416, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 5.ase": {
+    "frame": { "x": 520, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 6.ase": {
+    "frame": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 7.ase": {
+    "frame": { "x": 624, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 8.ase": {
+    "frame": { "x": 728, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 9.ase": {
+    "frame": { "x": 832, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 10.ase": {
+    "frame": { "x": 936, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   },
+   "Danky 11.ase": {
+    "frame": { "x": 1040, "y": 0, "w": 104, "h": 104 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 104, "h": 104 },
+    "sourceSize": { "w": 104, "h": 104 },
+    "duration": 80
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-beta10-dev",
+  "image": "Danky.png",
+  "format": "RGBA8888",
+  "size": { "w": 1144, "h": 104 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 5, "direction": "forward", "color": "#000000ff" },
+   { "name": "IdleWink", "from": 6, "to": 11, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Braço_Direita", "opacity": 255, "blendMode": "normal" },
+   { "name": "Rabo", "opacity": 255, "blendMode": "normal" },
+   { "name": "Jaqueta_Trás", "opacity": 255, "blendMode": "normal" },
+   { "name": "Perna_Direita", "opacity": 255, "blendMode": "normal" },
+   { "name": "CachecolTrás", "opacity": 255, "blendMode": "normal" },
+   { "name": "Barriga", "opacity": 255, "blendMode": "normal" },
+   { "name": "Cabeça", "opacity": 255, "blendMode": "normal" },
+   { "name": "Boca/Nariz", "opacity": 255, "blendMode": "normal" },
+   { "name": "Olhos", "opacity": 255, "blendMode": "normal" },
+   { "name": "Perna_Esquerda", "opacity": 255, "blendMode": "normal" },
+   { "name": "CachecolPescoço", "opacity": 255, "blendMode": "normal" },
+   { "name": "Jaqueta", "opacity": 255, "blendMode": "normal" },
+   { "name": "Braço_Esquerdo", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

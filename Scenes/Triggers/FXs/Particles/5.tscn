@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://blrfmb2npftxp"]
+
+[ext_resource type="Texture2D" uid="uid://8eyg4ippgjyy" path="res://Sprites/Characters/Character_pierces/Eletric_Chain_Sheet.png" id="1_07tnk"]
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="1_r8bl0"]
+[ext_resource type="Material" uid="uid://tbe8d330vrg" path="res://tres/Materials/Eletric_Lines_Particles.tres" id="2_07tnk"]
+[ext_resource type="PackedScene" uid="uid://dnoda4uf1eahd" path="res://Scenes/Triggers/FXs/Particles/6.tscn" id="4_c5l3s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ucrqf"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Eletric_Body_Particles" type="GPUParticles2D"]
+self_modulate = Color(5, 5, 15, 1)
+z_index = 100
+material = SubResource("CanvasItemMaterial_ucrqf")
+amount = 4
+process_material = ExtResource("2_07tnk")
+texture = ExtResource("1_07tnk")
+lifetime = 1.5
+preprocess = 0.1
+speed_scale = 5.0
+explosiveness = 0.2
+fixed_fps = 60
+visibility_rect = Rect2(-4000, -500, 8000, 1000)
+script = ExtResource("1_r8bl0")
+auto_set_oneshot = false
+metadata/_custom_type_script = "uid://dya5u1xfr1hti"
+
+[node name="Aura_Orbs" parent="." instance=ExtResource("4_c5l3s")]
+local_coords = true

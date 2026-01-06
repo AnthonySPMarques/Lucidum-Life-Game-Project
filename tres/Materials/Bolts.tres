@@ -1,0 +1,13 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dtjgcwyn574xi"]
+
+[resource]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 1200.0
+initial_velocity_max = 2000.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 4.0
+anim_speed_max = 20.0
+anim_offset_max = 1.0
+collision_mode = 2
+collision_use_scale = true

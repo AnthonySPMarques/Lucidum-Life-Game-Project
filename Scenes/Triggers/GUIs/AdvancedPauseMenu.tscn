@@ -1,0 +1,830 @@
+[gd_scene load_steps=36 format=3 uid="uid://oe0kioc4410c"]
+
+[ext_resource type="Script" uid="uid://c2m5sxtp4xylb" path="res://Scripts/UIs/PauseMenu/PauseMenu_Manager.gd" id="1_bv0pn"]
+[ext_resource type="Theme" uid="uid://dxb1gaibyi2xb" path="res://tres/UI_Styles/PurpleNightmares.tres" id="3_yqdd1"]
+[ext_resource type="Texture2D" uid="uid://jgvrums8ggc6" path="res://Sprites/UIs/general/PauseScreenBoard.png" id="4_66kbn"]
+[ext_resource type="Script" uid="uid://bkkmonn1rqnfx" path="res://Scripts/UIs/PauseMenu/PauseMenuPages/StatusSection.gd" id="5_oyoyn"]
+[ext_resource type="Texture2D" uid="uid://c113dej8ot3dp" path="res://Sprites/Characters/Flockos/VectorArts/FlockosPausePortrait.png" id="6_8akni"]
+[ext_resource type="Texture2D" uid="uid://btq00qb1d37dg" path="res://Sprites/UIs/general/Portrait_Filler.png" id="7_fyb14"]
+[ext_resource type="Texture2D" uid="uid://ccww1jljuv54p" path="res://Sprites/Non Atlas support/F_styled.png" id="8_cgvbe"]
+[ext_resource type="Animation" uid="uid://dukga2aahofet" path="res://AnimationPlayerRes/DreamCatcherShaderAnim.res" id="9_2rvbs"]
+[ext_resource type="Texture2D" uid="uid://dgpll11pskgdn" path="res://Sprites/UIs/Non atlas/RingOutline.png" id="10_2pe7f"]
+[ext_resource type="Texture2D" uid="uid://d007so8nwlgew" path="res://Sprites/UIs/Non atlas/Ring.png" id="11_lhojg"]
+[ext_resource type="Shader" uid="uid://b5a66aolwt2hh" path="res://Shaders/CircularProgress.gdshader" id="12_vd2ax"]
+[ext_resource type="Texture2D" uid="uid://cgafddwr8mtbu" path="res://Sprites/UIs/Non atlas/RingOutline2.png" id="13_1k22p"]
+[ext_resource type="Texture2D" uid="uid://b3smxeoxwo6ei" path="res://Sprites/UIs/Non atlas/Ring2.png" id="14_mej0v"]
+[ext_resource type="Shader" uid="uid://dk1bkcp7ch4lb" path="res://Shaders/InfinityScroller.gdshader" id="15_ok7x0"]
+[ext_resource type="Texture2D" uid="uid://dodl3cxx2ye7i" path="res://Sprites/UIs/general/DreamCatcherRepeater.png" id="16_kkyi2"]
+[ext_resource type="Script" uid="uid://j44ta4c5kl6k" path="res://Scripts/Triggers/FXs/TransitionFaders.gd" id="17_xejkd"]
+[ext_resource type="Shader" uid="uid://beryc7miwjsa5" path="res://Shaders/Glitcher.gdshader" id="18_5h55a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swpml"]
+atlas = ExtResource("4_66kbn")
+region = Rect2(0, 0, 968, 544.323)
+
+[sub_resource type="Shader" id="Shader_c24aq"]
+code = "shader_type canvas_item;
+
+uniform vec2 motion = vec2(0.0);
+uniform float scale = 1.0;
+uniform vec2 offset = vec2(0.0);
+
+
+uniform vec4 color_gap: source_color  = vec4(1.0, 0.75, 0.0, 1.0);
+uniform vec4 color_stripe: source_color  = vec4(1.0, 0.75, 0.0, 1.0);
+uniform float divisions = 8.0; // increase for more stripe density
+uniform float stripe_bias = 2.5; // 1.0 means no stripes; 2.0 means stripes and gaps are equal size
+uniform float speed = 0.1;
+uniform float angle = 0.7854; // in radians
+uniform float alpha : hint_range(0.0, 1.0, 0.01) = 0.5; // alpha carai
+
+
+void vertex(){
+	UV = (VERTEX + offset + TIME * motion) * TEXTURE_PIXEL_SIZE * (1.0/scale);
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE,UV);
+	float w = cos(angle) * UV.x + sin(angle) * UV.y - speed * TIME;
+	COLOR.a *= alpha;
+	if (floor(mod(w * divisions, stripe_bias)) < 0.0001) {
+		COLOR.rgb = color_gap.rgb ;
+	} else {
+		COLOR.rgb = color_stripe.rgb;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rei1"]
+shader = SubResource("Shader_c24aq")
+shader_parameter/motion = Vector2(20, 20)
+shader_parameter/scale = 0.2
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/color_gap = Color(0.554314, 0.215882, 0.738471, 1)
+shader_parameter/color_stripe = Color(0.700235, 0.673765, 0.821804, 1)
+shader_parameter/divisions = 0.01
+shader_parameter/stripe_bias = 2.0
+shader_parameter/speed = 100.0
+shader_parameter/angle = 0.0
+shader_parameter/alpha = 0.396
+
+[sub_resource type="Animation" id="Animation_ashcg"]
+resource_name = "DreamCatcherShaderAnim_"
+length = 4.0
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(0.5, -2, 0.5),
+"update": 0,
+"values": [0.2, 0.4, 0.2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/color_stripe")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Color(0.388235, 0.811765, 0.909804, 1), Color(1, 0.541176, 0.737255, 1), Color(0.388235, 0.811765, 0.909804, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/color_gap")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Color(0.184314, 0.305882, 0.776471, 1), Color(0.909804, 0.129412, 0.701961, 1), Color(0.184314, 0.305882, 0.776471, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gx8is"]
+_data = {
+"DreamCatcherShaderAnim": ExtResource("9_2rvbs"),
+"DreamCatcherShaderAnim_": SubResource("Animation_ashcg")
+}
+
+[sub_resource type="Gradient" id="Gradient_5geag"]
+offsets = PackedFloat32Array(0.99631)
+colors = PackedColorArray(0.152941, 0.0235294, 0.223529, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w5jt1"]
+gradient = SubResource("Gradient_5geag")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhybi"]
+shader = ExtResource("12_vd2ax")
+shader_parameter/value = 1.0
+shader_parameter/segments = 15
+shader_parameter/radius = 0.43
+shader_parameter/hollow_radius = 0.23
+shader_parameter/margin = 0.875
+shader_parameter/rotation = 4.75e-08
+shader_parameter/progress_rotation = -0.078
+shader_parameter/use_value_gradient = false
+shader_parameter/alpha = 1.0
+shader_parameter/gradient = SubResource("GradientTexture1D_w5jt1")
+
+[sub_resource type="Gradient" id="Gradient_5ssgp"]
+offsets = PackedFloat32Array(0.99631)
+colors = PackedColorArray(0.152941, 0.0235294, 0.223529, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ocwen"]
+gradient = SubResource("Gradient_5ssgp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_daiji"]
+shader = ExtResource("12_vd2ax")
+shader_parameter/value = 1.0
+shader_parameter/segments = 15
+shader_parameter/radius = 0.43
+shader_parameter/hollow_radius = 0.23
+shader_parameter/margin = 0.875
+shader_parameter/rotation = 4.75e-08
+shader_parameter/progress_rotation = -0.078
+shader_parameter/use_value_gradient = false
+shader_parameter/alpha = 1.0
+shader_parameter/gradient = SubResource("GradientTexture1D_ocwen")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qoeae"]
+shader = ExtResource("15_ok7x0")
+shader_parameter/motion = Vector2(-80, -100)
+shader_parameter/scale = 0.2
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/color_gap = Color(0.440507, 0.243565, 0.750159, 1)
+shader_parameter/color_stripe = Color(0.604268, 0.716212, 0.848872, 1)
+shader_parameter/divisions = 4.0
+shader_parameter/stripe_bias = 1.2
+shader_parameter/speed = 0.2
+shader_parameter/angle = 1.0
+shader_parameter/alpha = 0.508067
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_simwd"]
+_data = {
+"DreamCatcherShaderAnim": ExtResource("9_2rvbs")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_by0ye"]
+shader = ExtResource("18_5h55a")
+shader_parameter/can_glitch = false
+shader_parameter/shake_power = 0.05
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 100.0
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id="Animation_3qmma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/can_glitch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Color/../..:layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [50]
+}
+
+[sub_resource type="Animation" id="Animation_aasnu"]
+resource_name = "ToBlack"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Color/../..:layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [126]
+}
+
+[sub_resource type="Animation" id="460"]
+resource_name = "White"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.2),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Color(0.9, 0.9, 0.9, 0.974), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/can_glitch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Color/../..:layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [126, 50]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5onwc"]
+_data = {
+"RESET": SubResource("Animation_3qmma"),
+"ToBlack": SubResource("Animation_aasnu"),
+"White": SubResource("460")
+}
+
+[node name="Pause_Menu" type="CanvasLayer"]
+process_mode = 3
+process_priority = 5
+process_physics_priority = 5
+layer = 128
+script = ExtResource("1_bv0pn")
+metadata/_edit_horizontal_guides_ = [-56.0]
+
+[node name="MenuControl" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="PauseScreenBoard" type="TextureRect" parent="MenuControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_swpml")
+
+[node name="TabContainer" type="TabContainer" parent="MenuControl"]
+process_mode = 3
+process_priority = 10
+process_physics_priority = 10
+z_index = 12
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_yqdd1")
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+all_tabs_in_front = true
+metadata/_edit_use_anchors_ = true
+
+[node name="STATUS" type="Control" parent="MenuControl/TabContainer"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("VisualStuffs/Buttons/B1/Health_Button")
+script = ExtResource("5_oyoyn")
+metadata/_tab_index = 0
+
+[node name="VisualStuffs" type="Control" parent="MenuControl/TabContainer/STATUS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MenuControl/TabContainer/STATUS/VisualStuffs"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 0.8
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="FlockosPausePortrait" type="TextureRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AspectRatioContainer"]
+process_mode = 3
+visible = false
+z_index = 11
+z_as_relative = false
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("6_8akni")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="PortraitFiller" type="TextureRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AspectRatioContainer/FlockosPausePortrait"]
+visible = false
+clip_children = 2
+z_index = -10
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -1.38287
+offset_bottom = -4.97858
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_fyb14")
+metadata/_edit_lock_ = true
+
+[node name="F_repeater" type="TextureRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AspectRatioContainer/FlockosPausePortrait/PortraitFiller"]
+visible = false
+material = SubResource("ShaderMaterial_7rei1")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0278293
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_cgvbe")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AspectRatioContainer/FlockosPausePortrait/PortraitFiller/F_repeater"]
+libraries = {
+"": SubResource("AnimationLibrary_gx8is")
+}
+autoplay = "DreamCatcherShaderAnim_"
+
+[node name="Buttons" type="VBoxContainer" parent="MenuControl/TabContainer/STATUS/VisualStuffs"]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="B1" type="CenterContainer" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Health_Button" type="Button" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons/B1"]
+process_mode = 3
+custom_minimum_size = Vector2(280, 56)
+layout_mode = 2
+theme = ExtResource("3_yqdd1")
+text = "H e a l t h
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="B2" type="CenterContainer" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Awaken_Button" type="Button" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons/B2"]
+process_mode = 3
+custom_minimum_size = Vector2(280, 56)
+layout_mode = 2
+text = "A w a k e n e s s"
+metadata/_edit_use_anchors_ = true
+
+[node name="B4" type="CenterContainer" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Attacks" type="Button" parent="MenuControl/TabContainer/STATUS/VisualStuffs/Buttons/B4"]
+process_mode = 3
+custom_minimum_size = Vector2(280, 56)
+layout_mode = 2
+text = "A t t a c k s"
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthCircularTexture" type="Control" parent="MenuControl/TabContainer/STATUS/VisualStuffs"]
+z_index = 20
+layout_mode = 1
+anchor_left = 0.687
+anchor_top = 0.469
+anchor_right = 0.812
+anchor_bottom = 0.705
+offset_left = 448.512
+offset_top = -160.198
+offset_right = 448.512
+offset_bottom = -160.11
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+
+[node name="CircularHP" type="TextureProgressBar" parent="MenuControl/TabContainer/STATUS/VisualStuffs/HealthCircularTexture"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -135.0
+offset_right = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 14.0
+value = 14.0
+fill_mode = 4
+texture_under = ExtResource("10_2pe7f")
+texture_progress = ExtResource("11_lhojg")
+metadata/_edit_lock_ = true
+
+[node name="CircularHPGrid" type="ColorRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/HealthCircularTexture/CircularHP"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bhybi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(141, 141)
+metadata/_edit_lock_ = true
+
+[node name="HPAmountLabel" type="Label" parent="MenuControl/TabContainer/STATUS/VisualStuffs/HealthCircularTexture/CircularHP"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yqdd1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 48
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 1
+metadata/_edit_lock_ = true
+
+[node name="AwakenCircularTexture" type="Control" parent="MenuControl/TabContainer/STATUS/VisualStuffs"]
+z_index = 20
+layout_mode = 1
+anchor_left = 0.71875
+anchor_top = 0.527838
+anchor_right = 0.84375
+anchor_bottom = 0.763838
+offset_left = 448.0
+offset_top = -160.088
+offset_right = 448.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+
+[node name="CircularAW" type="TextureProgressBar" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AwakenCircularTexture"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -135.0
+offset_right = 135.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 14.0
+value = 14.0
+fill_mode = 4
+texture_under = ExtResource("13_1k22p")
+texture_progress = ExtResource("14_mej0v")
+metadata/_edit_lock_ = true
+
+[node name="CircularAWGrid" type="ColorRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AwakenCircularTexture/CircularAW"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_daiji")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(141, 141)
+metadata/_edit_lock_ = true
+
+[node name="AWAmountLabel" type="Label" parent="MenuControl/TabContainer/STATUS/VisualStuffs/AwakenCircularTexture/CircularAW"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yqdd1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 48
+text = "AW"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 1
+metadata/_edit_lock_ = true
+
+[node name="PauseFiller" type="ColorRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs"]
+clip_children = 2
+z_as_relative = false
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.00392157, 0.223529, 1)
+metadata/_edit_lock_ = true
+
+[node name="DreamCatcherRepeater" type="TextureRect" parent="MenuControl/TabContainer/STATUS/VisualStuffs/PauseFiller"]
+material = SubResource("ShaderMaterial_qoeae")
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0278293
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_kkyi2")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuControl/TabContainer/STATUS/VisualStuffs/PauseFiller/DreamCatcherRepeater"]
+libraries = {
+"": SubResource("AnimationLibrary_simwd")
+}
+autoplay = "DreamCatcherShaderAnim"
+
+[node name="VariableStuffs" type="Control" parent="MenuControl/TabContainer/STATUS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuControl/TabContainer/STATUS/VariableStuffs"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 40.0
+text = "var: a, 1 or whatever"
+fit_content = true
+
+[node name="ITEMS" type="Control" parent="MenuControl/TabContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label3" type="Label" parent="MenuControl/TabContainer/ITEMS"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -37.5
+offset_right = 17.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Souls
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MAP" type="Control" parent="MenuControl/TabContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label3" type="Label" parent="MenuControl/TabContainer/MAP"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -37.5
+offset_right = 17.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Souls
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SETTINGS" type="Control" parent="MenuControl/TabContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Label4" type="Label" parent="MenuControl/TabContainer/SETTINGS"]
+process_mode = 3
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -37.5
+offset_right = 31.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxDescTex" type="Control" parent="MenuControl"]
+visible = false
+anchors_preset = 0
+anchor_left = 0.025
+anchor_top = 0.785185
+anchor_right = 0.975
+anchor_bottom = 0.933333
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuControl/BoxDescTex"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = -8.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yqdd1")
+bbcode_enabled = true
+text = "[b]Useful [/b] d
+Useful
+Useful"
+fit_content = true
+scroll_active = false
+
+[node name="Faders" type="ParallaxBackground" parent="."]
+layer = 50
+script = ExtResource("17_xejkd")
+
+[node name="Node2D" type="Control" parent="Faders"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Color" type="ColorRect" parent="Faders/Node2D"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.416667
+anchor_top = -0.601852
+anchor_right = 1.45833
+anchor_bottom = 1.62037
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(900, 600)
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Faders/Node2D/Color"]
+material = SubResource("ShaderMaterial_by0ye")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="FaderAnim" type="AnimationPlayer" parent="Faders/Node2D/Color"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_5onwc")
+}
+autoplay = "RESET"

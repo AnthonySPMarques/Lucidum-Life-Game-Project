@@ -1,0 +1,29 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://bq14bhgwcyaxi"]
+
+[sub_resource type="Curve" id="Curve_31p1h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.65403, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o5wt3"]
+curve = SubResource("Curve_31p1h")
+
+[resource]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 128.0
+orbit_velocity_min = 1.421
+orbit_velocity_max = 1.421
+radial_velocity_min = -520.0
+radial_velocity_max = -480.0
+scale_min = 0.2
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_o5wt3")
+turbulence_enabled = true
+turbulence_influence_min = 0.252
+turbulence_influence_max = 0.252
+turbulence_initial_displacement_min = 11.7
+turbulence_initial_displacement_max = 100.0
+collision_mode = 2
+collision_use_scale = true

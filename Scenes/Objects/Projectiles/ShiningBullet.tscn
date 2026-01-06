@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdgwo1a7baae4"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Projectiles/Generic_LinearMovement.gd" id="1_77b5h"]
+[ext_resource type="Texture2D" uid="uid://oe4k8wb1tkwk" path="res://Sprites/Objects/Projectiles/ShiningBullet.png" id="1_k181r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5uyq"]
+radius = 4.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3rmed"]
+radius = 8.0
+height = 32.0
+
+[node name="ShiningBullet" type="CharacterBody2D" node_paths=PackedStringArray("area2d_hurter", "visibility_area")]
+collision_layer = 144
+collision_mask = 9222
+script = ExtResource("1_77b5h")
+area2d_hurter = NodePath("Hitbox_Self")
+visibility_area = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_h5uyq")
+debug_color = Color(0.7, 0, 0.328125, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
+texture = ExtResource("1_k181r")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.43051e-06, 2.38419e-07)
+scale = Vector2(2.4, 1.6)
+
+[node name="Hitbox_Self" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Self"]
+z_index = 1
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_3rmed")
+debug_color = Color(0.35, 0, 0.7, 0.42)

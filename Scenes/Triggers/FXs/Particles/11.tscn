@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwh76cvdtq8ln"]
+
+[ext_resource type="Texture2D" uid="uid://cgi8d0dtqw3vm" path="res://Sprites/Characters/Character_pierces/RoughSlideSpark.png" id="1_b47t1"]
+[ext_resource type="Script" uid="uid://dya5u1xfr1hti" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="1_sieiq"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_b47t1"]
+
+[sub_resource type="Curve" id="Curve_qemh3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.161592, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mxv0v"]
+curve = SubResource("Curve_qemh3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sieiq"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(-1, -1, 0)
+spread = 40.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_curve = SubResource("CurveTexture_b47t1")
+gravity = Vector3(0, 100, 0)
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_mxv0v")
+collision_mode = 2
+
+[node name="RoughSpark" type="GPUParticles2D"]
+modulate = Color(1971108.5, 1971108.5, 1971108.5, 1)
+scale = Vector2(3, 3)
+amount = 128
+texture = ExtResource("1_b47t1")
+speed_scale = 2.0
+fixed_fps = 60
+local_coords = true
+trail_lifetime = 0.06
+process_material = SubResource("ParticleProcessMaterial_sieiq")
+script = ExtResource("1_sieiq")
+auto_set_oneshot = false
+auto_emit = false
+metadata/_custom_type_script = "uid://dya5u1xfr1hti"

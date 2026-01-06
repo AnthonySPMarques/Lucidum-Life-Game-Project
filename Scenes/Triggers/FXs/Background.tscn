@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hs3xgg6h86yb"]
+
+[ext_resource type="Script" uid="uid://tvfdfo1i2w1x" path="res://Scripts/Triggers/FXs/background.gd" id="1_4rj7h"]
+
+[node name="Background" type="Node"]
+script = ExtResource("1_4rj7h")

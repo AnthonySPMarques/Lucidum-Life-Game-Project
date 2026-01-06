@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnq2jsfcxmfxw"]
+
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="1_1h8ni"]
+[ext_resource type="Texture2D" uid="uid://cokojrd3mfx2n" path="res://tres/BoltAnimation.tres" id="1_42vkb"]
+[ext_resource type="Material" uid="uid://bq14bhgwcyaxi" path="res://tres/Materials/Orbital_Bolt.tres" id="2_42vkb"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_42vkb"]
+polygon = PackedVector2Array(-16, -16, -24, -8, -24, 8, -16, 16, -8, 24, 8, 24, 16, 16, 24, 8, 24, -8, 16, -16, 8, -24, -8, -24)
+
+[node name="Orbital_Bolt" type="GPUParticles2D"]
+light_mask = 2
+visibility_layer = 2
+texture_filter = 3
+texture_repeat = 1
+amount = 64
+process_material = ExtResource("2_42vkb")
+texture = ExtResource("1_42vkb")
+lifetime = 0.5
+explosiveness = 0.1
+fixed_fps = 60
+interp_to_end = 0.1
+local_coords = true
+draw_order = 0
+trail_lifetime = 2.0
+trail_sections = 30
+trail_section_subdivisions = 6
+script = ExtResource("1_1h8ni")
+auto_set_oneshot = false
+
+[node name="Erasador" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_42vkb")
+occluder_light_mask = 2

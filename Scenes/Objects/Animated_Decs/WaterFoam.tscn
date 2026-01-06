@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8yiwrxtvg8io"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_u77dr"]
+frames = 4
+frame_1/duration = 1.0
+frame_2/duration = 1.0
+frame_3/duration = 1.0
+
+[node name="AnimatedSprite2D" type="Line2D"]
+z_index = 100
+position = Vector2(0, -32)
+texture = SubResource("AnimatedTexture_u77dr")
+texture_mode = 1
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-32, -10, 64, 20)

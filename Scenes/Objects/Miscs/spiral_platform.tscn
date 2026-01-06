@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgfnit6a8s84b"]
+
+[ext_resource type="Script" uid="uid://gk3k6hu43p1j" path="res://Scripts/Objects/Miscs/OrbitalPlatform.gd" id="1_i3j1d"]
+
+[node name="Orbit_Platform_Center" type="Marker2D"]
+script = ExtResource("1_i3j1d")

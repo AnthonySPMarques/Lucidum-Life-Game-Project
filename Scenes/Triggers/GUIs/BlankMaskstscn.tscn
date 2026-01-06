@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt3ab7bf7gl26"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwcv8"]
+size = Vector2(380, 1154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lb2g"]
+size = Vector2(172, 1071)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BlankUI" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 225
+
+[node name="BlankMask" type="CollisionShape2D" parent="BlankUI"]
+position = Vector2(94, -472)
+shape = SubResource("RectangleShape2D_cwcv8")
+disabled = true
+debug_color = Color(0.55, 0.3685, 0.534875, 0.266667)
+
+[node name="BlankScore" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 225
+
+[node name="BlankMask" type="CollisionShape2D" parent="BlankScore"]
+position = Vector2(509, -513.5)
+shape = SubResource("RectangleShape2D_8lb2g")
+disabled = true
+debug_color = Color(0.55, 0.3685, 0.534875, 0.266667)

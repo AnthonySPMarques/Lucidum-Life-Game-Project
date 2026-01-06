@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://s43348qhtcx1"]
+
+[ext_resource type="Texture2D" uid="uid://c0un7kyltb1li" path="res://Sprites/Objects/Ladders.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Objects/Tiles/Ladder_Maker.gd" id="1_ivrur"]
+[ext_resource type="PackedScene" uid="uid://dlxaxbboe8gm" path="res://Scenes/Objects/Tiles/Ladder_Top_Locker.tscn" id="2_po5ee"]
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="SegmentShape2D" id="2"]
+b = Vector2(64, 0)
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(48, 64)
+
+[node name="LadderMaker" type="Node2D"]
+script = ExtResource("1_ivrur")
+
+[node name="Sprite" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 128)
+offset_right = 64.0
+offset_bottom = 192.0
+texture = SubResource("3")
+region_rect = Rect2(0, 0, 64, 96)
+patch_margin_top = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="TopStopper" type="Area2D" parent="." groups=["TopLadders"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Mask" type="CollisionShape2D" parent="TopStopper"]
+z_index = 50
+position = Vector2(0, -43)
+shape = SubResource("2")
+debug_color = Color(0.961629, 0.742213, 0.828498, 0.42)
+
+[node name="LadderArea" type="Area2D" parent="." groups=["Climbable"]]
+scale = Vector2(1, 3)
+collision_layer = 8
+collision_mask = 0
+
+[node name="Mask" type="CollisionShape2D" parent="LadderArea"]
+position = Vector2(32, 32)
+shape = SubResource("1")
+debug_color = Color(0, 0.7, 0.192136, 0.42)
+metadata/_edit_lock_ = true
+
+[node name="Ladder_TopLocker" parent="." instance=ExtResource("2_po5ee")]
+script = null

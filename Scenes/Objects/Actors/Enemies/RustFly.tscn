@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d162nyyq21vq4"]
+
+[ext_resource type="PackedScene" uid="uid://dnhphdycs1dbe" path="res://Scenes/Objects/Actors/Enemies/RustFlyBody.tscn" id="1_1k6de"]
+[ext_resource type="Script" uid="uid://cn6qxju0mvfm7" path="res://Scripts/Objects/Actors/NPCs/Enemies/EnemyWithPath2D_Checker.gd" id="1_15lgt"]
+
+[sub_resource type="Curve2D" id="Curve2D_gkys2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -320)
+}
+point_count = 2
+
+[node name="RustFly" type="Node2D"]
+script = ExtResource("1_15lgt")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gkys2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="RustFlyBody" parent="Path2D/PathFollow2D" instance=ExtResource("1_1k6de")]
+
+[node name="Sprite" parent="Path2D/PathFollow2D/RustFlyBody" index="5"]
+region_rect = Rect2(4806, 0, 50, 123)
+
+[node name="RustFly_Fly" parent="Path2D/PathFollow2D/RustFlyBody/EnemyMachine_State" index="1" node_paths=PackedStringArray("Path_2D")]
+Tween_Duration = 0.5
+Path_2D = NodePath("../../..")
+
+[editable path="Path2D/PathFollow2D/RustFlyBody"]

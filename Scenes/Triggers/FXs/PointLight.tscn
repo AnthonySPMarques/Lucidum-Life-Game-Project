@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yawpg8ek5slt"]
+
+[ext_resource type="Texture2D" uid="uid://c5a3dhqc4wpqr" path="res://Sprites/Non Atlas support/GlowBig.png" id="1_s08cc"]
+
+[node name="PointLight2D" type="PointLight2D"]
+scale = Vector2(3.2, 3.2)
+color = Color(1, 1, 2, 1)
+texture = ExtResource("1_s08cc")
+height = 100.0

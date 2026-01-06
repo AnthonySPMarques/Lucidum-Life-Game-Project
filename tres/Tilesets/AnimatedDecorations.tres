@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dbqk1605aw2su"]
+
+[ext_resource type="PackedScene" uid="uid://b13r3u4dg3od1" path="res://Scenes/Objects/Animated_Decs/DiamondBush.tscn" id="1_t54yx"]
+[ext_resource type="PackedScene" uid="uid://177vflb54yif" path="res://Scenes/Objects/Animated_Decs/DiamondBush_2.tscn" id="2_u0po6"]
+[ext_resource type="PackedScene" uid="uid://bx835kjcxf5y4" path="res://Scenes/Objects/Animated_Decs/DiamondBush_3.tscn" id="3_pwpi6"]
+[ext_resource type="PackedScene" uid="uid://b8yiwrxtvg8io" path="res://Scenes/Objects/Animated_Decs/WaterFoam.tscn" id="4_v7no6"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cm38w"]
+scenes/1/scene = ExtResource("1_t54yx")
+scenes/2/scene = ExtResource("2_u0po6")
+scenes/3/scene = ExtResource("3_pwpi6")
+scenes/4/scene = ExtResource("4_v7no6")
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_cm38w")

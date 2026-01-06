@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5xdlqlgbo12p"]
+
+[ext_resource type="Texture2D" uid="uid://cbocbr3doebq0" path="res://Sprites/Non Atlas support/RiverRepeater.png" id="1_58gdg"]
+[ext_resource type="Shader" uid="uid://q458chkaaqoj" path="res://Shaders/TextureRepeater.gdshader" id="1_e636j"]
+[ext_resource type="Texture2D" uid="uid://dmhb6d68627fw" path="res://Sprites/Objects/TileSets/AnimatedTilesets/WaveSliderBACK.png" id="1_xa7ug"]
+[ext_resource type="Texture2D" uid="uid://daynvtfevtrlf" path="res://Sprites/Objects/TileSets/AnimatedTilesets/WaveSliderFRONT.png" id="4_w6i7f"]
+[ext_resource type="PackedScene" uid="uid://b4mo4grs68c47" path="res://Scenes/Triggers/Noders/SliderBody2D.tscn" id="5_w6i7f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0d3ce"]
+shader = ExtResource("1_e636j")
+shader_parameter/scroll_speed = 0.70000003325
+shader_parameter/angle_degrees = 0.0
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0000000475
+shader_parameter/row_offset = 1.0
+
+[node name="RiverSlider_Liner" type="Node2D"]
+
+[node name="Back" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 104, 0, 144, 12)
+width = 18.0
+texture = ExtResource("1_xa7ug")
+texture_mode = 1
+
+[node name="River" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0d3ce")
+position = Vector2(0, 4)
+points = PackedVector2Array(0, 0, 104, 0, 144, 12)
+width = 18.0
+texture = ExtResource("1_58gdg")
+texture_mode = 1
+
+[node name="Front" type="Line2D" parent="."]
+z_index = 60
+texture_repeat = 2
+position = Vector2(0, 8)
+points = PackedVector2Array(0, 0, 104, 0, 144, 12)
+width = 18.0
+texture = ExtResource("4_w6i7f")
+texture_mode = 1
+
+[node name="SliderBody2D" parent="." instance=ExtResource("5_w6i7f")]
+
+[editable path="SliderBody2D"]

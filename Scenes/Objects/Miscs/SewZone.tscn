@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdie5taiq0xah"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/SewZone.gd" id="1_ftla0"]
+[ext_resource type="PackedScene" uid="uid://dku8ch3bk6405" path="res://Scenes/Objects/Miscs/SewPoint.tscn" id="2_253kh"]
+
+[node name="Sews" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftla0")
+metadata/_edit_lock_ = true
+
+[node name="SewPoint" parent="." instance=ExtResource("2_253kh")]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 122.0
+offset_right = 229.0
+offset_bottom = 138.0
+pivot_offset = Vector2(8, 8)
+
+[node name="SewPoint2" parent="." instance=ExtResource("2_253kh")]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 139.0
+offset_right = 530.0
+offset_bottom = 155.0
+pivot_offset = Vector2(8, 8)
+
+[node name="SewPoint3" parent="." instance=ExtResource("2_253kh")]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 213.0
+offset_right = 230.0
+offset_bottom = 229.0
+pivot_offset = Vector2(8, 8)
+
+[node name="SewPoint4" parent="." instance=ExtResource("2_253kh")]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 207.0
+offset_right = 470.0
+offset_bottom = 223.0
+pivot_offset = Vector2(8, 8)
+
+[node name="String" type="Line2D" parent="."]
+unique_name_in_owner = true
+width = 4.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 12

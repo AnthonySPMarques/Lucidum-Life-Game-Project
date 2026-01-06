@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Pickup_Logic_Resource" load_steps=2 format=3 uid="uid://dqniomif8xodh"]
+
+[ext_resource type="Script" uid="uid://dowydygbf1dc8" path="res://Scripts/Objects/Global_Logics/PickupModifierLogic.gd" id="1_dd2dc"]
+
+[resource]
+script = ExtResource("1_dd2dc")
+PickUp_Display = "AwakenCell_Small"
+Property_To_Modify = {
+"Current_Energy": 2
+}

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0bfsuh7g4hb4"]
+
+[ext_resource type="Texture2D" uid="uid://jv22uv36ds20" path="res://Sprites/EditorTriggers/Flags.png" id="1_8wyr4"]
+[ext_resource type="Script" uid="uid://dcnvo7l76p5yx" path="res://Scripts/Triggers/Editor/AutoHide.gd" id="1_omtis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2vf2"]
+atlas = ExtResource("1_8wyr4")
+region = Rect2(0, 0, 48, 96)
+margin = Rect2(16, 0, 16, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iymli"]
+atlas = ExtResource("1_8wyr4")
+region = Rect2(48, 0, 64, 96)
+margin = Rect2(16, 0, 16, 0)
+
+[node name="EntracesMarkers" type="Node2D"]
+script = ExtResource("1_omtis")
+
+[node name="PointStart" type="Marker2D" parent="."]
+z_index = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="PointStart"]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+texture = SubResource("AtlasTexture_d2vf2")
+offset = Vector2(0, -48)
+
+[node name="Exit_1" type="Marker2D" parent="." groups=["Exiter"]]
+unique_name_in_owner = true
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+z_index = 20
+
+[node name="Sprite" type="Sprite2D" parent="Exit_1"]
+texture = SubResource("AtlasTexture_iymli")
+offset = Vector2(0, -48)
+flip_h = true

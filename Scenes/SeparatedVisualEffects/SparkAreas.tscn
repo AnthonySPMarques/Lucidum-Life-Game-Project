@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ncnyklkfo4st"]
+
+[node name="SparkAreas" type="Node2D"]
+z_index = 60
+
+[node name="LeftSpark" type="Position2D" parent="."]
+position = Vector2(-5, -3)
+
+[node name="RightSpark" type="Position2D" parent="."]
+position = Vector2(5, -3)

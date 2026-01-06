@@ -1,0 +1,21 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://76bb38h2ofex"]
+
+[sub_resource type="Sky" id="30"]
+
+[resource]
+background_mode = 3
+background_canvas_max_layer = 1
+sky = SubResource("30")
+sky_custom_fov = 1.0
+ssao_radius = 81.21
+ssao_intensity = 76.21
+ssao_light_affect = 0.25
+ssao_ao_channel_affect = 0.43
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.4
+glow_blend_mode = 1
+fog_light_color = Color(1, 1, 1, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_saturation = 1.1

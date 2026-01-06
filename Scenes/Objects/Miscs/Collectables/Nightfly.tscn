@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://67nm0t8wuyml"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/GenericMiscItem.gd" id="1_35eau"]
+[ext_resource type="Resource" uid="uid://b28t4n647b7ws" path="res://tres/Resources/Pickups/Pickup_ID_006.tres" id="2_7gy11"]
+[ext_resource type="Texture2D" uid="uid://bu74r654op3m0" path="res://Sprites/Objects/Miscs/Nightfly.png" id="3_eedxi"]
+
+[sub_resource type="Animation" id="Animation_yymqc"]
+resource_name = "Disappearing"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_syb24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rkn2d"]
+resource_name = "kill"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f6c0"]
+_data = {
+"Disappearing": SubResource("Animation_yymqc"),
+"RESET": SubResource("Animation_syb24"),
+"kill": SubResource("Animation_rkn2d")
+}
+
+[sub_resource type="Animation" id="Animation_71wup"]
+length = 0.66
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 47, 34), Rect2(47, 0, 45, 34), Rect2(92, 0, 39, 34), Rect2(131, 0, 35, 34), Rect2(166, 0, 27, 34), Rect2(193, 0, 21, 34), Rect2(214, 0, 17, 34), Rect2(231, 0, 21, 34), Rect2(252, 0, 35, 34), Rect2(287, 0, 39, 34), Rect2(326, 0, 45, 34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42, 0.48, 0.54, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1), Vector2(-0.5, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ac82s"]
+_data = {
+"Nightfly": SubResource("Animation_71wup")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q72gr"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3vkk"]
+size = Vector2(43, 34)
+
+[node name="NightFly" type="Node2D" groups=["NightFlies"]]
+
+[node name="Nightflies" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Item_Area2D", "Item_Body", "Parent") groups=["Collectables"]]
+z_index = 20
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_35eau")
+Pickup_Resource = ExtResource("2_7gy11")
+has_gravity = false
+PickedUp_Sound = 38
+Item_Area2D = NodePath("Hitbox")
+Item_Body = NodePath(".")
+Parent = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Nightflies"]
+texture = ExtResource("3_eedxi")
+offset = Vector2(-0.5, -1)
+region_enabled = true
+region_rect = Rect2(231, 0, 21, 34)
+
+[node name="StatPlayer" type="AnimationPlayer" parent="Nightflies/Sprite2D"]
+unique_name_in_owner = true
+process_priority = 1
+process_physics_priority = 1
+libraries = {
+"": SubResource("AnimationLibrary_0f6c0")
+}
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Nightflies/Sprite2D"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ac82s")
+}
+autoplay = "Nightfly"
+
+[node name="Hitbox" type="Area2D" parent="Nightflies"]
+collision_layer = 64
+collision_priority = 2.0
+
+[node name="Mask" type="CollisionShape2D" parent="Nightflies/Hitbox"]
+shape = SubResource("RectangleShape2D_q72gr")
+debug_color = Color(0.745, 0.964, 1, 0.163)
+
+[node name="Mask" type="CollisionShape2D" parent="Nightflies"]
+shape = SubResource("RectangleShape2D_i3vkk")
+debug_color = Color(0.0588612, 0, 0.7, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Nightflies"]
+modulate = Color(1, 1, 1, 0.13)
+position = Vector2(-3.05176e-05, 0)
+scale = Vector2(6.4, 6.4)
+
+[connection signal="picked_up" from="Nightflies" to="Nightflies" method="_on_picked_up"]

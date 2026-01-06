@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhvpdq61ftom2"]
+
+[ext_resource type="Script" path="res://smooth_path_mod.gd" id="1_joxui"]
+[ext_resource type="Texture2D" uid="uid://8sa88oyaxfr2" path="res://Sprites/Non Atlas support/WaterLine.png" id="2"]
+
+[sub_resource type="Curve2D" id="1"]
+bake_interval = 2.0
+
+[node name="SmoothPath" type="Path2D"]
+self_modulate = Color(1, 1, 1, 0.701961)
+z_index = 10
+curve = SubResource("1")
+script = ExtResource("1_joxui")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 20
+z_as_relative = false
+y_sort_enabled = true
+points = PackedVector2Array(0, 0, 36, 0)
+width = 20.0
+texture = ExtResource("2")
+texture_mode = 2

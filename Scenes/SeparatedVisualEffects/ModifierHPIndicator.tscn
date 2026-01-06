@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3gj0e8cytvi5"]
+
+[ext_resource type="Script" uid="uid://cmvbakebqvrce" path="res://Scripts/SeparatedVFXs/ModifireHPindicator.gd" id="1_gxoh3"]
+
+[sub_resource type="Animation" id="Animation_32udc"]
+resource_name = "Default"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Label/..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.25),
+"transitions": PackedFloat32Array(0.5, 0.5, -2),
+"update": 0,
+"values": [Vector2(2.2, 2.2), Vector2(2.2, 2.2), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Label/..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.77),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2j347"]
+_data = {
+&"Default": SubResource("Animation_32udc")
+}
+
+[node name="ModifierHPIndicator" type="Node2D"]
+top_level = true
+z_index = 100
+scale = Vector2(2.2, 2.2)
+script = ExtResource("1_gxoh3")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = -0.0357143
+anchor_top = -0.0182292
+anchor_right = 0.0386905
+anchor_bottom = 0.0182292
+offset_left = -21.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 18.0
+pivot_offset = Vector2(21, 18)
+theme_override_colors/font_color = Color(1, 0.254477, 0.254477, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 26
+text = "-10"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_2j347")
+}

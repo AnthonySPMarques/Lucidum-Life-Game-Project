@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=3 uid="uid://ceb255lmao30h"]
+
+[ext_resource type="Script" uid="uid://by4gpl2kxnvrs" path="res://Scripts/Objects/Miscs/GenericMiscItem.gd" id="1_bkgn2"]
+[ext_resource type="Resource" uid="uid://6a5kfyhu2lv7" path="res://tres/Resources/Pickups/Pickup_ID_001.tres" id="2_g1agq"]
+[ext_resource type="Texture2D" uid="uid://cxmy3mje2lr4a" path="res://Sprites/Objects/Miscs/Big_HealthCapsule.png" id="3_akfxj"]
+
+[sub_resource type="Animation" id="Animation_yymqc"]
+resource_name = "Disappearing"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_syb24"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rkn2d"]
+resource_name = "kill"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f6c0"]
+_data = {
+&"Disappearing": SubResource("Animation_yymqc"),
+&"RESET": SubResource("Animation_syb24"),
+&"kill": SubResource("Animation_rkn2d")
+}
+
+[sub_resource type="Animation" id="Animation_teawy"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32), Rect2(32, 0, 32, 32), Rect2(64, 0, 32, 32), Rect2(32, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmco3"]
+_data = {
+&"HealthCapsule_Big": SubResource("Animation_teawy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvjg1"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3d0y"]
+radius = 16.0
+
+[node name="HealthCapsule_Big" type="CharacterBody2D" node_paths=PackedStringArray("visibility_mask", "Item_Area2D", "Item_Body") groups=["Collectables"]]
+z_index = 20
+collision_layer = 0
+collision_mask = 8198
+collision_priority = 2.0
+script = ExtResource("1_bkgn2")
+visibility_mask = NodePath("VisibleOnScreenEnabler2D")
+UI_signal_name = &"signal_when_current_Health_value_changed"
+UI_method_name = &"change_Current_Health_Value"
+Pickup_Resource = ExtResource("2_g1agq")
+has_life_time = true
+life_time = 7.0
+apply_random_impulse = true
+MaxItemRigidImpulse_Y = 400.0
+CharacterBody_height_impulse = 180.0
+Item_Area2D = NodePath("Hitbox")
+Item_Body = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("3_akfxj")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="StatPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+process_priority = 1
+process_physics_priority = 1
+libraries = {
+&"": SubResource("AnimationLibrary_0f6c0")
+}
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_wmco3")
+}
+autoplay = "HealthCapsule_Big"
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 64
+
+[node name="Mask" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_mvjg1")
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_b3d0y")
+debug_color = Color(0.0588612, 0, 0.7, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(6.4, 6.4)
+
+[node name="VisibleOnScreenEnabler2D2" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(6.4, 6.4)
+
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]

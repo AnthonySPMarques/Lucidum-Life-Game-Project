@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwtvs7a5qwjh1"]
+
+[ext_resource type="Script" uid="uid://dya5u1xfr1hti" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="1_1h8ni"]
+[ext_resource type="Material" uid="uid://dpbafdt8r87qm" path="res://tres/Materials/ShiningSparkles_Particles_explosion.tres" id="1_asvto"]
+[ext_resource type="Texture2D" uid="uid://dyl0cubhd00u8" path="res://Sprites/ParticlesEffect/GlowPierce.png" id="2_alktf"]
+[ext_resource type="Material" uid="uid://duy5in6ujbefn" path="res://tres/Materials/BouncableParticles.tres" id="4_n1bje"]
+
+[node name="ShiningSparkles_Particles" type="GPUParticles2D"]
+self_modulate = Color(40, 10, 12, 1)
+light_mask = 9
+z_index = 100
+texture_filter = 3
+texture_repeat = 1
+amount = 35
+sub_emitter = NodePath("CollidedSparkles_Particles")
+texture = ExtResource("2_alktf")
+lifetime = 3.0
+interp_to_end = 0.06
+speed_scale = 0.7
+explosiveness = 1.0
+fixed_fps = 60
+collision_base_size = 1.5
+visibility_rect = Rect2(-768, -480, 1536, 960)
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 2
+process_material = ExtResource("1_asvto")
+script = ExtResource("1_1h8ni")
+
+[node name="CollidedSparkles_Particles" type="GPUParticles2D" parent="."]
+self_modulate = Color(25, 19, 10, 1)
+light_mask = 9
+texture_filter = 3
+texture_repeat = 2
+emitting = false
+amount = 1
+texture = ExtResource("2_alktf")
+lifetime = 5.0
+interp_to_end = 0.015
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-768, -480, 1536, 960)
+local_coords = true
+process_material = ExtResource("4_n1bje")

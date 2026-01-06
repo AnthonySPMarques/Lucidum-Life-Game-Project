@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvykc8fxf381"]
+
+[sub_resource type="Resource" id="Resource_rafp5"]
+metadata/__load_path__ = "res://Scripts/Objects/Effects/Clash_Creator.gd"
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(16, 4)
+
+[sub_resource type="Resource" id="Resource_yfafw"]
+metadata/__load_path__ = "res://Scripts/Objects/Effects/Clash_Creator.gd"
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(16, 3.99998)
+
+[node name="Clash_Creator" type="Node2D"]
+
+[node name="Clash_Left" type="Area2D" parent="."]
+position = Vector2(-4, 0)
+z_index = 50
+collision_layer = 0
+collision_mask = 256
+script = SubResource("Resource_rafp5")
+
+[node name="Mask" type="CollisionShape2D" parent="Clash_Left"]
+position = Vector2(-4.29153e-06, 0)
+rotation = 1.57079
+shape = SubResource("3")
+
+[node name="Clash_Right" type="Area2D" parent="."]
+position = Vector2(4, 0)
+z_index = 50
+collision_layer = 0
+collision_mask = 256
+script = SubResource("Resource_yfafw")
+
+[node name="Mask" type="CollisionShape2D" parent="Clash_Right"]
+position = Vector2(4.76837e-07, 0)
+rotation = -1.57079
+shape = SubResource("4")

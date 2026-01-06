@@ -1,0 +1,157 @@
+[gd_scene load_steps=12 format=3 uid="uid://bihx2gr1dvf85"]
+
+[ext_resource type="Script" uid="uid://by4gpl2kxnvrs" path="res://Scripts/Objects/Miscs/GenericMiscItem.gd" id="1_itlnb"]
+[ext_resource type="Resource" uid="uid://dqniomif8xodh" path="res://tres/Resources/Pickups/Pickup_ID_003.tres" id="2_7feqy"]
+[ext_resource type="Texture2D" uid="uid://dj5hp6msju3rv" path="res://Sprites/Objects/Miscs/Small_AwakenCell.png" id="3_lcxr8"]
+
+[sub_resource type="Animation" id="Animation_eg4jq"]
+resource_name = "Disappearing"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1feq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ipmwf"]
+resource_name = "kill"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd3wo"]
+_data = {
+&"Disappearing": SubResource("Animation_eg4jq"),
+&"RESET": SubResource("Animation_1feq1"),
+&"kill": SubResource("Animation_ipmwf")
+}
+
+[sub_resource type="Animation" id="Animation_te2tc"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 12, 12), Rect2(12, 0, 12, 12), Rect2(24, 0, 12, 12), Rect2(12, 0, 12, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6baem"]
+_data = {
+&"AwakenCell_Small": SubResource("Animation_te2tc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rpet5"]
+radius = 12.1655
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_un5q6"]
+radius = 6.0
+
+[node name="AwakenCell_Small" type="CharacterBody2D" node_paths=PackedStringArray("visibility_mask", "Item_Area2D", "Item_Body") groups=["Collectables"]]
+z_index = 20
+collision_layer = 0
+collision_mask = 8198
+script = ExtResource("1_itlnb")
+visibility_mask = NodePath("VisibleOnScreenEnabler2D")
+UI_method_name = &"change_Current_AwakenEnergy_Value"
+Pickup_Resource = ExtResource("2_7feqy")
+has_life_time = true
+CharacterBody_height_impulse = 180.0
+item_gravity_modifier = 1.1
+Item_Area2D = NodePath("Hitbox")
+Item_Body = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("3_lcxr8")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="StatPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+process_priority = 1
+process_physics_priority = 1
+deterministic = true
+libraries = {
+&"": SubResource("AnimationLibrary_dd3wo")
+}
+autoplay = "RESET"
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_6baem")
+}
+autoplay = "AwakenCell_Small"
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 64
+
+[node name="Mask" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_rpet5")
+debug_color = Color(0.921569, 0.0901961, 0.556863, 0.321569)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_un5q6")
+debug_color = Color(0.7, 0.0446824, 0.560795, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(6.4, 6.4)
+
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]

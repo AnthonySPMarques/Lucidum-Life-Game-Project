@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnoda4uf1eahd"]
+
+[ext_resource type="Texture2D" uid="uid://dyl0cubhd00u8" path="res://Sprites/ParticlesEffect/GlowPierce.png" id="1_5n4hm"]
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="2_ipk7x"]
+
+[sub_resource type="Curve" id="Curve_c5l3s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.91886, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ucrqf"]
+curve = SubResource("Curve_c5l3s")
+
+[sub_resource type="Gradient" id="Gradient_ucrqf"]
+colors = PackedColorArray(5, 5, 5, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b6603"]
+gradient = SubResource("Gradient_ucrqf")
+
+[sub_resource type="Curve" id="Curve_ucrqf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1.67364), 0.48794, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b6603"]
+curve = SubResource("Curve_ucrqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_07tnk"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 32.0
+angle_min = -360.0
+angle_max = 360.0
+orbit_velocity_min = -0.0999999
+orbit_velocity_max = 0.1
+radial_velocity_min = -0.100022
+radial_velocity_max = 0.0999776
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+tangential_accel_min = -200.0
+tangential_accel_max = 200.0
+scale_min = 0.2
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_b6603")
+color_ramp = SubResource("GradientTexture1D_b6603")
+alpha_curve = SubResource("CurveTexture_ucrqf")
+
+[node name="Aura_Orbs" type="GPUParticles2D"]
+self_modulate = Color(1, 1, 2, 1)
+z_index = 80
+texture_filter = 3
+texture_repeat = 1
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_07tnk")
+texture = ExtResource("1_5n4hm")
+lifetime = 2.0
+preprocess = 60.0
+explosiveness = 0.1
+randomness = 0.1
+fixed_fps = 60
+interp_to_end = 0.03
+visibility_rect = Rect2(-768, -480, 1536, 960)
+script = ExtResource("2_ipk7x")
+auto_set_oneshot = false
+metadata/_custom_type_script = "uid://dya5u1xfr1hti"

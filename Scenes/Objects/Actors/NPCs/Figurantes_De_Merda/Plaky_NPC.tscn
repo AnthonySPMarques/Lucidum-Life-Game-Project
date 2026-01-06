@@ -1,0 +1,284 @@
+[gd_scene load_steps=26 format=3 uid="uid://c0bkqutjjqawv"]
+
+[ext_resource type="Script" uid="uid://b1sm22ogick41" path="res://Scripts/Objects/Actors/NPCs/FigurantesDeMerda/NPC_Body.gd" id="1_tln18"]
+[ext_resource type="Texture2D" uid="uid://5kebjbqcq4mv" path="res://Sprites/Characters/FriendlyNPCs/Plaky.png" id="1_vm6xv"]
+[ext_resource type="Script" uid="uid://du82mmjbj7uqh" path="res://Scenes/Objects/Actors/NPCs/Figurantes_De_Merda/Plaky_NPC_Interaction.gd" id="3_7q4mq"]
+[ext_resource type="PackedScene" uid="uid://yulaxmso2mm5" path="res://Scenes/Triggers/GUIs/Plake_Content.tscn" id="4_bkedh"]
+[ext_resource type="Texture2D" uid="uid://dgl0nthlhadoe" path="res://Sprites/UIs/general/ScreenMenu_Tranks.png" id="5_63uv1"]
+[ext_resource type="FontFile" uid="uid://dbvyiuhlljfku" path="res://Fonts/Joti_One/JotiOne-Regular.ttf" id="5_hajk2"]
+
+[sub_resource type="Animation" id="Animation_qs21b"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8t0r4"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(32, 0, 32, 44), Rect2(64, 0, 32, 44), Rect2(96, 0, 32, 44), Rect2(128, 0, 32, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4unut"]
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(128, 0, 32, 44), Rect2(160, 0, 32, 44), Rect2(192, 0, 32, 44), Rect2(160, 0, 32, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6bq7"]
+length = 0.22
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(96, 0, 32, 44), Rect2(64, 0, 32, 44), Rect2(32, 0, 32, 44)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cewb"]
+_data = {
+&"Off": SubResource("Animation_qs21b"),
+&"On": SubResource("Animation_8t0r4"),
+&"OnLoop": SubResource("Animation_4unut"),
+&"ToOff": SubResource("Animation_i6bq7")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ilxyd"]
+animation = &"Off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rqww7"]
+animation = &"On"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgukx"]
+animation = &"OnLoop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bw6yc"]
+animation = &"ToOff"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1hq74"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5i2jq"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f8t5h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4a2n5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iywgc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bi66p"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_13j3j"]
+states/Off/node = SubResource("AnimationNodeAnimation_ilxyd")
+states/Off/position = Vector2(346, 123.5)
+states/On/node = SubResource("AnimationNodeAnimation_rqww7")
+states/On/position = Vector2(448, 123.5)
+states/OnLoop/node = SubResource("AnimationNodeAnimation_fgukx")
+states/OnLoop/position = Vector2(557, 123.5)
+states/ToOff/node = SubResource("AnimationNodeAnimation_bw6yc")
+states/ToOff/position = Vector2(408, 28.5)
+transitions = ["Off", "On", SubResource("AnimationNodeStateMachineTransition_1hq74"), "On", "OnLoop", SubResource("AnimationNodeStateMachineTransition_5i2jq"), "Start", "Off", SubResource("AnimationNodeStateMachineTransition_f8t5h"), "OnLoop", "ToOff", SubResource("AnimationNodeStateMachineTransition_4a2n5"), "On", "ToOff", SubResource("AnimationNodeStateMachineTransition_iywgc"), "ToOff", "Off", SubResource("AnimationNodeStateMachineTransition_bi66p")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbj4p"]
+size = Vector2(64, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvpie"]
+atlas = ExtResource("5_63uv1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd7xr"]
+atlas = ExtResource("5_63uv1")
+region = Rect2(16, 0, 16, 16)
+
+[node name="Plaky_NPC" type="Area2D"]
+z_index = 10
+collision_layer = 32768
+script = ExtResource("1_tln18")
+auto_interact = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+texture = ExtResource("1_vm6xv")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 44)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_2cewb")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite2D/AnimationPlayer"]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/../..")
+tree_root = SubResource("AnimationNodeStateMachine_13j3j")
+anim_player = NodePath("..")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(2.4, 2.4)
+enable_node_path = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("RectangleShape2D_tbj4p")
+debug_color = Color(0.7, 0.459375, 0, 0.42)
+
+[node name="InteractionDialog" type="Node2D" parent="." node_paths=PackedStringArray("NPC")]
+unique_name_in_owner = true
+script = ExtResource("3_7q4mq")
+NPC = NodePath("..")
+
+[node name="Plake_Content" parent="InteractionDialog" instance=ExtResource("4_bkedh")]
+offset_left = -96.0
+offset_top = -208.0
+offset_right = 96.0
+offset_bottom = -80.0
+
+[node name="PanelContainer" parent="InteractionDialog/Plake_Content" index="1"]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="HBoxContainer" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent" index="0"]
+layout_mode = 0
+
+[node name="Texts" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent/HBoxContainer/VBoxContainer" index="0"]
+size_flags_horizontal = 4
+
+[node name="Textbox" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent/HBoxContainer/VBoxContainer/Texts" index="0"]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -70.5
+offset_top = -25.0
+offset_right = 70.5
+offset_bottom = 0.0
+grow_vertical = 0
+text = "Down platforms"
+
+[node name="Textbox2" type="Label" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent/HBoxContainer/VBoxContainer/Texts" index="1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 34.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_hajk2")
+text = "x 2"
+
+[node name="Icon" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent/HBoxContainer/VBoxContainer/Textures" index="0"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 0.0
+offset_right = 28.0
+offset_bottom = 64.0
+grow_vertical = 1
+texture = SubResource("AtlasTexture_dvpie")
+
+[node name="Arrow" type="TextureRect" parent="InteractionDialog/Plake_Content/PanelContainer/PanelContent/HBoxContainer/VBoxContainer/Textures/Icon" index="0"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gd7xr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="interaction_request" from="." to="InteractionDialog" method="_on_plaky_npc_interaction_request"]
+[connection signal="toggle_request" from="." to="InteractionDialog" method="_on_plaky_npc_toggle_request"]
+
+[editable path="InteractionDialog/Plake_Content"]
+[editable path="InteractionDialog/Plake_Content/PanelContainer/PanelContent"]

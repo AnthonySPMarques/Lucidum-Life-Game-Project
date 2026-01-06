@@ -1,0 +1,102 @@
+###Projectiles###
+0 ID = BigSlashBite
+1 ID = CannonBall
+2 ID = LunarArrow/SolarArrow
+
+###Miscellaneous Items###
+0 ID = HeatlhCapsule_Small
+1 ID = HeatlhCapsule_Big
+2 ID = HeatlhCapsule_Filler
+3 ID = AwakenCell_Small
+4 ID = AwakenCell_Big
+5 ID = AwakenCell_Filler
+6 ID = DreamButterfly
+7 ID = SmallLucidelCoin
+8 ID = LucidelCoin
+
+###Animated Effect Guide###
+##Rigids##
+0 ID = Slashed Cannonball A
+1 ID = Slashed Cannonball B
+2 ID = Fire Explosion (Hurtable)
+3 ID = Pink Fire Explosion (Friendly with Flockos)
+##Normal##
+0 ID = Clash Explosion Diagonal
+1 ID = Clash Explosion Vertical
+2 ID = Pink Bolt
+3 ID = Water Splash
+4 ID = Wind Blow
+5 ID = Small Smoke Up
+6 ID = Dash Smoke
+7 ID = Impulse Wind
+8 ID = Land Dust
+9 ID = Eletric Wall Kick
+10 ID = Pickup Effect
+15 ID = Blue Fire Explosion (Nothing)
+16 ID = Destroyed Wheel
+17 ID = Collected Item effect
+18 ID = Destroyed bullet effect
+
+###Particle Guide###
+0 ID = Bubble Water
+1 ID = Shake Spark
+2 ID = SlashBite Particles Directional
+3 ID = SlashBite Particles Explosion
+4 ID = Orbital_Bolt/Erasador
+5 ID = Eletric_Body_Particles/Aura_Orbs
+6 ID = Aura_Orbs
+7 ID = Splash_Water/Splash_Contact_Water
+8 ID = Bubble_Drops_Particles
+9 ID = Orbital_Bolts
+10 ID = Burning_Leaves
+		
+		
+###Sounds IDs###
+0 ID = SFX_AttackHit
+1 ID = SFX_SlashBite
+2 ID = SFX_SlashBite3th
+3 ID = SFX_FireworkBites
+4 ID = SFX_Kickback
+5 ID = SFX_Meow
+6 ID = SFX_Jump
+7 ID = SFX_Land
+8 ID = SFX_Dash
+9 ID = SFX_DashSaw
+10 ID = SFX_WallKick
+11 ID = SFX_Knockback
+12 ID = SFX_ThunderIntro
+13 ID = SFX_OpenDoor
+14 ID = SFX_CloseDoor
+15 ID = SFX_MeowHurt
+16 ID = SFX_SplashWaterEnter
+17 ID = SFX_SplashWaterExit
+18 ID = SFX_WaterShake
+19 ID = SFX_ThunderEco
+20 ID = SFX_Splash
+21 ID = SFX_WaterSwing
+22 ID = SFX_LightingKite
+23 ID = SFX_Boing
+24 ID = SFX_MeowDeath
+25 ID = SFX_Purr
+26 ID = SFX_CrazyFly_Saw
+27 ID = SFX_Fan
+28 ID = SFX_LightingCharge
+29 ID = SFX_WhooshBlade
+30 ID = SFX_StrongSwordStamp
+31 ID = SFX_GlitchingScratch
+32 ID = SFX_DestructionExplosion
+33 ID = SFX_MenuAppear
+34 ID = SFX_MenuConfirm
+35 ID = SFX_MenuQuit
+36 ID = SFX_MenuArrow
+37 ID = SFX_Pickup
+38 ID = SFX_PickupRare
+39 ID = SFX_Poing
+40 ID = SFX_PoingPower
+41 ID = SFX_FlockosYell
+42 ID = SFX_MetalSpring
+43 ID = SFX_SpringVocaled
+44 ID = SFX_Luicidel
+45 ID = SFX_FlockosCry1st
+46 ID = SFX_FlockosCry2nd
+47 ID = SFX_FlockosCry3st

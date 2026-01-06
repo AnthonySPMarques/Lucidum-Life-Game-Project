@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0dynumvjevn6"]
+
+[ext_resource type="Script" uid="uid://ctj3x5nbv4jd2" path="res://Scripts/Triggers/Nodes/GamePlayerManager.gd" id="1_0qnqj"]
+[ext_resource type="PackedScene" uid="uid://bh1huml857rbt" path="res://Scenes/Objects/Actors/Players/Flockos.tscn" id="3_cxcge"]
+[ext_resource type="Script" uid="uid://833vns4ipxgx" path="res://Scripts/Triggers/Nodes/2DWorld_Manager.gd" id="4_ssrxe"]
+
+[node name="GamePlayerTrigger" type="Node" node_paths=PackedStringArray("Universe_2D_Trigger", "Universe_3D_Trigger", "GUI_Trigger")]
+script = ExtResource("1_0qnqj")
+First_Scene = "uid://dxkoxaolhufnb"
+Universe_2D_Trigger = NodePath("2DWorld")
+Universe_3D_Trigger = NodePath("3DWorld")
+GUI_Trigger = NodePath("GUIs")
+
+[node name="Flockos" parent="." instance=ExtResource("3_cxcge")]
+Show_Debug_Velocity = false
+Show_Debug_Bool = false
+
+[node name="2DWorld" type="Node2D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+script = ExtResource("4_ssrxe")
+
+[node name="3DWorld" type="Node3D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+
+[node name="GUIs" type="Control" parent="."]
+process_priority = -1
+process_physics_priority = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true

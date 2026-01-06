@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dku8ch3bk6405"]
+
+[ext_resource type="Texture2D" uid="uid://cylloqxhr0gdv" path="res://Sprites/Objects/Miscs/SewPoints.png" id="1_fdlxk"]
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/SewPoint.gd" id="2_6i2sw"]
+
+[node name="SewPoint" type="TextureButton"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("1_fdlxk")
+script = ExtResource("2_6i2sw")

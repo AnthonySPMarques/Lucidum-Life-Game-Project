@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://busscjnxacl5n"]
+
+[ext_resource type="Texture2D" uid="uid://ki8hou5xbj6o" path="res://Sprites/Characters/Adnixs/AdinxsSprite.png" id="1_tvjo6"]
+
+[sub_resource type="Animation" id="Animation_cc8gu"]
+length = 1.34
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Adinxs:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.22, 0.28, 0.32, 0.36, 0.4, 0.42, 0.46, 0.5, 0.54, 0.58, 0.64, 0.68, 0.74, 0.78, 0.98, 1.1, 1.14, 1.18, 1.22, 1.26, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(1, 1, 73, 146), Rect2(76, 1, 73, 146), Rect2(151, 1, 73, 146), Rect2(226, 1, 73, 146), Rect2(301, 1, 73, 146), Rect2(376, 1, 74, 146), Rect2(452, 1, 74, 146), Rect2(528, 1, 75, 146), Rect2(605, 1, 75, 146), Rect2(682, 1, 74, 146), Rect2(758, 1, 73, 146), Rect2(833, 1, 71, 147), Rect2(906, 1, 71, 147), Rect2(979, 1, 73, 147), Rect2(1054, 1, 73, 146), Rect2(1129, 1, 73, 146), Rect2(1204, 1, 73, 146), Rect2(1279, 1, 73, 146), Rect2(1354, 1, 73, 146), Rect2(1429, 1, 73, 146), Rect2(1504, 1, 73, 146), Rect2(1579, 1, 73, 146), Rect2(1654, 1, 73, 146), Rect2(1729, 1, 73, 146), Rect2(1, 150, 73, 146), Rect2(76, 150, 73, 146)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Adinxs:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.22, 0.28, 0.32, 0.36, 0.4, 0.42, 0.46, 0.5, 0.54, 0.58, 0.64, 0.68, 0.74, 0.78, 0.98, 1.1, 1.14, 1.18, 1.22, 1.26, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-6, -5), Vector2(-6, -5), Vector2(-6.5, -5), Vector2(-6.5, -5), Vector2(-6, -5), Vector2(-6.5, -5), Vector2(-6.5, -5.5), Vector2(-6.5, -5.5), Vector2(-5.5, -5.5), Vector2(-6.5, -5), Vector2(-6.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5), Vector2(-5.5, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k0ux"]
+_data = {
+&"Idle": SubResource("Animation_cc8gu")
+}
+
+[node name="Adinxs" type="CharacterBody2D"]
+z_index = 45
+
+[node name="Adinxs" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -67)
+texture = ExtResource("1_tvjo6")
+offset = Vector2(-5.5, -5)
+region_enabled = true
+region_rect = Rect2(1, 1, 73, 146)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5k0ux")
+}
+autoplay = "Idle"

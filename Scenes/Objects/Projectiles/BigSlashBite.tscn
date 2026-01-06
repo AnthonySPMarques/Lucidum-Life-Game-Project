@@ -1,0 +1,134 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvfatr0onh7ku"]
+
+[ext_resource type="Script" uid="uid://11tb0n8dvuda" path="res://Scripts/Objects/Projectiles/BigSlash.gd" id="1_ludlf"]
+[ext_resource type="Texture2D" uid="uid://74qfukkldor" path="res://Sprites/Objects/Projectiles.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://yawpg8ek5slt" path="res://Scenes/Triggers/FXs/PointLight.tscn" id="2_5fjys"]
+[ext_resource type="Script" uid="uid://blvlo7gckjcqi" path="res://Scripts/Triggers/FXs/TrailMaker.gd" id="3_khvk3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6gqx"]
+radius = 46.0
+height = 286.0
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(2, 2, 127, 288)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(448, 448)
+
+[sub_resource type="Curve" id="Curve_frgpl"]
+_data = [Vector2(0, 0), 0.0, 1.24098, 0, 0, Vector2(0.179458, 0.31579), 0.0, 0.0, 0, 0, Vector2(0.405192, 0.216868), 0.0, 0.0, 0, 0, Vector2(0.624153, 0.612556), 0.0, 0.0, 0, 0, Vector2(0.827314, 0.521877), 0.0, 0.0, 0, 0, Vector2(1, 0.934052), 0.259269, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_w6gqx"]
+offsets = PackedFloat32Array(0, 0.107226, 0.811189, 1)
+colors = PackedColorArray(1.82, 0.258, 1.404, 1, 2, 2, 2, 1, 1.98308, 1.83626, 1.94398, 1, 2, 2, 2, 0)
+
+[sub_resource type="Gradient" id="Gradient_vifae"]
+offsets = PackedFloat32Array(0, 0.107226, 0.811189, 0.937063)
+colors = PackedColorArray(2, 2, 2, 0, 2, 2, 2, 1, 1.98308, 1.83626, 1.94398, 1, 1.82, 0.258, 1.404, 1)
+
+[sub_resource type="Animation" id="Animation_w6gqx"]
+resource_name = "modulate"
+length = 0.31
+loop_mode = 2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:gradient")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [SubResource("Gradient_w6gqx"), SubResource("Gradient_vifae")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01, 0.3),
+"transitions": PackedFloat32Array(1, 0.933033),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.82, 0.258, 1.404, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wld3a"]
+_data = {
+&"modulate": SubResource("Animation_w6gqx")
+}
+
+[node name="BigSlash" type="CharacterBody2D" node_paths=PackedStringArray("Visibility_Mask")]
+z_index = 15
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ludlf")
+Visibility_Mask = NodePath("View_Mask")
+Speed = 8000.0
+Damage = 48.0
+
+[node name="PointLight2D" parent="." instance=ExtResource("2_5fjys")]
+position = Vector2(9.53674e-06, -144)
+scale = Vector2(3.04762, 4.95238)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(18, -143)
+shape = SubResource("CapsuleShape2D_w6gqx")
+
+[node name="Slash" type="Sprite2D" parent="."]
+z_index = 80
+position = Vector2(0, -144)
+texture = SubResource("2")
+
+[node name="SlashGlow" type="Sprite2D" parent="Slash"]
+modulate = Color(2.5, 2, 2, 1)
+z_index = -1
+texture = SubResource("2")
+
+[node name="View_Mask" type="VisibleOnScreenNotifier2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+position = Vector2(2.28882e-05, -144)
+scale = Vector2(102.4, 17.6)
+metadata/_edit_lock_ = true
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(11, -144)
+
+[node name="HitBox" type="Area2D" parent="." groups=["Slashbite_Area"]]
+position = Vector2(0, -144)
+collision_layer = 256
+collision_mask = 32
+
+[node name="Mask" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("3")
+disabled = true
+
+[node name="MaskBig" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-160, -16)
+shape = SubResource("3")
+debug_color = Color(0.780609, 0.364873, 0.626238, 0.42)
+
+[node name="Trail" type="Line2D" parent="." node_paths=PackedStringArray("sprite2D", "trail_pivot")]
+z_index = 40
+position = Vector2(11, -8)
+points = PackedVector2Array(-531, -133, 4, -136)
+width = 288.0
+width_curve = SubResource("Curve_frgpl")
+gradient = SubResource("Gradient_w6gqx")
+script = ExtResource("3_khvk3")
+length = 800
+sprite2D = NodePath("../Slash")
+trail_pivot = NodePath("../Center")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Trail"]
+libraries = {
+&"": SubResource("AnimationLibrary_wld3a")
+}
+autoplay = "modulate"
+speed_scale = 2.0

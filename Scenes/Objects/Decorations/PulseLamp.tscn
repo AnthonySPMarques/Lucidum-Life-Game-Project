@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj65xb01fp7fy"]
+
+[ext_resource type="Texture2D" uid="uid://c5k6dqdvhcmg3" path="res://Sprites/Objects/Decorations/Decorations.png" id="1_ugivd"]
+[ext_resource type="Texture2D" uid="uid://c5a3dhqc4wpqr" path="res://Sprites/Non Atlas support/GlowBig.png" id="2_5vie8"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swbyu"]
+
+[sub_resource type="Animation" id="Animation_lrnbk"]
+resource_name = "Pulse"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 0.5),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_d1vfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojchj"]
+_data = {
+&"Pulse": SubResource("Animation_lrnbk"),
+&"RESET": SubResource("Animation_d1vfu")
+}
+
+[node name="PulseLamp" type="NinePatchRect"]
+z_index = 50
+offset_right = 14.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_ugivd")
+region_rect = Rect2(1, 225, 14, 31)
+patch_margin_top = 5
+patch_margin_bottom = 15
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(8, 4)
+scale = Vector2(3.2, 3.2)
+color = Color(1, 1, 1.5, 0.8)
+energy = 1.05
+blend_mode = 2
+texture = ExtResource("2_5vie8")
+height = 30.0
+
+[node name="Polygon2D" type="Polygon2D" parent="PointLight2D"]
+scale = Vector2(1e-05, 1e-05)
+color = Color(40, 40, 50, 1)
+polygon = PackedVector2Array(-2.38419e-07, -3.75, 1.25, -1.25, 3.75, 0, 1.25, 1.25, -2.38419e-07, 3.75, -1.25, 1.25, -3.75, 0, -1.25, -1.25)
+
+[node name="Rotate" type="AnimationPlayer" parent="PointLight2D/Polygon2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_swbyu")
+}
+autoplay = "pulse"
+
+[node name="Pulse" type="AnimationPlayer" parent="PointLight2D/Polygon2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ojchj")
+}
+autoplay = "Pulse"
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(8, 16)
+scale = Vector2(0.8, 1.6)
+rect = Rect2(-10, -10, 17.5, 20)

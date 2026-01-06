@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci0sspnoxx431"]
+
+[ext_resource type="Texture2D" uid="uid://dcif2vmgb05qy" path="res://Sprites/Characters/Danky/Danky.png" id="1_wtrdk"]
+
+[sub_resource type="Animation" id="Animation_cc8gu"]
+length = 0.48
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Danky:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 104, 104), Rect2(104, 0, 104, 104), Rect2(208, 0, 104, 104), Rect2(312, 0, 104, 104), Rect2(416, 0, 104, 104), Rect2(520, 0, 104, 104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Danky:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lol3m"]
+length = 0.48
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Danky:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 104, 104), Rect2(624, 0, 104, 104), Rect2(728, 0, 104, 104), Rect2(832, 0, 104, 104), Rect2(936, 0, 104, 104), Rect2(1040, 0, 104, 104)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Danky:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5k0ux"]
+_data = {
+&"Idle": SubResource("Animation_cc8gu"),
+&"IdleWink": SubResource("Animation_lol3m")
+}
+
+[node name="Danky" type="CharacterBody2D"]
+z_index = 45
+
+[node name="Danky" type="Sprite2D" parent="."]
+position = Vector2(0, -44)
+texture = ExtResource("1_wtrdk")
+region_enabled = true
+region_rect = Rect2(0, 0, 104, 104)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5k0ux")
+}
+autoplay = "Idle"

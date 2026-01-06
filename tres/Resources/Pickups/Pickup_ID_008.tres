@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Pickup_Logic_Resource" load_steps=2 format=3 uid="uid://c6y8uid17w4sy"]
+
+[ext_resource type="Script" uid="uid://dowydygbf1dc8" path="res://Scripts/Objects/Global_Logics/PickupModifierLogic.gd" id="1_3nrvb"]
+
+[resource]
+script = ExtResource("1_3nrvb")
+PickUp_Display = "ChancePlus"
+Property_To_Modify = {
+"Chances": 1
+}
+metadata/_custom_type_script = "uid://dowydygbf1dc8"

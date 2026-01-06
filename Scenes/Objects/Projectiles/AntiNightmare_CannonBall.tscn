@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://nt32byq62n3k"]
+
+[ext_resource type="Texture2D" uid="uid://74qfukkldor" path="res://Sprites/Objects/Projectiles.png" id="1_mfd7m"]
+[ext_resource type="Script" path="res://Scripts/Objects/Projectiles/CannonBall.gd" id="1_t08mm"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Nodes/visible_rect_autokill.gd" id="3_7wxgm"]
+[ext_resource type="Script" path="res://Scripts/Objects/Projectiles/Behaviors/Trajectory_Behavior.gd" id="4_yfhin"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fugc"]
+atlas = ExtResource("1_mfd7m")
+region = Rect2(131, 2, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vpqa"]
+radius = 15.0333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oyhel"]
+radius = 34.0147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mrqgc"]
+radius = 16.0
+
+[node name="CannonBall" type="CharacterBody2D"]
+z_index = 20
+collision_layer = 16
+collision_mask = 2
+floor_snap_length = 16.0
+script = ExtResource("1_t08mm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1.4, 1.4, 1.6, 1)
+texture = SubResource("AtlasTexture_7fugc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2vpqa")
+debug_color = Color(0.996937, 0, 0.176682, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
+[node name="VisibleRect" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-1.90735e-06, -1.90735e-06)
+scale = Vector2(3.2, 3.2)
+script = ExtResource("3_7wxgm")
+
+[node name="TrajectoryBehavior" type="Node" parent="." node_paths=PackedStringArray("Body")]
+unique_name_in_owner = true
+script = ExtResource("4_yfhin")
+Body = NodePath("..")
+Vertical_Impulse = 200.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_oyhel")
+
+[node name="Hitbox_Self" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 259
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Self"]
+shape = SubResource("CircleShape2D_mrqgc")
+debug_color = Color(0.00857207, 0.237606, 0.822917, 0.42)
+
+[connection signal="screen_exited" from="VisibleRect" to="." method="_on_visible_rect_screen_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Hitbox_Self" to="." method="_on_hitbox_self_body_entered"]

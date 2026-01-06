@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://skssvqsdrnc"]
+
+[ext_resource type="Script" uid="uid://b0lfu1ou1hthy" path="res://Scripts/Triggers/Nodes/AnimationVideoPlayer.gd" id="1_r5dn4"]
+[ext_resource type="VideoStream" uid="uid://dt87rn0kjqd1c" path="res://Videos/geotf.ogv" id="2_cr2v8"]
+
+[node name="AnimatedCutsceneVideoPlayer" type="Node"]
+script = ExtResource("1_r5dn4")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = 2000
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="ParallaxBackground"]
+unique_name_in_owner = true
+visible = false
+z_index = 2000
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_cr2v8")
+expand = true
+bus = &"VideoAudio"

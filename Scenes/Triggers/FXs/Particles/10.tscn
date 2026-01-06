@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvmwpva8mo6u"]
+
+[ext_resource type="Texture2D" uid="uid://tfqqas5338bj" path="res://Sprites/ParticlesEffect/GlassGrassLeaf_Pierce.png" id="1_537ct"]
+[ext_resource type="Material" uid="uid://cnwlcq57fp5fl" path="res://tres/Materials/BurningSpray.tres" id="1_dcorp"]
+[ext_resource type="Script" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="2_5gi3u"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qdl3w"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="BurningLeaves" type="GPUParticles2D"]
+z_index = 20
+material = SubResource("CanvasItemMaterial_qdl3w")
+amount = 48
+process_material = ExtResource("1_dcorp")
+texture = ExtResource("1_537ct")
+lifetime = 0.4
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-1, -1, 2, 2)
+local_coords = true
+trail_lifetime = 0.1
+script = ExtResource("2_5gi3u")

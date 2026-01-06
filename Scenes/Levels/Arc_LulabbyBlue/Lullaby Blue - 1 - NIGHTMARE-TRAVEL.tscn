@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddgpl8ty2xgam"]
+
+[ext_resource type="TileSet" uid="uid://q6gcvln8wikh" path="res://tres/Tilesets/OneWayTiles.tres" id="1_b78im"]
+[ext_resource type="TileSet" uid="uid://bkah41r58t0vm" path="res://tres/Tilesets/Tiles.tres" id="2_g28mv"]
+[ext_resource type="TileSet" uid="uid://d17r5nlv3ytfq" path="res://tres/Tilesets/Spikes.tres" id="3_o6kjv"]
+[ext_resource type="TileSet" uid="uid://dbqk1605aw2su" path="res://tres/Tilesets/AnimatedDecorations.tres" id="4_x52ib"]
+[ext_resource type="Texture2D" uid="uid://61fd8i676nbi" path="res://Sprites/Objects/TileSets/AnimatedTilesets/WaterTiles.png" id="5_vnbjx"]
+[ext_resource type="PackedScene" uid="uid://bmvnyc106rm1p" path="res://Scenes/Objects/Animated_Decs/animated_decorations.tscn" id="6_eemij"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vs1nl"]
+texture = ExtResource("5_vnbjx")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_kv0md"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 4096
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "water"
+terrain_set_0/terrain_0/color = Color(0.73828125, 1, 1, 1)
+sources/0 = SubResource("TileSetAtlasSource_vs1nl")
+
+[node name="Nightmare_Travel" type="Node2D"]
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="TileMaps" type="Node2D" parent="Objects"]
+z_index = 1
+z_as_relative = false
+metadata/_edit_lock_ = true
+
+[node name="OneWayBlocks" type="TileMapLayer" parent="Objects/TileMaps" groups=["OneWayTiles"]]
+use_parent_material = true
+tile_set = ExtResource("1_b78im")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="TileBlocks" type="TileMapLayer" parent="Objects/TileMaps"]
+use_parent_material = true
+tile_set = ExtResource("2_g28mv")
+rendering_quadrant_size = 64
+metadata/_edit_lock_ = true
+
+[node name="Spikes" type="TileMapLayer" parent="Objects/TileMaps" groups=["Hurters"]]
+z_index = 20
+tile_set = ExtResource("3_o6kjv")
+
+[node name="Decorations" type="TileMapLayer" parent="Objects/TileMaps"]
+tile_set = ExtResource("4_x52ib")
+
+[node name="WaterTile" type="TileMapLayer" parent="Objects/TileMaps" groups=["Swimmable"]]
+z_index = 100
+tile_set = SubResource("TileSet_kv0md")
+
+[node name="Animated_Decorations" parent="Objects/TileMaps" instance=ExtResource("6_eemij")]
+
+[node name="Enemies" type="Node2D" parent="Objects"]
+
+[node name="Actors" type="Node2D" parent="Objects"]
+editor_description = "player, npc, etc"
+
+[node name="Areas" type="Node2D" parent="Objects"]
+editor_description = "doors, waters, etc"
+
+[node name="Pickables" type="Node2D" parent="Objects"]
+editor_description = "health pickup, energy pickup etc"
+
+[node name="Ladders" type="Node2D" parent="Objects"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhk6or758b2ex"]
+
+[ext_resource type="Texture2D" uid="uid://b8lnf6wpoiyi8" path="res://Sprites/ParticleEffects1.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://rcuy2lvwawl1" path="res://Sprites/ParticlesEffect/ParticleEffects2.png" id="2"]
+
+[sub_resource type="Curve" id="7"]
+_limits = [0.5, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994595, 0.838068), -0.560606, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="8"]
+curve = SubResource("7")
+
+[sub_resource type="ParticleProcessMaterial" id="6"]
+emission_shape = 5
+emission_point_count = 1
+spread = 180.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("8")
+
+[sub_resource type="AnimatedTexture" id="5"]
+frames = 2
+frame_0/texture = ExtResource("1")
+frame_1/texture = ExtResource("2")
+frame_1/duration = 1.0
+
+[sub_resource type="Resource" id="Resource_aya3p"]
+metadata/__load_path__ = "res://Scripts/Objects/Triggers/Particle_Logic.gd"
+
+[node name="Bolts" type="Particles2D"]
+z_index = 25
+emitting = false
+amount = 12
+lifetime = 5.0
+one_shot = true
+speed_scale = 24.0
+explosiveness = 0.3
+process_material = SubResource("6")
+texture = SubResource("5")
+script = SubResource("Resource_aya3p")

@@ -1,0 +1,27 @@
+
+##*Groups from the game*##:
+	#*Globals*#:
+	Climbable -> "Everything that is climbable"
+	Collectables -> "Nodes2D that are pickable as collectables"
+	Enemies -> "Every object/nodes that are placed as Enemies (not necessarily bosses)"
+	Hurters -> "Every PhysicsBody2D that causes damage for player"
+	NightFlies -> Important collectable that makes you complete certain levels
+	OneWayTiles -> "Used on tiles with one way collision"
+	Player -> "Group used to mark all objects/nodes that are players"
+	Swimmable -> "Every area or body that is a swimmable area"
+	Vehiles -> "All the vehiles from the game"
+	Level -> "Nodes that are level"
+	All moving platforms -> "Platforms that move"
+	
+	##*Individuals scenes*##:
+		#*Flockos.tscn*#
+			ClashAreas -> "Used for area2D that causes impact effects in enemies and 
+							createsprites for cause clash impressions"
+			ClashAreaParent -> "Used to "
+			SlashState -> "Use to verify if the state owns Slashs class_name"
+			OnFeet -> "State where the player isn't ducking"
+			Ducked -> "State where the player is ducking"
+			
+		#*Ladder_Maker.tscn*#
+			TopLadder -> "Every climbable that has a top"
+		

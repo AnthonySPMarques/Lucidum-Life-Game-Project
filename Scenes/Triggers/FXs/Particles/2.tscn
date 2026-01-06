@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn2v6tw1jat3a"]
+
+[ext_resource type="Texture2D" uid="uid://0iboxaeoqpi8" path="res://Sprites/Characters/Character_pierces/Lazer_Particles.png" id="1_r7na7"]
+[ext_resource type="Material" uid="uid://dhs2jn3whws4" path="res://tres/Materials/SlashBiteSparks.tres" id="2_8svpk"]
+[ext_resource type="Script" uid="uid://dya5u1xfr1hti" path="res://Scripts/Triggers/FXs/Particle_Logic.gd" id="3_8hemp"]
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[node name="SlashBite_Particles" type="GPUParticles2D"]
+z_index = 50
+material = SubResource("1")
+position = Vector2(0, -144)
+amount = 64
+texture = ExtResource("1_r7na7")
+lifetime = 14.0
+speed_scale = 24.0
+explosiveness = 0.5
+fixed_fps = 60
+visibility_rect = Rect2(150, -100, 200, 200)
+trail_enabled = true
+trail_lifetime = 5.0
+trail_sections = 20
+trail_section_subdivisions = 40
+process_material = ExtResource("2_8svpk")
+script = ExtResource("3_8hemp")
+
+[connection signal="finished" from="." to="." method="kill"]

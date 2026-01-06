@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://177vflb54yif"]
+
+[ext_resource type="Texture2D" uid="uid://w333ei8mletn" path="res://Sprites/Objects/Decorations/DiamondBush_2.png" id="1_t6al8"]
+[ext_resource type="Script" path="res://Scripts/Scenies/Interactive_Decorations.gd" id="2_njape"]
+[ext_resource type="PackedScene" uid="uid://yawpg8ek5slt" path="res://Scenes/Triggers/FXs/PointLight.tscn" id="3_wujsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2q3m"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(0, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k0mn"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(89, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_255vk"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(178, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htaxm"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(267, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6g3f"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(356, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77t0u"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(445, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf3c1"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(534, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kw8b"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(623, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5crg3"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(712, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiw4t"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(801, 0, 89, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ao0f"]
+atlas = ExtResource("1_t6al8")
+region = Rect2(890, 0, 89, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_caa2s"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_s2q3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k0mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_255vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htaxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6g3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77t0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf3c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kw8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5crg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiw4t")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_3ao0f")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 25.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jr0kj"]
+radius = 32.0
+height = 84.0
+
+[node name="DiamondBush_2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_caa2s")
+animation = &"Default"
+autoplay = "Default"
+frame_progress = 0.294578
+script = ExtResource("2_njape")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_jr0kj")
+debug_color = Color(0.118276, 0.0737305, 0.786458, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.78814e-06, 1.90735e-06)
+scale = Vector2(3.2, 3.2)
+
+[node name="PointLight2D" parent="." instance=ExtResource("3_wujsc")]
+color = Color(1, 1, 1, 1)
+blend_mode = 2
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

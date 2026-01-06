@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://t6q55i8h2e0c"]
+
+[ext_resource type="Script" uid="uid://declgbyau2gxr" path="res://bgm__-001.gd" id="3"]
+
+[sub_resource type="AnimationNodeAnimation" id="3"]
+animation = &"Loop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="5"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="6"]
+states/Loop/node = SubResource("3")
+states/Loop/position = Vector2(431.333, 99.1632)
+states/Start/position = Vector2(243.333, 98.5761)
+transitions = ["Start", "Loop", SubResource("5")]
+graph_offset = Vector2(-21, -5)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="7"]
+
+[sub_resource type="Resource" id="Resource_mqj05"]
+metadata/__load_path__ = "res://Songs/BGM_-001B.mp3"
+
+[sub_resource type="Animation" id="2"]
+resource_name = "Loop"
+length = 31.951
+loop_mode = 1
+step = 0.001
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicPlayer/Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("Resource_mqj05")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Resource" id="Resource_phxnt"]
+metadata/__load_path__ = "res://Songs/BGM_-001A.mp3"
+
+[sub_resource type="Animation" id="1"]
+resource_name = "Start"
+length = 1.6
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicPlayer/Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("Resource_phxnt")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Resource" id="Resource_qiy7w"]
+metadata/__load_path__ = "res://Songs/BGM_-001B.mp3"
+
+[node name="BGM_-001" type="Node"]
+script = ExtResource("3")
+
+[node name="In-Out" type="AnimationTree" parent="."]
+tree_root = SubResource("6")
+anim_player = NodePath("../MusicPlayer")
+parameters/playback = SubResource("7")
+
+[node name="MusicPlayer" type="AnimationPlayer" parent="."]
+anims/Loop = SubResource("2")
+anims/Start = SubResource("1")
+
+[node name="Audio" type="AudioStreamPlayer" parent="MusicPlayer"]
+stream = SubResource("Resource_qiy7w")

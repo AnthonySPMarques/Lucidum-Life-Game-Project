@@ -1,0 +1,26 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cwcptkrrbvp6r"]
+
+[sub_resource type="Curve" id="Curve_thhdb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.59309, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x2jq8"]
+curve = SubResource("Curve_thhdb")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4, 4, 4)
+direction = Vector3(0, -10, 0)
+spread = 180.0
+initial_velocity_min = -20.0
+initial_velocity_max = 380.0
+gravity = Vector3(0, 500, 0)
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_x2jq8")
+turbulence_noise_strength = 2.46
+turbulence_noise_scale = 2.801
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.0
+turbulence_initial_displacement_min = -94.3
+turbulence_initial_displacement_max = -84.0

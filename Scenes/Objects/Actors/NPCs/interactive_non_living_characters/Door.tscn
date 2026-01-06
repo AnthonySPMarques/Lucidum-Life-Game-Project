@@ -1,0 +1,272 @@
+[gd_scene load_steps=23 format=3 uid="uid://dtolq7t5geaeg"]
+
+[ext_resource type="Texture2D" uid="uid://bjpdryxqw58e1" path="res://Sprites/Objects/Doors.png" id="1"]
+[ext_resource type="Script" uid="uid://da770vmv0ngpw" path="res://Scripts/Objects/Actors/NPCs/Non_living_characters/Door.gd" id="2"]
+[ext_resource type="Script" uid="uid://4hdr1cutqndn" path="res://Scripts/Objects/Actors/NPCs/Non_living_characters/DoorControl.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://wlvpi1mvra0q" path="res://Sprites/EditorTriggers/TriggersIcon.png" id="4"]
+
+[sub_resource type="Curve" id="Curve_pttso"]
+_data = [Vector2(0.00163934, 0.238494), 0.0, 0.0, 0, 0, Vector2(1, 0.537657), 0.299654, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_khxfl"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(0.144531, 0.827555, 1, 1, 1, 0.0546875, 0.78983, 1)
+metadata/_snap_count = 8
+
+[sub_resource type="Animation" id="Animation_2igsh"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(1, 1, 118, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gbmws"]
+length = 1.17
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.54, 0.61, 0.67, 0.74, 0.81, 0.89, 0.97),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(121, 1, 118, 192), Rect2(241, 1, 118, 192), Rect2(361, 1, 118, 192), Rect2(481, 1, 118, 192), Rect2(601, 1, 118, 192), Rect2(721, 1, 118, 192), Rect2(841, 1, 118, 192), Rect2(961, 1, 118, 192), Rect2(1081, 1, 118, 192), Rect2(1201, 1, 118, 192), Rect2(1321, 1, 118, 192), Rect2(1441, 1, 118, 192), Rect2(1561, 1, 118, 192), Rect2(1681, 1, 118, 192), Rect2(1801, 1, 118, 192), Rect2(1921, 1, 118, 192), Rect2(2041, 1, 118, 192), Rect2(2161, 1, 118, 192), Rect2(2281, 1, 118, 192), Rect2(2401, 1, 118, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.54, 0.61, 0.67, 0.74, 0.81, 0.89, 0.97),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cwv17"]
+length = 1.48
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.34, 0.4, 0.46, 0.54, 0.6, 0.68, 0.78, 0.86, 0.92, 0.98, 1.04, 1.1, 1.2, 1.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(2521, 1, 118, 192), Rect2(2641, 1, 118, 192), Rect2(2761, 1, 118, 192), Rect2(1, 195, 118, 192), Rect2(121, 195, 118, 192), Rect2(241, 195, 118, 192), Rect2(361, 195, 118, 192), Rect2(481, 195, 118, 192), Rect2(601, 195, 118, 192), Rect2(721, 195, 120, 192), Rect2(843, 195, 124, 192), Rect2(969, 195, 126, 192), Rect2(1097, 195, 128, 192), Rect2(1227, 195, 128, 192), Rect2(1357, 195, 128, 192), Rect2(1487, 195, 126, 192), Rect2(1615, 195, 124, 192), Rect2(1741, 195, 120, 192), Rect2(1863, 195, 124, 192), Rect2(1989, 195, 126, 192), Rect2(2117, 195, 124, 192), Rect2(2243, 195, 120, 192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.34, 0.4, 0.46, 0.54, 0.6, 0.68, 0.78, 0.86, 0.92, 0.98, 1.04, 1.1, 1.2, 1.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucmsj"]
+_data = {
+&"DoorClosed_1": SubResource("Animation_2igsh"),
+&"DoorOpen_ToInside_1": SubResource("Animation_gbmws"),
+&"DoorOpen_ToOutside_0": SubResource("Animation_cwv17")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gbmws"]
+animation = &"DoorClosed_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cwv17"]
+animation = &"DoorOpen_ToInside_1"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_qwn88"]
+input_0/name = "In"
+input_0/auto_advance = false
+input_0/break_loop_at_end = true
+input_0/reset = true
+input_1/name = "Out"
+input_1/auto_advance = false
+input_1/break_loop_at_end = true
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ktjtl"]
+animation = &"DoorOpen_ToOutside_0"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_atgxf"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3lcra"]
+graph_offset = Vector2(-388.792, 31.0304)
+nodes/Inside/node = SubResource("AnimationNodeAnimation_cwv17")
+nodes/Inside/position = Vector2(-320, 80)
+nodes/OpenMode/node = SubResource("AnimationNodeTransition_qwn88")
+nodes/OpenMode/position = Vector2(55.7333, 148.867)
+nodes/Outside/node = SubResource("AnimationNodeAnimation_ktjtl")
+nodes/Outside/position = Vector2(-346.667, 293.333)
+nodes/Reverse/node = SubResource("AnimationNodeTimeScale_atgxf")
+nodes/Reverse/position = Vector2(373.333, 106.667)
+nodes/output/position = Vector2(613.333, 133.333)
+node_connections = [&"OpenMode", 0, &"Inside", &"OpenMode", 1, &"Outside", &"Reverse", 0, &"OpenMode", &"output", 0, &"Reverse"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0cgck"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqyan"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gfegp"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gbmws"]
+states/DoorClosed_1/node = SubResource("AnimationNodeAnimation_gbmws")
+states/DoorClosed_1/position = Vector2(272, 100.852)
+states/DoorOpenings/node = SubResource("AnimationNodeBlendTree_3lcra")
+states/DoorOpenings/position = Vector2(545.333, 103.914)
+states/Start/position = Vector2(66.6667, 101.037)
+transitions = ["Start", "DoorClosed_1", SubResource("AnimationNodeStateMachineTransition_0cgck"), "DoorClosed_1", "DoorOpenings", SubResource("AnimationNodeStateMachineTransition_iqyan"), "DoorOpenings", "DoorClosed_1", SubResource("AnimationNodeStateMachineTransition_gfegp")]
+graph_offset = Vector2(-112, -60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeeq1"]
+size = Vector2(16, 88)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cwv17"]
+states/DoorClosed_1/node = SubResource("AnimationNodeAnimation_gbmws")
+states/DoorClosed_1/position = Vector2(272, 100.852)
+states/DoorOpenings/node = SubResource("AnimationNodeBlendTree_3lcra")
+states/DoorOpenings/position = Vector2(545.333, 103.914)
+states/Start/position = Vector2(66.6667, 101.037)
+transitions = ["Start", "DoorClosed_1", SubResource("AnimationNodeStateMachineTransition_0cgck"), "DoorClosed_1", "DoorOpenings", SubResource("AnimationNodeStateMachineTransition_iqyan"), "DoorOpenings", "DoorClosed_1", SubResource("AnimationNodeStateMachineTransition_gfegp")]
+graph_offset = Vector2(-112, -60)
+
+[node name="DoorsManager" type="Node2D"]
+script = ExtResource("3")
+
+[node name="Liner" type="Line2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(1, 0)
+points = PackedVector2Array(-16, -220, 16, -220)
+width = 5.0
+width_curve = SubResource("Curve_pttso")
+gradient = SubResource("Gradient_khxfl")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="DoorEnter" type="Area2D" parent="." node_paths=PackedStringArray("AnimationPlayerNode") groups=["Door"]]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-16, 0)
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource("2")
+AnimationPlayerNode = NodePath("DoorEnterPlayer")
+
+[node name="Sprite" type="Sprite2D" parent="DoorEnter"]
+position = Vector2(0, -96)
+texture = ExtResource("1")
+region_enabled = true
+region_rect = Rect2(1, 1, 118, 192)
+metadata/_edit_group_ = true
+
+[node name="DoorEnterPlayer" type="AnimationPlayer" parent="DoorEnter"]
+libraries = {
+"": SubResource("AnimationLibrary_ucmsj")
+}
+
+[node name="EnterPlayerTree" type="AnimationTree" parent="DoorEnter/DoorEnterPlayer"]
+unique_name_in_owner = true
+root_node = NodePath("%EnterPlayerTree/../..")
+tree_root = SubResource("AnimationNodeStateMachine_gbmws")
+anim_player = NodePath("..")
+parameters/DoorOpenings/OpenMode/current_state = "In"
+parameters/DoorOpenings/OpenMode/transition_request = "Out"
+parameters/DoorOpenings/OpenMode/current_index = 0
+parameters/DoorOpenings/Reverse/scale = 1.0
+
+[node name="Mask" type="CollisionShape2D" parent="DoorEnter"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_oeeq1")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="DoorEnter"]
+visible = false
+position = Vector2(0, -220)
+texture = ExtResource("4")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+metadata/_edit_group_ = true
+
+[node name="DoorExit" type="Area2D" parent="." node_paths=PackedStringArray("AnimationPlayerNode") groups=["Door"]]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(16, 0)
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource("2")
+Door_Mode = 1
+AnimationPlayerNode = NodePath("DoorExitPlayer")
+
+[node name="Sprite" type="Sprite2D" parent="DoorExit"]
+position = Vector2(0, -96)
+texture = ExtResource("1")
+region_enabled = true
+region_rect = Rect2(1, 1, 118, 192)
+metadata/_edit_group_ = true
+
+[node name="DoorExitPlayer" type="AnimationPlayer" parent="DoorExit"]
+libraries = {
+"": SubResource("AnimationLibrary_ucmsj")
+}
+
+[node name="ExitPlayerTree" type="AnimationTree" parent="DoorExit/DoorExitPlayer"]
+unique_name_in_owner = true
+root_node = NodePath("%ExitPlayerTree/../..")
+tree_root = SubResource("AnimationNodeStateMachine_cwv17")
+anim_player = NodePath("..")
+parameters/DoorOpenings/OpenMode/current_state = "In"
+parameters/DoorOpenings/OpenMode/transition_request = ""
+parameters/DoorOpenings/OpenMode/current_index = 0
+parameters/DoorOpenings/Reverse/scale = 1.0
+
+[node name="Mask" type="CollisionShape2D" parent="DoorExit"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_oeeq1")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="DoorExit"]
+visible = false
+position = Vector2(0, -220)
+texture = ExtResource("4")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+metadata/_edit_group_ = true

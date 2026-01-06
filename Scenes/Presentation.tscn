@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://blcs31tdyhx2l"]
+
+[ext_resource type="FontFile" uid="uid://dbvyiuhlljfku" path="res://Fonts/Joti_One/JotiOne-Regular.ttf" id="1_3jv0v"]
+[ext_resource type="Script" uid="uid://0vq2dsxbfj10" path="res://Scripts/presentation.gd" id="1_ntnpm"]
+[ext_resource type="PackedScene" uid="uid://bi6qkwbpncbea" path="res://Scenes/TitleScreen.tscn" id="2_j2jkn"]
+
+[sub_resource type="Animation" id="Animation_d4kcp"]
+resource_name = "AppearEffect"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texts:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["A game  made by
+Quarto studios <- add watermark for this company name", "[i][add here a short animation of a battle between morpheus and talicia. skipabble cutscene] -> goto titlescreen"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goto_titlescreen"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ntnpm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texts:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["A game  made by
+Quarto studios <- add watermark for this company name"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jv0v"]
+_data = {
+&"AppearEffect": SubResource("Animation_d4kcp"),
+&"RESET": SubResource("Animation_ntnpm")
+}
+
+[node name="Presentation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ntnpm")
+scenetogo_after_presentation = ExtResource("2_j2jkn")
+metadata/_edit_lock_ = true
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -352.0
+offset_right = 576.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Texts" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3jv0v")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/italics_font_size = 30
+bbcode_enabled = true
+text = "A game  made by
+Quarto studios <- add watermark for this company name"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texts"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_3jv0v")
+}
+autoplay = "AppearEffect"

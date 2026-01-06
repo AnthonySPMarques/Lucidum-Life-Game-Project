@@ -1,0 +1,342 @@
+[gd_scene load_steps=38 format=3 uid="uid://dmqsnrusw0xk"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/MachineStateApplyer.gd" id="1_g5jsw"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Intro.gd" id="2_gh0m3"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Idle.gd" id="3_bamxg"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Slashs.gd" id="4_oe0qi"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/ChargedSlash.gd" id="5_f2ipm"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Run.gd" id="6_1u25x"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/RunSlash.gd" id="7_cxe7g"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Down.gd" id="8_eyjye"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/EnteringDoor.gd" id="9_10t1b"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/ExitingDoor.gd" id="10_lm1bw"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Jump.gd" id="11_ngo2r"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Fall.gd" id="12_scdie"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Landing.gd" id="13_otmhh"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/AirSlash.gd" id="14_j3ai3"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Dash.gd" id="15_0a6t6"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/DashJump.gd" id="16_2fpcc"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/DashFall.gd" id="17_f0god"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/DashSlash.gd" id="18_yr8d3"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/AirDash.gd" id="19_owpj0"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/CrazyFly.gd" id="20_jrvw6"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/WallSlide.gd" id="21_6kx3b"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/WallSlash.gd" id="22_0hprh"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/WallJump.gd" id="23_tbitx"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/ClimbFades.gd" id="24_mhb4t"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Climb.gd" id="25_ap2h5"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/ClimbSlash.gd" id="26_vq1sv"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/ShakeWater.gd" id="27_0spcb"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/LightingKite.gd" id="28_7lyhp"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/AvoiderDown.gd" id="29_vu0ej"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/HangingTop.gd" id="30_60mdo"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/HangingSlash.gd" id="31_n65k0"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/HangClimbToTop.gd" id="32_d20m4"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/VictoryTaunt.gd" id="33_3ghb7"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/OnPogo.gd" id="34_4hw77"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/KnockBack.gd" id="35_uajxr"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Death.gd" id="36_wj1yu"]
+[ext_resource type="Script" path="res://Scripts/Objects/Actors/Flockos/States/Stop.gd" id="37_hywn4"]
+
+[node name="Machine_State" type="Node" node_paths=PackedStringArray("Start_State")]
+script = ExtResource("1_g5jsw")
+Start_State = NodePath("Start")
+
+[node name="Start" type="Node" parent="."]
+script = ExtResource("2_gh0m3")
+Time_to_wait = 1.5
+AnimationCurrentTransition = "Start"
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("3_bamxg")
+Time_To_Creepy = 60.0
+AnimationCurrentTransition = "Idle"
+
+[node name="IdleSlash1" type="Node" parent="Idle" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+parameter = "Idle_Slashes"
+Time_ToInput = 0.02
+NextSlashState = NodePath("../IdleSlash2")
+AnimationCurrentTransition = "IdleSlashes"
+
+[node name="IdleSlash2" type="Node" parent="Idle" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+parameter = "Idle_Slashes"
+Time_ToInput = 0.02
+NextSlashState = NodePath("../IdleSlash3")
+AnimationCurrentTransition = "IdleSlashes"
+
+[node name="IdleSlash3" type="Node" parent="Idle" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+final_slash = true
+parameter = "Idle_Slashes"
+Time_ToInput = 0.0
+NextSlashState = NodePath("..")
+AnimationCurrentTransition = "IdleSlashes"
+
+[node name="ChargedSlash" type="Node" parent="Idle" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("5_f2ipm")
+Time_ToInput = 0.1
+NextSlashState = NodePath("..")
+AnimationCurrentTransition = "ChargedSlash"
+
+[node name="Run" type="Node" parent="."]
+editor_description = "350"
+script = ExtResource("6_1u25x")
+AnimationCurrentTransition = "Run"
+
+[node name="RunSlash" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("7_cxe7g")
+velocity_speed = 200.0
+acceleration = 100.0
+friction = 80.0
+Time_ToInput = 0.0
+NextSlashState = NodePath("../Run")
+AnimationCurrentTransition = "Run"
+
+[node name="Down" type="Node" parent="."]
+script = ExtResource("8_eyjye")
+acceleration = 30.0
+friction = 15.0
+Ducking_State = true
+AnimationCurrentTransition = "Down"
+
+[node name="DownSlash1" type="Node" parent="Down" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+idle_slash = false
+down_slash = true
+parameter = "Down"
+Time_ToInput = 0.02
+NextSlashState = NodePath("../DownSlash2")
+Ducking_State = true
+AnimationCurrentTransition = "Down"
+
+[node name="DownSlash2" type="Node" parent="Down" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+idle_slash = false
+down_slash = true
+parameter = "Down"
+Time_ToInput = 0.02
+NextSlashState = NodePath("../DownSlash3")
+Ducking_State = true
+AnimationCurrentTransition = "Down"
+
+[node name="DownSlash3" type="Node" parent="Down" node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("4_oe0qi")
+final_slash = true
+idle_slash = false
+down_slash = true
+parameter = "Down"
+Time_ToInput = 0.1
+NextSlashState = NodePath("..")
+Ducking_State = true
+AnimationCurrentTransition = "Down"
+
+[node name="EnteringDoor" type="Node" parent="."]
+script = ExtResource("9_10t1b")
+AnimationCurrentTransition = "EnteringDoor"
+
+[node name="ExitingDoor" type="Node" parent="."]
+script = ExtResource("10_lm1bw")
+AnimationCurrentTransition = "ExitingDoor"
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("11_ngo2r")
+Jump_height = 1100.0
+AnimationCurrentTransition = "Jump"
+
+[node name="Fall" type="Node" parent="."]
+script = ExtResource("12_scdie")
+Buffador_de_pulo = 0.08
+AnimationCurrentTransition = "Fall"
+
+[node name="Landing" type="Node" parent="Fall"]
+script = ExtResource("13_otmhh")
+to_idle = 0.17
+AnimationCurrentTransition = "Landing"
+
+[node name="AirSlash" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("14_j3ai3")
+impulsed_gravity = 1.6
+velocity_speed = 360.0
+acceleration = 80.0
+friction = 20.0
+Time_ToInput = 0.06
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "AirSlash"
+
+[node name="AirSlashDash" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("14_j3ai3")
+impulsed_gravity = 1.6
+velocity_speed = 600.0
+acceleration = 100.0
+friction = 100.0
+Time_ToInput = 0.06
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "AirSlash"
+
+[node name="Dash" type="Node" parent="."]
+script = ExtResource("15_0a6t6")
+DashTime = 0.6
+velocity_speed = 600.0
+acceleration = 100.0
+friction = 20.0
+Ducking_State = true
+AnimationCurrentTransition = "Dashes"
+
+[node name="DashJump" type="Node" parent="."]
+script = ExtResource("16_2fpcc")
+Jump_height = 1200.0
+velocity_speed = 600.0
+acceleration = 120.0
+friction = 10.0
+AnimationCurrentTransition = "Jump"
+
+[node name="DashFall" type="Node" parent="."]
+script = ExtResource("17_f0god")
+impulsed_gravity = 1.5
+Buffador_de_pulo = 0.1
+Coyote_tempo = 0.14
+AnimationCurrentTransition = "Fall"
+
+[node name="SpinningBite" type="Node" parent="."]
+script = ExtResource("18_yr8d3")
+DashTime = 0.5
+velocity_speed = 600.0
+acceleration = 100.0
+friction = 20.0
+AnimationCurrentTransition = "Dashes"
+
+[node name="AirDash" type="Node" parent="."]
+script = ExtResource("19_owpj0")
+DashTime = 0.6
+velocity_speed = 600.0
+acceleration = 225.0
+friction = 50.0
+AnimationCurrentTransition = "Dashes"
+
+[node name="CrazyFly" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("20_jrvw6")
+time_adder = 0.04
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "CrazyFly"
+
+[node name="DashCrazyFly" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("20_jrvw6")
+velocity_speed = 120.0
+time_adder = 0.08
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "CrazyFly"
+
+[node name="WallSlide" type="Node" parent="."]
+script = ExtResource("21_6kx3b")
+Velocity_speed = 400.0
+Gravity_Divider = 0.1
+AnimationCurrentTransition = "WallSlide"
+
+[node name="WallSlash" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("22_0hprh")
+Gravity_Divider = 0.1
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "WallSlide"
+
+[node name="WallJump" type="Node" parent="."]
+script = ExtResource("23_tbitx")
+Dash_Jump_height = 1000.0
+Kick_Force = 300.0
+Kick_Force_Dash = 600.0
+acceleration = 40
+dash_acceleration = 80
+friction = 20
+AnimationCurrentTransition = "WallJump"
+
+[node name="ClimbStart" type="Node" parent="."]
+script = ExtResource("24_mhb4t")
+AnimationCurrentTransition = "Climbs"
+
+[node name="Climb" type="Node" parent="."]
+script = ExtResource("25_ap2h5")
+Climb_Speed = 450.0
+AnimationCurrentTransition = "Climbs"
+
+[node name="ClimbSlash" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("26_vq1sv")
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "Climbs"
+
+[node name="ClimbEnd" type="Node" parent="."]
+script = ExtResource("24_mhb4t")
+is_ = 1
+AnimationCurrentTransition = "Climbs"
+
+[node name="ShakeWater" type="Node" parent="."]
+script = ExtResource("27_0spcb")
+
+[node name="LightingKite" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("28_7lyhp")
+impulsed_gravity = 4.2
+Jump_Height = 1755.0
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "LightingKite"
+
+[node name="AvoiderDown" type="Node" parent="." node_paths=PackedStringArray("NextSlashState")]
+script = ExtResource("29_vu0ej")
+impulsed_gravity = 1.5
+Fall_Speed = 100.0
+Velocity_speed = 375.0
+NextSlashState = NodePath(".")
+AnimationCurrentTransition = "AvoiderDown"
+
+[node name="HangingTop" type="Node" parent="."]
+script = ExtResource("30_60mdo")
+AnimationCurrentTransition = "HangingTop"
+
+[node name="HangingSlash" type="Node" parent="."]
+script = ExtResource("31_n65k0")
+AnimationCurrentTransition = "HangingSlash"
+
+[node name="HangClimbToTop" type="Node" parent="."]
+script = ExtResource("32_d20m4")
+AnimationCurrentTransition = "HangClimb"
+
+[node name="HangClimbToDown" type="Node" parent="."]
+script = ExtResource("32_d20m4")
+Climbing_to_top = false
+AnimationCurrentTransition = "HangClimbDown"
+
+[node name="TauntVictory" type="Node" parent="."]
+script = ExtResource("33_3ghb7")
+AnimationCurrentTransition = "TauntVictory"
+
+[node name="OnPogo" type="Node" parent="."]
+script = ExtResource("34_4hw77")
+MinSpringForce = 800.0
+velocity_speed = 450.0
+acceleration = 150.0
+friction = 150.0
+AnimationCurrentTransition = "InVehiles"
+
+[node name="OnPogoDash" type="Node" parent="."]
+script = ExtResource("34_4hw77")
+MinSpringForce = 800.0
+MaxSpringForce = 1450.0
+velocity_speed = 620.0
+acceleration = 300.0
+friction = 300.0
+impulsed_gravity = 1.4
+AnimationCurrentTransition = "InVehiles"
+
+[node name="KnockBack" type="Node" parent="."]
+script = ExtResource("35_uajxr")
+aditional_gravity = 2000
+KnockBack_X = 250
+KnockBack_Y = 200
+KnockBack_Time = 0.5
+AnimationCurrentTransition = "KnockBack"
+
+[node name="Death" type="Node" parent="."]
+script = ExtResource("36_wj1yu")
+AnimationCurrentTransition = "Death"
+
+[node name="Stop" type="Node" parent="."]
+script = ExtResource("37_hywn4")

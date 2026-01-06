@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blqjubwsn6m2h"
+path="res://.godot/imported/Sleep_Too INTRO - Try.mp3-299193a598b7c28a3357ee67df464869.mp3str"
+
+[deps]
+
+source_file="res://Musics/Sleep_Too INTRO - Try.mp3"
+dest_files=["res://.godot/imported/Sleep_Too INTRO - Try.mp3-299193a598b7c28a3357ee67df464869.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

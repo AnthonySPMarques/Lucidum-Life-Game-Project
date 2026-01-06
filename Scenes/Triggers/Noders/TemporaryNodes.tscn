@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://38rpoe274sxd"]
+
+[node name="TmpNodes" type="Node"]
+process_mode = 3
+editor_description = "Use as a singleton to be the father of .new() nodes from other singletons."

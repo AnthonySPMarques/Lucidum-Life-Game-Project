@@ -1,0 +1,161 @@
+[gd_scene load_steps=12 format=3 uid="uid://c48n3l68bfs86"]
+
+[ext_resource type="Script" uid="uid://by4gpl2kxnvrs" path="res://Scripts/Objects/Miscs/GenericMiscItem.gd" id="1_ij4ut"]
+[ext_resource type="Resource" uid="uid://dtp0bhwgpwpx" path="res://tres/Resources/Pickups/Pickup_ID_007.tres" id="2_ij4ut"]
+[ext_resource type="Texture2D" uid="uid://dqmhbhvf4flb" path="res://Sprites/Objects/Miscs/LucidCoins.png" id="3_ij4ut"]
+
+[sub_resource type="Animation" id="Animation_eg4jq"]
+resource_name = "Disappearing"
+length = 0.1
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1feq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ipmwf"]
+resource_name = "kill"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd3wo"]
+_data = {
+&"Disappearing": SubResource("Animation_eg4jq"),
+&"RESET": SubResource("Animation_1feq1"),
+&"kill": SubResource("Animation_ipmwf")
+}
+
+[sub_resource type="Animation" id="Animation_ij4ut"]
+resource_name = "SmallLucidelCoin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16), Rect2(16, 0, 16, 16), Rect2(32, 0, 16, 16), Rect2(16, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_inwjd"]
+_data = {
+&"SmallLucidelCoin": SubResource("Animation_ij4ut")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij4ut"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqju3"]
+radius = 8.0
+
+[node name="Lucidel_Coin" type="CharacterBody2D" node_paths=PackedStringArray("visibility_mask", "Item_Area2D", "Item_Body") groups=["Collectables"]]
+z_index = 20
+collision_layer = 0
+collision_mask = 8198
+script = ExtResource("1_ij4ut")
+visibility_mask = NodePath("VisibleOnScreenEnabler2D")
+Pickup_Resource = ExtResource("2_ij4ut")
+has_life_time = true
+life_time = 7.0
+PickedUp_Sound = 44
+CharacterBody_height_impulse = 160.0
+Item_Area2D = NodePath("Hitbox")
+Item_Body = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ij4ut")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="StatPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+process_priority = 1
+process_physics_priority = 1
+deterministic = true
+libraries = {
+&"": SubResource("AnimationLibrary_dd3wo")
+}
+autoplay = "RESET"
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="Sprite2D"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_inwjd")
+}
+speed_scale = 1.5
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="Mask" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_ij4ut")
+debug_color = Color(0.921569, 0.0901961, 0.556863, 0.321569)
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fqju3")
+debug_color = Color(0.7, 0.0446824, 0.560795, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -9.536743e-07)
+scale = Vector2(6.4, 6.4)
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenEnabler2D2" type="VisibleOnScreenEnabler2D" parent="."]
+scale = Vector2(8, 8)
+metadata/_edit_lock_ = true
+
+[connection signal="picked_up" from="." to="." method="_on_picked_up"]

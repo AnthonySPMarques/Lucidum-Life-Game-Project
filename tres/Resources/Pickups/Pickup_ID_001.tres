@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Pickup_Logic_Resource" load_steps=2 format=3 uid="uid://6a5kfyhu2lv7"]
+
+[ext_resource type="Script" uid="uid://dowydygbf1dc8" path="res://Scripts/Objects/Global_Logics/PickupModifierLogic.gd" id="1_1hunx"]
+
+[resource]
+script = ExtResource("1_1hunx")
+PickUp_Display = "HealthCapsule_Big"
+Property_To_Modify = {
+"Current_Health": 8
+}

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dohv2cuhbg8pa"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Miscs/ElecPogo.gd" id="1_7eauj"]
+[ext_resource type="Texture2D" uid="uid://bq78eool6uoq5" path="res://Sprites/Objects/Vehiles/Pogo.png" id="1_gp523"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Pluggers/Gravity_Plug.gd" id="3_m10of"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvblp"]
+size = Vector2(56, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgrbb"]
+atlas = ExtResource("1_gp523")
+region = Rect2(0, 0, 61, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40n7h"]
+size = Vector2(64, 98)
+
+[node name="ElecPogo" type="CharacterBody2D" groups=["ElecPogo", "Vehiles"]]
+z_index = 10
+collision_layer = 0
+collision_mask = 9222
+script = ExtResource("1_7eauj")
+
+[node name="Gravity-Plug" type="Node" parent="." node_paths=PackedStringArray("Node_To_PlugIn")]
+script = ExtResource("3_m10of")
+Impulse_Gravity = 2.2
+Node_To_PlugIn = NodePath("..")
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_yvblp")
+debug_color = Color(0.91, 0.682216, 0.1001, 0.0705882)
+
+[node name="ElecPogoArea" type="Area2D" parent="." groups=["Vehiles"]]
+unique_name_in_owner = true
+editor_description = "Make this as a component then when added as a child from an actor, automatically makes it use the pogo, example: if this node is Player's child then player will be using pogo when it becomes its child."
+collision_layer = 16384
+collision_mask = 34
+
+[node name="Sprite2D" type="Sprite2D" parent="ElecPogoArea"]
+position = Vector2(0, -47)
+texture = SubResource("AtlasTexture_cgrbb")
+
+[node name="Mask" type="CollisionShape2D" parent="ElecPogoArea"]
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_40n7h")
+debug_color = Color(0.91, 0.682216, 0.1001, 0.0705882)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.90735e-06, -52)
+scale = Vector2(8.8, 18)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://yulaxmso2mm5"]
+
+[ext_resource type="Script" path="res://Scripts/UIs/Plake_Content.gd" id="1_8jhf1"]
+[ext_resource type="PackedScene" uid="uid://de25ct78n625" path="res://Scenes/Triggers/Noders/Plugger_TweenMaker.tscn" id="1_d8abp"]
+[ext_resource type="PackedScene" uid="uid://bnt8on2x4w0f0" path="res://Scenes/Triggers/GUIs/Panel_Content.tscn" id="3_7uglp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gware"]
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Plake_Content" type="Control"]
+z_index = 80
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 128.0
+script = ExtResource("1_8jhf1")
+
+[node name="TweenMaker_Panel" parent="." node_paths=PackedStringArray("Node_To_PlugIn") instance=ExtResource("1_d8abp")]
+auto_start = false
+Property_path = "scale"
+Tween_duration = 0.2
+Ease_Tween = 1
+Transi_Tween = 1
+Node_To_PlugIn = NodePath("../PanelContainer")
+metadata/Final_Destiny = Vector2(1, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 96.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(96, 144)
+theme_override_styles/panel = SubResource("StyleBoxFlat_gware")
+
+[node name="Polygon2D" type="Polygon2D" parent="PanelContainer"]
+position = Vector2(96, 144)
+color = Color(1, 1, 1, 0.4)
+offset = Vector2(-96, -144)
+polygon = PackedVector2Array(88, 128, 96, 144, 104, 128)
+
+[node name="PanelContent" parent="PanelContainer" instance=ExtResource("3_7uglp")]
+layout_mode = 2

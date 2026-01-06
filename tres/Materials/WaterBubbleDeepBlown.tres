@@ -1,0 +1,46 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=7 format=3 uid="uid://br5w8s2c5ooal"]
+
+[sub_resource type="Curve" id="3"]
+_data = [Vector2(0.00967742, 69.5455), 0.0, 209.725, 0, 0, Vector2(1, 0), -570.001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="4"]
+curve = SubResource("3")
+
+[sub_resource type="Gradient" id="5"]
+offsets = PackedFloat32Array(0, 0.655602, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.956863, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="6"]
+gradient = SubResource("5")
+width = 4096
+
+[sub_resource type="Curve" id="Curve_co7dt"]
+_data = [Vector2(0, 0), 0.0, 426.93, 0, 0, Vector2(0.431148, 451.883), 1327.2, 1327.2, 0, 0, Vector2(1, 800), 482.617, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_omy07"]
+curve = SubResource("Curve_co7dt")
+
+[resource]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_offset = Vector3(16, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(32, 48, 1)
+direction = Vector3(0, 0, 0)
+spread = 2.0
+initial_velocity_min = 400.0
+initial_velocity_max = 800.0
+velocity_limit_curve = SubResource("CurveTexture_omy07")
+gravity = Vector3(0, -50, 0)
+scale_max = 2.0
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 2.0
+color_ramp = SubResource("6")
+anim_speed_min = 5.0
+anim_speed_max = 10.0
+anim_speed_curve = SubResource("4")
+anim_offset_max = 0.4
+collision_mode = 2

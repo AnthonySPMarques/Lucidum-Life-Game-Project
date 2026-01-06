@@ -1,0 +1,110 @@
+{ "frames": {
+   "Nightfly 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 47, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 8, "y": 14, "w": 47, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 1.aseprite": {
+    "frame": { "x": 47, "y": 0, "w": 45, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 14, "w": 45, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 2.aseprite": {
+    "frame": { "x": 92, "y": 0, "w": 39, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 14, "w": 39, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 3.aseprite": {
+    "frame": { "x": 131, "y": 0, "w": 35, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 14, "y": 14, "w": 35, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 4.aseprite": {
+    "frame": { "x": 166, "y": 0, "w": 27, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 18, "y": 14, "w": 27, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 5.aseprite": {
+    "frame": { "x": 193, "y": 0, "w": 21, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 21, "y": 14, "w": 21, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 6.aseprite": {
+    "frame": { "x": 214, "y": 0, "w": 17, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 23, "y": 14, "w": 17, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 7.aseprite": {
+    "frame": { "x": 231, "y": 0, "w": 21, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 21, "y": 14, "w": 21, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 8.aseprite": {
+    "frame": { "x": 252, "y": 0, "w": 35, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 14, "y": 14, "w": 35, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 9.aseprite": {
+    "frame": { "x": 287, "y": 0, "w": 39, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 14, "w": 39, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   },
+   "Nightfly 10.aseprite": {
+    "frame": { "x": 326, "y": 0, "w": 45, "h": 34 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 14, "w": 45, "h": 34 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 60
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3-beta10-dev",
+  "image": "Nightfly.png",
+  "format": "RGBA8888",
+  "size": { "w": 371, "h": 34 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Nightfly", "from": 0, "to": 10, "direction": "forward", "color": "#fe5b59ff" }
+  ],
+  "layers": [
+   { "name": "Layer 4", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 5", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

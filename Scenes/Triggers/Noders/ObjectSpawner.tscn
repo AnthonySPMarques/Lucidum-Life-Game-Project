@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://864r4dsjhe5d"]
+
+[ext_resource type="Script" path="res://Scripts/Triggers/Nodes/ObjectSpawner.gd" id="1_uvx5a"]
+[ext_resource type="Script" path="res://Scripts/Triggers/Nodes/ObjectPos2Spawn.gd" id="2_ujucr"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_uvx5a")
+
+[node name="SpawnPos" type="Marker2D" parent="."]
+gizmo_extents = 25.0
+script = ExtResource("2_ujucr")
+
+[node name="VisibleMask" type="VisibleOnScreenNotifier2D" parent="SpawnPos"]
+position = Vector2(-1.90735e-06, -7.62939e-06)
+scale = Vector2(4.5, 4.5)

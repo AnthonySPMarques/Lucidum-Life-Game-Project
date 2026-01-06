@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj6khafc76jdn"]
+
+[ext_resource type="Script" uid="uid://b68j0oxckhvbv" path="res://Scripts/UIs/SewCursor.gd" id="1_naf7g"]
+
+[node name="SewCursor" type="Node"]
+script = ExtResource("1_naf7g")
